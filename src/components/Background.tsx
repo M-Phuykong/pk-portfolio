@@ -147,16 +147,16 @@ const Background : React.FC<BackgroundProps> = ({children} : BackgroundProps) =>
     }
 
     const canvasRef = React.useRef<HTMLCanvasElement>();
-    const app = new PIXI.Application({
-        background : "white",
-        view: canvasRef.current,
-        // auto adjust size to fit the current window
-        resizeTo: window,
-        // transparent background, we will be creating a gradient background later using CSS
-        // transparent: true,
-    });
 
     React.useEffect(() => {
+        const app = new PIXI.Application({
+            background : "white",
+            view: canvasRef.current,
+            // auto adjust size to fit the current window
+            resizeTo: window,
+            // transparent background, we will be creating a gradient background later using CSS
+            // transparent: true,
+        });
 
         const orbs : Orb[] = [];
 
