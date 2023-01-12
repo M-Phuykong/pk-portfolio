@@ -3,20 +3,18 @@ import type { HeadFC, PageProps } from "gatsby"
 
 import "../styles/index.scss"
 
+import Background from "../components/Background"
+
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main>
-      <div className="second_div">
-        {/* <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div> */}
+      <div className="main_container">
 
+        <Background>
+            <h1 className="text-white ">ABC</h1>
+        </Background>
 
-        <div className="introduction"> I'm Phuykong Meng</div>
       </div>
     </main>
   )
