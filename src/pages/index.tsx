@@ -11,7 +11,7 @@ const IndexPage: React.FC<PageProps> = () => {
     <main>
         <Background>
             <div className="flex w-full h-screen p-20 items-center">
-                <div className="w-full h-96 overlay">
+                <div className="w-full h-full overlay">
                   <h1 className="text-white">
                     Hi! I'm Phuykong Meng
                   </h1>
