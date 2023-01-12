@@ -12,6 +12,9 @@ interface BackgroundProps {
 
 const Background : React.FC<BackgroundProps> = ({children} : BackgroundProps) => {
 
+    const noise2D = createNoise2D();
+    const canvasRef = React.useRef<HTMLCanvasElement>();
+
     // return a random number within a range
     //
     function random(min: number, max: number){
@@ -29,29 +32,19 @@ const Background : React.FC<BackgroundProps> = ({children} : BackgroundProps) =>
     }
 
 
-    const noise2D = createNoise2D()
-
-
-
-    interface Bound {
-        x: { min: number , max: number},
-        y: { min: number, max: number}
-    }
-
     class Orb  {
-        bounds: Bound;
+        bounds: { x: { min: number , max: number},y: { min: number, max: number} };
         x: number;
         y: number;
         scale : number;
-        fill: number;
+        fill: string;
         radius: number;
         xOff: number;
         yOff: number
         inc: number;
         graphics: PIXI.Graphics;
 
-
-        constructor(fill = 0x000000){
+        constructor(fill = "0x000000"){
 
             this.bounds = this.setBounds();
 
@@ -62,7 +55,7 @@ const Background : React.FC<BackgroundProps> = ({children} : BackgroundProps) =>
              // how large the orb is vs it's original radius (this will modulate over time)
             this.scale = 1;
 
-            this.fill = fill;
+            this.fill = fill.toString();
 
             // the original radius of the orb, set relative to window height
             this.radius = random(window.innerHeight / 6, window.innerHeight / 3);
@@ -146,23 +139,90 @@ const Background : React.FC<BackgroundProps> = ({children} : BackgroundProps) =>
 
     }
 
-    const canvasRef = React.useRef<HTMLCanvasElement>();
+
+    class ColorPalette {
+        baseColor = "";
+        complimentaryColor1 = "";
+        complimentaryColor2 = "";
+
+        hue = 0;
+        complimentaryHue1 = 0;
+        complimentaryHue2 = 0;
+
+        saturation = 0;
+        lightness = 0;
+
+        colorChoices : Array<string>= [];
+
+        constructor(){
+            this.setColors();
+            this.setCustomProperties();
+        }
+
+        setColors() {
+            // pick a random hue somewhere between 220 and 360
+            this.hue = ~~random(220, 360)
+            this.complimentaryHue1 = this.hue + 30;
+            this.complimentaryHue2 = this.hue + 60;
+
+            // define a fixed saturation and lightness
+            this.saturation = 95;
+            this.lightness = 50;
+
+            // define a base color
+            this.baseColor = hslToHex(this.hue, this.saturation, this.lightness);
+            this.complimentaryColor1 = hslToHex(this.complimentaryHue1,
+                                                this.saturation,
+                                                this.lightness);
+            this.complimentaryColor2 = hslToHex(this.complimentaryHue2,
+                                                this.saturation,
+                                                this.lightness);
+
+            this.colorChoices = [this.baseColor, this.complimentaryColor1, this.complimentaryColor2]
+        }
+
+        randomColor() {
+            // pick a random color
+            return this.colorChoices[~~random(0, this.colorChoices.length)].replace(
+                '#',
+                '0x'
+            );
+        }
+
+        setCustomProperties() {
+            // set CSS custom properties so that the colors defined here can be used throughout the UI
+            document.documentElement.style.setProperty('--hue', this.hue.toString());
+            document.documentElement.style.setProperty(
+                '--hue-complimentary1',
+                this.complimentaryHue1.toString()
+            );
+            document.documentElement.style.setProperty(
+                '--hue-complimentary2',
+                this.complimentaryHue2.toString()
+            )
+        }
+    }
+
 
     React.useEffect(() => {
+
+        const colorPalette = new ColorPalette();
+
         const app = new PIXI.Application({
-            background : "white",
             view: canvasRef.current,
+            // backgroundColor: 0XFFFFFF,
+            backgroundAlpha: 0,
             // auto adjust size to fit the current window
             resizeTo: window,
-            // transparent background, we will be creating a gradient background later using CSS
-            // transparent: true,
+            antialias: true,
         });
+        app.stage.filters = [new KawaseBlurFilter(30, 10, true)]
 
         const orbs : Orb[] = [];
 
         for (let i = 0; i < 10; i++) {
-            // each orb will be black, just for now
-            const orb = new Orb(0x000000);
+            const orb = new Orb(colorPalette.randomColor());
+
             app.stage.addChild(orb.graphics);
 
             orbs.push(orb);
@@ -170,31 +230,28 @@ const Background : React.FC<BackgroundProps> = ({children} : BackgroundProps) =>
 
         // Animate!
         if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        app.ticker.add(() => {
-            orbs.forEach((orb) => {
-            orb.update();
-            orb.render();
+            app.ticker.add(() => {
+                orbs.forEach((orb) => {
+                orb.update();
+                orb.render();
+                });
             });
-        });
-        } else {
-        orbs.forEach((orb) => {
-            orb.update();
-            orb.render();
-        });
+            } else {
+            orbs.forEach((orb) => {
+                orb.update();
+                orb.render();
+            });
         }
 
 
     }, []);
 
 
-
     return (
-        <div>
-
-            <canvas ref={canvasRef}>
+        <div className="bg-transparent items-center">
+            <canvas ref={canvasRef} className="fixed w-full h-full">
             </canvas>
-                {/* {children} */}
-
+            {children}
         </div>
     );
 }

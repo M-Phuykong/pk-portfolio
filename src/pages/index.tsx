@@ -9,13 +9,16 @@ import Background from "../components/Background"
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main>
-      <div className="main_container">
-
         <Background>
-            <h1 className="text-white ">ABC</h1>
-        </Background>
+            <div className="flex w-full h-screen p-20 items-center">
+                <div className="w-full h-96 overlay">
+                  <h1 className="text-white">
+                    Hi! I'm Phuykong Meng
+                  </h1>
 
-      </div>
+                </div>
+            </div>
+        </Background>
     </main>
   )
 }
