@@ -20,6 +20,7 @@
     "@pixi/filter-kawase-blur": "^5.1.1",
     "@pixi/react-pixi": "^7.0.0-alpha.0",
     "@types/hsl-to-hex": "^1.0.0",
+    "akar-icons": "^1.9.22",
     "debounce": "^1.2.1",
     "gatsby": "^5.3.3",
     "gatsby-link": "^5.4.0",

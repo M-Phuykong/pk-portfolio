@@ -2,7 +2,8 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `PK-Portfolio`,
+    title: `Phuykong Meng`,
+    description: 'Phuykong Meng is a student at Temple University that has an interest in full-stack development (Python, Typescript, React) that concentrated on interactive UX/UI.',
     siteUrl: `https://www.yourdomain.tld`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
