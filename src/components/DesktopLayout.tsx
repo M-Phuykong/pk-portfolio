@@ -1,0 +1,247 @@
+import React from 'react'
+import { Download, GithubFill, LinkedinBoxFill } from "akar-icons"
+
+import "../styles/index.scss"
+
+import Background from './Background'
+import Card from './Card'
+
+import self_photo from "../images/self_photo.jpg"
+import resume from "../download/Phuykong_Meng_Resume.pdf"
+
+type Props = {
+
+}
+
+export default function DesktopLayout({}: Props) {
+  return (
+    <main className="md:overflow-hidden">
+        <Background>
+            <div className="
+            flex
+            w-full h-screen
+            py-28 px-36
+            items-center">
+                {/* <div className="overlay
+                w-full
+                h-full h-max-full
+                grid grid-cols-12 grid-rows-12">
+
+                  <div className="
+                  h-full h-max-full
+                  grid col-span-9 grid-rows-12
+                  ">
+
+                    <div
+                    className="
+                    flex
+                    items-center
+
+                    p-8 px-16
+
+                    text-white font-bold
+                    text-5xl
+
+                    row-span-1
+                    "
+                    id="intro_text_box">
+                      <p>
+                        Hello, <br />
+                        I'm Phuykong Meng!
+                      </p>
+
+                    </div>
+
+                    <div className="
+
+                    p-16 pt-2
+                    justify-evenly
+                    row-span-4
+                    grid grid-cols-2 gap-x-10
+                    ">
+                      <Card
+                      text="Projects">
+                      </Card>
+
+                      <Card
+                      text="Experience">
+
+                      </Card>
+
+                    </div>
+
+                  </div>
+
+                  <div className="
+                  grid col-span-3 grid-rows-12
+                  ">
+                    <div
+                    className="
+                    w-full
+                    content-center
+                    border border-solid border-white border-2
+                    row-span-6
+                    p-5
+                    "
+                    id="top_container">
+
+                      <img src={self_photo}
+                      alt="Phuykong_Meng_photo"
+                      className="
+                      block
+                      mx-auto mt-5
+                      h-72 w-72
+                      border border-solid border-white border-2
+                      rounded-full" />
+                    </div>
+
+                    <div
+                    className="
+                    relative
+                    h-full
+                    grid grid-rows-3 row-span-6
+                    border border-solid border-white border-2
+                    "
+                    id="bottom_container">
+
+                      <div
+                        className="
+                        flex
+                        items-center
+                        row-span-2
+                        text-white
+                        text-xl
+                        p-4
+                        "
+                        id="sub_intro_text_box">
+                          <p>
+                            I'm a sophomore at Temple University, PA pursuing Computer Science. <br />
+                            I work as a software developer at the Neural Engineer Data Consortium Research Lab (NEDC).
+                          </p>
+                      </div>
+
+                      <div
+                      className="
+                      flex
+                      h-fit
+                      justify-evenly
+                      p-6
+                      "
+                      id="link_container">
+                        <a href={resume} download>
+                          <Download strokeWidth={2} size={36} className="h-fit w-fit text-white "/>
+                        </a>
+
+                        <a href="https://github.com/M-Phuykong" target="_blank">
+                          <GithubFill strokeWidth={2} size={36} className="h-fit w-fit text-white"/>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">
+                          <LinkedinBoxFill strokeWidth={2} size={36} className="h-fit w-fit text-white"/>
+                        </a>
+                      </div>
+
+
+                    </div>
+
+                  </div>
+
+                </div> */}
+                <div className="
+                overlay
+                w-full
+                h-full
+                grid grid-cols-1 md:grid-cols-7 lg:grid-cols-12
+                grid-rows-1 md:grid-rows-3 lg:grid-rows-6
+                ">
+                  <div className="
+                  flex
+                  col-span-1 md:col-span-4 lg:col-span-8
+                  row-span-full
+                  ">1
+
+
+                  </div>
+
+                  <div className="
+                  flex flex-col
+                  h-full h-max-full
+                  w-min-0
+                  col-span-1 md:col-span-3 lg:col-span-4
+                  row-span-full
+                  ">
+
+                    <div className="
+                    flex-1
+                    overflow-auto
+                    ">
+                        <div className="
+                        items-center
+                        w-auto h-full
+                        align-middle p-8 self-center">
+                            <img src={self_photo}
+                            alt="Phuykong_Meng_photo"
+                            className="
+                            block
+                            mx-auto
+                            h-3/5
+                            w-auto
+                            border border-solid border-white border-2
+                            rounded-full" />
+                        </div>
+                    </div>
+
+                    <div
+                    className="
+                    flex-1-
+                    overflow-auto
+                    relative
+                    border border-solid border-white border-2
+                    "
+                    id="bottom_container">
+
+                    <div
+                        className="
+                        flex
+                        items-center
+                        text-white
+                        text-base md:text-lg lg:text-xl
+                        p-4
+                        "
+                        id="sub_intro_text_box">
+                        <p>
+                            I'm a sophomore at Temple University, PA pursuing Computer Science. <br />
+                            I work as a software developer at the Neural Engineer Data Consortium Research Lab (NEDC).
+                        </p>
+                    </div>
+
+                    <div
+                    className="
+                    flex
+                    h-fit
+                    justify-evenly
+                    p-6
+                    "
+                    id="link_container">
+                        <a href={resume} download>
+                        <Download strokeWidth={2} size={36} className="h-fit w-fit text-white "/>
+                        </a>
+
+                        <a href="https://github.com/M-Phuykong" target="_blank">
+                        <GithubFill strokeWidth={2} size={36} className="h-fit w-fit text-white"/>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">
+                        <LinkedinBoxFill strokeWidth={2} size={36} className="h-fit w-fit text-white"/>
+                        </a>
+                    </div>
+                    </div>
+
+                  </div>
+
+                </div>
+            </div>
+        </Background>
+    </main>
+  )
+}
