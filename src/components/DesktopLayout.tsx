@@ -20,7 +20,7 @@ export default function DesktopLayout({}: Props) {
             <div className="
             flex
             w-full h-screen
-            py-28 px-36
+            py-44 px-36 xl:px-48
             items-center">
                 {/* <div className="overlay
                 w-full
@@ -149,93 +149,95 @@ export default function DesktopLayout({}: Props) {
                 </div> */}
                 <div className="
                 overlay
+                relative
                 w-full
                 h-full
                 grid grid-cols-1 md:grid-cols-7 lg:grid-cols-12
                 grid-rows-1 md:grid-rows-3 lg:grid-rows-6
                 ">
+
+
+                  <img src={self_photo}
+                  alt="Phuykong_Meng_photo"
+                  className="
+                  absolute
+                  -top-28
+                  left-16
+                  h-2/6 l:h-2/5
+                  w-auto
+                  border border-solid border-white border-8
+                  shadow-xl
+                  rounded-full" />
+
                   <div className="
-                  flex
-                  col-span-1 md:col-span-4 lg:col-span-8
-                  row-span-full
-                  ">1
-
-
+                  col-span-7 lg:col-span-12
+                  row-span-1
+                  p-8
+                  ml-64
+                  ">
+                    <h1 className='text-5xl'> Hello, I'm Phuykong Meng.</h1>
                   </div>
 
                   <div className="
-                  flex flex-col
-                  h-full h-max-full
-                  w-min-0
-                  col-span-1 md:col-span-3 lg:col-span-4
-                  row-span-full
+                  flex
+                  col-span-7 lg:col-span-12
+                  row-span-5
+                  p-12
                   ">
+                    <Card text="info">
 
-                    <div className="
-                    flex-1
-                    overflow-auto
-                    ">
-                        <div className="
-                        items-center
-                        w-auto h-full
-                        align-middle p-8 self-center">
-                            <img src={self_photo}
-                            alt="Phuykong_Meng_photo"
-                            className="
-                            block
-                            mx-auto
-                            h-3/5
-                            w-auto
-                            border border-solid border-white border-2
-                            rounded-full" />
-                        </div>
-                    </div>
-
-                    <div
-                    className="
-                    flex-1-
-                    overflow-auto
-                    relative
-                    border border-solid border-white border-2
-                    "
-                    id="bottom_container">
-
-                    <div
+                      <div
                         className="
                         flex
                         items-center
-                        text-white
-                        text-base md:text-lg lg:text-xl
+                        text-sm xl:text-base 2xl:text-xl
                         p-4
                         "
                         id="sub_intro_text_box">
                         <p>
-                            I'm a sophomore at Temple University, PA pursuing Computer Science. <br />
+                            A sophomore at Temple University, PA pursuing Computer Science. <br />
                             I work as a software developer at the Neural Engineer Data Consortium Research Lab (NEDC).
                         </p>
-                    </div>
+                      </div>
 
-                    <div
-                    className="
-                    flex
-                    h-fit
-                    justify-evenly
-                    p-6
-                    "
-                    id="link_container">
-                        <a href={resume} download>
-                        <Download strokeWidth={2} size={36} className="h-fit w-fit text-white "/>
-                        </a>
+                      <div
+                      className="
+                      flex
+                      h-fit
+                      justify-evenly
+                      p-6
+                      "
+                      id="link_container">
+                          <a href={resume} download>
+                          <Download strokeWidth={2} size={30} className="
+                          h-6 xl:h-fit
+                          w-6 xl:w-fit"/>
+                          </a>
 
-                        <a href="https://github.com/M-Phuykong" target="_blank">
-                        <GithubFill strokeWidth={2} size={36} className="h-fit w-fit text-white"/>
-                        </a>
+                          <a href="https://github.com/M-Phuykong" target="_blank">
+                          <GithubFill strokeWidth={2} size={30} className="
+                          h-6 xl:h-fit
+                          w-6 xl:w-fit"/>
+                          </a>
 
-                        <a href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">
-                        <LinkedinBoxFill strokeWidth={2} size={36} className="h-fit w-fit text-white"/>
-                        </a>
-                    </div>
-                    </div>
+                          <a href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">
+                          <LinkedinBoxFill strokeWidth={2} size={30} className="
+                          h-6 xl:h-fit
+                          w-6 xl:w-fit"/>
+                          </a>
+                      </div>
+
+                    </Card>
+
+                    <Card
+                      text="Experience">
+
+                    </Card>
+
+                    <Card
+                      text="Projects">
+
+                    </Card>
 
                   </div>
 

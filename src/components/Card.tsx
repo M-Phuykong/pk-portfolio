@@ -4,23 +4,30 @@ interface CardProps {
     children: React.ReactNode
     text: string
 }
- 
+
 const Card: React.FunctionComponent<CardProps> = ({text, children} : CardProps) => {
-    
-    
-    return ( 
+
+
+    return (
         <div className="
         flex
         w-full
         h-full
         items-center
-        rounded-lg
-        text-white 
         text-5xl
-        border border-white border-solid border-2">
-            <h1>{text}</h1>
+        p-5">
+            <div className="
+            rounded-lg
+            items-center
+            w-full h-full
+            border border-white border-solid border-2
+            shadow-xl
+            ">
+                {children}
+                {/* <h1>{text}</h1> */}
+            </div>
         </div>
     );
 }
- 
+
 export default Card;
