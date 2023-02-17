@@ -18,6 +18,7 @@ const Card: React.FunctionComponent<CardProps> = ({text, children} : CardProps) 
         p-5">
             <div className="
             rounded-lg
+            relative
             items-center
             w-full h-full
             border border-white border-solid border-2

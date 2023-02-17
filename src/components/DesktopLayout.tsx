@@ -20,7 +20,8 @@ export default function DesktopLayout({}: Props) {
             <div className="
             flex
             w-full h-screen
-            py-44 px-36 xl:px-48
+            px-36 2xl:px-48
+            py-36 2xl:py-44
             items-center">
                 {/* <div className="overlay
                 w-full
@@ -161,9 +162,9 @@ export default function DesktopLayout({}: Props) {
                   alt="Phuykong_Meng_photo"
                   className="
                   absolute
-                  -top-28
-                  left-16
-                  h-2/6 l:h-2/5
+                  -top-[6rem]
+                  left-[2rem]
+                  h-2/5
                   w-auto
                   border border-solid border-white border-8
                   shadow-xl
@@ -172,17 +173,17 @@ export default function DesktopLayout({}: Props) {
                   <div className="
                   col-span-7 lg:col-span-12
                   row-span-1
-                  p-8
-                  ml-64
+                  mt-5 2xl:mt-10
+                  ml-[15rem] 2xl:ml-[20rem]
                   ">
-                    <h1 className='text-5xl'> Hello, I'm Phuykong Meng.</h1>
+                    <h1 className='text-5xl 2xl:text-6xl'> Hello, I'm Phuykong Meng.</h1>
                   </div>
 
                   <div className="
                   flex
                   col-span-7 lg:col-span-12
                   row-span-5
-                  p-12
+                  p-5 2xl:p-12
                   ">
                     <Card text="info">
 
@@ -190,12 +191,14 @@ export default function DesktopLayout({}: Props) {
                         className="
                         flex
                         items-center
-                        text-sm xl:text-base 2xl:text-xl
+                        text-sm 2xl:text-xl
                         p-4
                         "
                         id="sub_intro_text_box">
-                        <p>
-                            A sophomore at Temple University, PA pursuing Computer Science. <br />
+                        <p className="
+                        text-base 2xl:text-2xl
+                        ">
+                            A sophomore at Temple University, PA pursuing a degree Computer Science. <br />
                             I work as a software developer at the Neural Engineer Data Consortium Research Lab (NEDC).
                         </p>
                       </div>
@@ -203,27 +206,31 @@ export default function DesktopLayout({}: Props) {
                       <div
                       className="
                       flex
+                      left-0
                       h-fit
+                      absolute
+                      bottom-0
+                      w-full
                       justify-evenly
                       p-6
                       "
                       id="link_container">
                           <a href={resume} download>
                           <Download strokeWidth={2} size={30} className="
-                          h-6 xl:h-fit
-                          w-6 xl:w-fit"/>
+                          h-6 2xl:h-fit
+                          w-6 2xl:w-fit"/>
                           </a>
 
                           <a href="https://github.com/M-Phuykong" target="_blank">
                           <GithubFill strokeWidth={2} size={30} className="
-                          h-6 xl:h-fit
-                          w-6 xl:w-fit"/>
+                          h-6 2xl:h-fit
+                          w-6 2xl:w-fit"/>
                           </a>
 
                           <a href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">
                           <LinkedinBoxFill strokeWidth={2} size={30} className="
-                          h-6 xl:h-fit
-                          w-6 xl:w-fit"/>
+                          h-6 2xl:h-fit
+                          w-6 2xl:w-fit"/>
                           </a>
                       </div>
 

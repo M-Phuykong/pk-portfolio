@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
 @import "reset";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 ::-webkit-scrollbar {
     display: none;
@@ -36,7 +36,6 @@ html, body {
     width: 100%;
 
     background: var(--bg-gradient);
-    // background: red;
 }
 
 .overlay {
@@ -45,4 +44,8 @@ html, body {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 10px;
+}
+
+h1, p {
+    font-family: "League Spartan", Arial, Helvetica, sans-serif;
 }
