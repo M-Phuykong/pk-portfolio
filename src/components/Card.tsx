@@ -38,8 +38,7 @@ const Card: React.FunctionComponent<CardProps> = ({text, children} : CardProps) 
                             {text}
                         </div>
                         <div className="card_footer">
-                            <p>Cakes</p>
-                            <time>1 Jan 2020</time>
+
                         </div>
                     </div>
                     <div className="card_content card_content_rhs">
@@ -47,8 +46,6 @@ const Card: React.FunctionComponent<CardProps> = ({text, children} : CardProps) 
                             {text}
                         </div>
                         <div className="card_footer">
-                            <p>Cakes</p>
-                            <time>1 Jan 2020</time>
                         </div>
                     </div>
                 </a>
