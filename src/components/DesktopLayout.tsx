@@ -185,7 +185,7 @@ export default function DesktopLayout({}: Props) {
                   row-span-5
                   p-5 2xl:p-12
                   ">
-                    <Card text="info">
+                    <Card text="About Me">
 
                       <div
                         className="
