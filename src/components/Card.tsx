@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion"
 
 import "../styles/card.scss";
 
@@ -9,49 +10,67 @@ interface CardProps {
 
 const Card: React.FunctionComponent<CardProps> = ({text, children} : CardProps) => {
 
+    const exitVariant = {
+
+
+
+    }
+
+    const [isOpen, setIsOpen] = React.useState(false);
 
     return (
-        <div className="
-        flex
-        w-full
-        h-full
-        items-center
-        text-5xl
-        p-5"
-        >
-                        {/* rounded-lg
-            relative
-            items-center
-            w-full h-full
-            border border-white border-solid border-2
-            shadow-xl */}
-            <div className="
-            card_container
-            "
-            id="">
-                <a href="" className="card_link
-                border border-white border-solid border-2
-                shadow-2xl
-                ">
-                    <div className="card_content card_content_lhs">
-                        <div className="card_title">
-                            {text}
-                        </div>
-                        <div className="card_footer">
+            <motion.div
+            data-isOpen = {isOpen}
+            transition={{
+                duration: 0.2,
+                delay: 0.15
 
-                        </div>
+            }}
+            id = "card"
+            layout
+            className="
+            flex
+            h-full
+            items-center
+            text-5xl
+            p-5"
+            onClick={() => setIsOpen(!isOpen)}
+            >
+                { isOpen ?
+                    <div className="
+                        card_container
+                        "
+                        id="">
+                            {children}
                     </div>
-                    <div className="card_content card_content_rhs">
-                        <div className="card_title">
-                            {text}
-                        </div>
-                        <div className="card_footer">
-                        </div>
+                    :
+                    <div className="
+                    card_container
+                    "
+                    id="">
+                        <a href="#" className="card_link
+                        border border-white border-solid border-2
+                        shadow-2xl
+                        ">
+                            <div className="card_content card_content_lhs">
+                                <div className="card_title">
+                                    >{text}
+                                </div>
+                                <div className="card_footer">
+
+                                </div>
+                            </div>
+                            <div className="card_content card_content_rhs">
+                                <div className="card_title">
+                                    >{text}
+                                </div>
+                                <div className="card_footer">
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-                {/* {children} */}
-            </div>
-        </div>
+                }
+            </motion.div>
     );
 }
 
