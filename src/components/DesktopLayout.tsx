@@ -32,7 +32,6 @@ export default function DesktopLayout({}: Props) {
                 grid-rows-1 md:grid-rows-3 lg:grid-rows-6
                 ">
 
-
                   <img src={self_photo}
                   alt="Phuykong_Meng_photo"
                   className="

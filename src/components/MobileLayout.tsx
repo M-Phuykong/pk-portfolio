@@ -1,12 +1,18 @@
 import React from 'react'
 
+import Background from './Background'
+import { PhoneAccordion } from './PhoneAccordion'
+
 type Props = {
 }
 
 export default function MobileLayout({}: Props) {
   return (
-    <div>
-        <h1> THis is render only on Mobile</h1>
-    </div>
+    <main>
+      <Background>
+        <PhoneAccordion />
+
+      </Background>
+    </main>
   )
 }
