@@ -6,10 +6,11 @@ interface AccordionProps {
     i: number,
     expanded: false | number,
     setExpanded: React.Dispatch<React.SetStateAction<number | false>>,
-    children: React.ReactNode
+    children: React.ReactNode,
+    title: string
 }
 
-const Accordion = ({ i, expanded, setExpanded, children } : AccordionProps) => {
+const Accordion = ({ i, expanded, setExpanded, children, title } : AccordionProps) => {
 
     const isOpen = i === expanded;
 
@@ -17,10 +18,15 @@ const Accordion = ({ i, expanded, setExpanded, children } : AccordionProps) => {
         <>
             <motion.header
                 initial = {false}
-                animate = {{ backgroundColor: isOpen ? "#FF0088" : "#0055FF"}}
+                animate = {{
+                }}
+                exit={{ marginBottom: 0}}
                 onClick={() => {setExpanded(isOpen ? false : i)}}
-                className='h-10 mb-5 relative'
-            />
+                className="h-16 mb-5 px-5 relative rounded-2xl bg-white
+                leading-[4rem] text-2xl font-semibold overlay"
+            >
+                {title}
+            </motion.header>
             <AnimatePresence initial={false}>
                 { isOpen && (
                     <motion.section
@@ -29,11 +35,11 @@ const Accordion = ({ i, expanded, setExpanded, children } : AccordionProps) => {
                     animate="open"
                     exit="collapsed"
                     variants={{
-                        open: { opacity: 1, height: "auto"},
-                        collapsed: { opacity: 0, height: 0}
+                        open: { opacity: 1, height: "auto", marginBottom: 15},
+                        collapsed: { opacity: 0, height: 0, marginBottom: 0},
                     }}
                     transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
-                    className='bg-red-800'>
+                    className='rounded-2xl bg-white'>
                         {children}
                     </motion.section>
                 )}
@@ -49,24 +55,20 @@ export const PhoneAccordion = () => {
     const [expanded1, setExpanded1] = React.useState<false | number>(0);
 
     return (
-        <div>
-            <Accordion i = {0} expanded = {expanded} setExpanded={setExpanded}>
-                <div>
-                    this is a child
-                </div>
+        <div className='p-5 pt-0'>
+            <Accordion title="About Me" i = {0} expanded = {expanded} setExpanded={setExpanded}>
+                <motion.div className='p-5 '>
+                    A sophomore at Temple University, PA pursuing a degree in Computer Science.
+                    I have a keen interest in Machine Language and Front-End Development.
+                </motion.div>
             </Accordion>
-            <Accordion i = {1} expanded = {expanded1} setExpanded={setExpanded1}>
-                <div>
+            <Accordion title="Experience" i = {1} expanded = {expanded1} setExpanded={setExpanded1}>
+                <motion.div>
                     this is a child #2
-                </div>
+                </motion.div>
             </Accordion>
         </div>
-
-
     )
-    // return accordionIds.map((i) => (
-    //     <Accordion i={i} key={i} expanded={expanded} setExpanded={setExpanded} />
-    // ));
+
 };
 
-const accordionIds = [0, 1];

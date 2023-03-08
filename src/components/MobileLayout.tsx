@@ -62,9 +62,9 @@ export default function MobileLayout({}: Props) {
           justify-around
           "
           id = "icon_container">
-            <GithubFill size = {24}></GithubFill>
-            <File size = {24} strokeWidth = {2} ></File>
-            <LinkedinBoxFill size={24}></LinkedinBoxFill>
+            <GithubFill size = {26}></GithubFill>
+            <File size = {26} strokeWidth = {2} ></File>
+            <LinkedinBoxFill size={26}></LinkedinBoxFill>
           </div>
           <hr />
         </div>
