@@ -243,13 +243,12 @@ const Background : React.FC<BackgroundProps> = ({children} : BackgroundProps) =>
             });
         }
 
-
     }, []);
 
 
     return (
         <div className="bg-transparent items-center">
-            <canvas ref={canvasRef} className="fixed w-full h-full">
+            <canvas ref={canvasRef} className="fixed w-full h-fit">
             </canvas>
             {children}
         </div>

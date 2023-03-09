@@ -91,7 +91,33 @@ export const PhoneAccordion = () => {
                 I have a keen interest in Machine Language and Front-End Development.
             </Accordion>
             <Accordion title="Experience">
-                this is a child #2
+                <div>
+                    Software Developer @ NEDC <br/>
+                    Aug 2021 - Present
+                    <ul>
+                        <li>
+                            + Work with a variety of different languages such as
+                            Python, Javascript, PHP and C++.
+                        </li>
+                        <li>
+                            + Led a software team of 3 other developers by doing
+                            code reviews on style formatting and weekly progress
+                            update. Collaborated with them to score and evaluate
+                            two machine learning systems that deals with EEG Seizure
+                            Detection and Digital Pathology.
+                        </li>
+                        <li>
+                            + Developed and maintain over 5 websites that display
+                            current projects, a conference website for IEEE, and
+                            a website that monitors our server's load. Learned
+                            PHP in a month to create submission form that streamline
+                            the signing up process for the IEEE conference.
+                        </li>
+                    </ul>
+                </div>
+            </Accordion>
+            <Accordion title="Projects">
+                This is a project
             </Accordion>
         </div>
     )
