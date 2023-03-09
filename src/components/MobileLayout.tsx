@@ -62,9 +62,17 @@ export default function MobileLayout({}: Props) {
           justify-around
           "
           id = "icon_container">
-            <GithubFill size = {26}></GithubFill>
-            <File size = {26} strokeWidth = {2} ></File>
-            <LinkedinBoxFill size={26}></LinkedinBoxFill>
+            <a href="https://github.com/M-Phuykong" target="_blank">
+              <GithubFill size = {26}></GithubFill>
+            </a>
+
+            <a href={resume} download>
+              <File size = {26} strokeWidth = {2} ></File>
+            </a>
+
+            <a href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">
+              <LinkedinBoxFill size={26}></LinkedinBoxFill>
+            </a>
           </div>
           <hr />
         </div>
