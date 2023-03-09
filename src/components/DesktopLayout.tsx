@@ -92,7 +92,7 @@ export default function DesktopLayout({}: Props) {
                       p-6
                       "
                       id="link_container">
-                          <a href={resume} download>
+                          <a href={resume} download="Phuykong_Meng_Resume.pdf">
                           <Download strokeWidth={2} size={30} className="
                           h-6 2xl:h-fit
                           w-6 2xl:w-fit"/>
