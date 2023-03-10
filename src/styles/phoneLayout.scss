@@ -7,3 +7,18 @@ hr {
     hsl(var(--hue), 95%, 50%),
     hsl(var(--hue-complimentary1), 95%, 75%));
 }
+
+#label_button {
+    color: hsl(var(--hue), 100%, 65%);
+}
+
+li {
+    color: hsl(var(--hue), 100%, 65%);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+li span  {
+    color: black;
+    font-weight: 500;
+}
