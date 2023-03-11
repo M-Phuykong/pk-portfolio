@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 import Background from './Background'
 import { PhoneAccordion } from './PhoneAccordion'
@@ -11,13 +12,40 @@ import { GithubFill, LinkedinBoxFill, File } from 'akar-icons'
 import "../styles/phoneLayout.scss"
 
 export default function MobileLayout({}: Props) {
+
+  const variant = {
+    hidden: {
+      opacity: 0,
+      transition: {
+        when: "afterChildren",
+      }
+    },
+
+    show: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        
+      }
+    }
+
+  }
+
+
   return (
     <main>
       <Background>
 
-        <div id="overlay" className="relative">
+        <motion.div
 
-          <div className="
+        initial = "hidden"
+        animate = "show"
+
+        variants={variant}
+        id="overlay"
+        className="relative">
+
+          <motion.div className="
           flex
           min-h-fit
           h-fit
@@ -34,7 +62,7 @@ export default function MobileLayout({}: Props) {
                       shadow-xl
                       rounded-full" />
 
-          </div>
+          </motion.div>
           <div className="
           flex
           h-fit
@@ -54,7 +82,7 @@ export default function MobileLayout({}: Props) {
           <div className="
           h-fit
           w-full
-          pb-5
+          pb-9
           "
           id = "links_container">
             <hr />
@@ -80,7 +108,7 @@ export default function MobileLayout({}: Props) {
           </div>
 
           <PhoneAccordion />
-        </div>
+        </motion.div>
       </Background>
     </main>
   )
