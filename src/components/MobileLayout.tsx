@@ -16,21 +16,20 @@ export default function MobileLayout({}: Props) {
   const variant = {
     hidden: {
       opacity: 0,
-      transition: {
-        when: "afterChildren",
-      }
     },
 
     show: {
       opacity: 1,
       transition: {
-        when: "beforeChildren",
-        
+        staggerChildren: 0.7,
       }
     }
 
   }
-
+  const itemVariant = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 }
+  };
 
   return (
     <main>
@@ -38,10 +37,10 @@ export default function MobileLayout({}: Props) {
 
         <motion.div
 
+        variants={variant}
         initial = "hidden"
         animate = "show"
 
-        variants={variant}
         id="overlay"
         className="relative">
 
@@ -52,6 +51,9 @@ export default function MobileLayout({}: Props) {
           w-full
           pt-10
           justify-center"
+          variants={itemVariant}
+
+          key = "photo_container"
           id='photo_container'>
             <img src={self_photo}
                       alt="Phuykong_Meng_photo"
@@ -63,13 +65,16 @@ export default function MobileLayout({}: Props) {
                       rounded-full" />
 
           </motion.div>
-          <div className="
+
+          <motion.div className="
           flex
           h-fit
           w-full
           px-10
           pb-5
           "
+          variants={itemVariant}
+          key = "name_text_container"
           id = "name_text_container">
             <p className="
             text-4xl
@@ -77,13 +82,16 @@ export default function MobileLayout({}: Props) {
             ">
               Hello, <br/>I'm Phuykong Meng.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="
+          <motion.div className="
           h-fit
           w-full
           pb-9
           "
+          variants={itemVariant}
+
+          key = "links_container"
           id = "links_container">
             <hr />
             <div className="
@@ -105,9 +113,15 @@ export default function MobileLayout({}: Props) {
               </a>
             </div>
             <hr />
-          </div>
+          </motion.div>
 
-          <PhoneAccordion />
+          <motion.div
+          variants={itemVariant}
+          key="phone_accordion">
+            <PhoneAccordion />
+
+          </motion.div>
+
         </motion.div>
       </Background>
     </main>
