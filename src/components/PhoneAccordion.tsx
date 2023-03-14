@@ -3,6 +3,7 @@ import {motion, AnimatePresence, usePresence, color, LayoutGroup} from "framer-m
 import { gsap } from 'gsap'
 
 import { CircleChevronRightFill } from 'akar-icons'
+import { GithubFill, LinkedinBoxFill, File } from 'akar-icons'
 
 
 interface AccordionProps {
@@ -143,7 +144,15 @@ export const PhoneAccordion = () => {
             <Accordion id={2} title="Projects">
                 <div className="pb-3">
                     <div className="leading-tight font-bold">
-                        E-Commerce Store <br/>
+
+                        <div className="flex">
+                            E-Commerce Store <br />
+
+                            <a className='w-fit' href="https://github.com/M-Phuykong/Aesthetique-Trend-Frontend" target="_blank" onClick={(e) => e.stopPropagation()}>
+                                <GithubFill strokeWidth={2} size={20} className="
+                                ml-2"/>
+                            </a>
+                        </div>
 
                         <div className="font-semibold pt-2">
                             A full-stack online store using Vue JS Framework utilizing MongoDB as the database. Created a REST
@@ -152,7 +161,15 @@ export const PhoneAccordion = () => {
                     </div>
 
                     <div className="leading-tight font-bold pt-5">
-                        Synthboard <br/>
+
+                        <div className="flex">
+                            Synthboard <br/>
+
+                            <a className='w-fit' href="https://github.com/M-Phuykong/synthboard-react" target="_blank" onClick={(e) => e.stopPropagation()}>
+                                <GithubFill strokeWidth={2} size={20} className="
+                                ml-2"/>
+                            </a>
+                        </div>
 
                         <div className="font-semibold pt-2">
                             Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and
@@ -163,7 +180,12 @@ export const PhoneAccordion = () => {
                     </div>
 
                     <div className="leading-tight font-bold pt-5">
-                        CUDA Signal Resampling <br/>
+
+                        <div className="flex">
+                            CUDA Signal Resampling <br/>
+                            Synthboard <br/>
+
+                        </div>
 
                         <div className="font-semibold pt-2">
                             Built a signal resampling tool in C++ with the CUDA API to utilize the GPU computation powers. By using

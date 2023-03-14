@@ -12,14 +12,12 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <MotionConfig reducedMotion="user">
       <AnimatePresence>
-        <div className="">
           <BrowserView>
             <DesktopLayout></DesktopLayout>
           </BrowserView>
           <MobileView>
             <MobileLayout></MobileLayout>
           </MobileView>
-        </div>
       </AnimatePresence>
     </MotionConfig>
   )
