@@ -1,5 +1,6 @@
 import React from 'react'
 import { Download, GithubFill, LinkedinBoxFill } from "akar-icons"
+import { delay, motion } from "framer-motion"
 
 import "../styles/index.scss"
 
@@ -15,7 +16,15 @@ type Props = {
 
 export default function DesktopLayout({}: Props) {
   return (
-    <main className="md:overflow-hidden">
+    <motion.main
+    initial = {{
+      opacity: 0,
+    }}
+    animate = {{
+      opacity :1
+    }}
+    transition={{ delay : 0.5}}
+    className="md:overflow-hidden">
         <Background>
             <div className="
             flex
@@ -157,6 +166,6 @@ export default function DesktopLayout({}: Props) {
                 </div>
             </div>
         </Background>
-    </main>
+    </motion.main>
   )
 }
