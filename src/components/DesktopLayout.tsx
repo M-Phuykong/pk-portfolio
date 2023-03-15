@@ -17,16 +17,17 @@ type Props = {
 export default function DesktopLayout({}: Props) {
   return (
     <motion.main
-    initial = {{
-      opacity: 0,
-    }}
-    animate = {{
-      opacity :1
-    }}
-    transition={{ delay : 0.5}}
     className="md:overflow-hidden">
         <Background>
-            <div className="
+            <motion.div
+                initial = {{
+              opacity: 0,
+            }}
+            animate = {{
+              opacity :1
+            }}
+            transition={{ delay : 0.5}}
+            className="
             flex
             w-full h-screen
             px-36 2xl:px-48
@@ -164,7 +165,7 @@ export default function DesktopLayout({}: Props) {
                   </div>
 
                 </div>
-            </div>
+            </motion.div>
         </Background>
     </motion.main>
   )
