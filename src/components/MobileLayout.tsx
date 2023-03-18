@@ -32,7 +32,6 @@ export default function MobileLayout({}: Props) {
   };
 
   return (
-    <AnimatePresence>
       <main>
         <Background>
 
@@ -126,6 +125,5 @@ export default function MobileLayout({}: Props) {
           </motion.div>
         </Background>
       </main>
-    </AnimatePresence>
   )
 }
