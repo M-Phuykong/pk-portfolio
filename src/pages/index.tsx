@@ -9,12 +9,18 @@ import MobileLayout from "../components/MobileLayout";
 
 const IndexPage: React.FC<PageProps> = () => {
 
-  if (isMobile) return <MotionConfig reducedMotion="user"><MobileLayout /></MotionConfig>
-
   return (
     <MotionConfig reducedMotion="user">
       <AnimatePresence>
-        <DesktopLayout />
+
+        <MobileView>
+          <MobileLayout />
+        </MobileView>
+
+        <BrowserView>
+          <DesktopLayout />
+        </BrowserView>
+
       </AnimatePresence>
     </MotionConfig>
   )
