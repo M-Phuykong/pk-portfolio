@@ -32,7 +32,7 @@ export default function MobileLayout({}: Props) {
   };
 
   return (
-      <main className='h-fit'>
+      <main className='min-h-screen'>
         <Background>
 
           <motion.div

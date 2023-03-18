@@ -16,10 +16,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@artsy/fresnel": "^6.1.0",
     "@gatsbyjs/reach-router": "^2.0.0",
     "@pixi/filter-kawase-blur": "^5.1.1",
     "@pixi/react-pixi": "^7.0.0-alpha.0",
     "@types/hsl-to-hex": "^1.0.0",
+    "add": "^2.0.6",
     "akar-icons": "^1.9.22",
     "debounce": "^1.2.1",
     "framer-motion": "^10.0.0",
