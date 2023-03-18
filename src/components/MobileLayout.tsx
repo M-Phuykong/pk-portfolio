@@ -32,7 +32,8 @@ export default function MobileLayout({}: Props) {
   };
 
   return (
-      <main>
+    <AnimatePresence>
+      <main className='h-fit'>
         <Background>
 
           <motion.div
@@ -125,5 +126,6 @@ export default function MobileLayout({}: Props) {
           </motion.div>
         </Background>
       </main>
+    </AnimatePresence>
   )
 }
