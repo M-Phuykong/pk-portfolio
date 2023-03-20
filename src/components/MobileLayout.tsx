@@ -38,10 +38,11 @@ export default function MobileLayout({}: Props) {
           <AnimatePresence>
 
             <motion.div
+            layout
             variants={variant}
             initial = "hidden"
             animate = "show"
-
+            
             id="overlay"
             key = "main_container"
             className="relative">

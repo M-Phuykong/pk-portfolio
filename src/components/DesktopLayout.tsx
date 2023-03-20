@@ -19,8 +19,14 @@ export default function DesktopLayout({}: Props) {
     <main
     className="md:overflow-hidden">
         <Background>
-            <div
-
+            <motion.div
+            initial = {{
+              opacity: 0,
+            }}
+            animate = {{
+              opacity :1
+            }}
+            transition={{ delay : 0.5}}
             className="
             flex
             w-full h-screen
@@ -156,7 +162,7 @@ export default function DesktopLayout({}: Props) {
                   </div>
 
                 </div>
-            </div>
+            </motion.div>
         </Background>
     </main>
   )
