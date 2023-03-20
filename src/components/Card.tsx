@@ -4,11 +4,12 @@ import { motion } from "framer-motion"
 import "../styles/card.scss";
 
 interface CardProps {
-    children: React.ReactNode
-    text: string
+    children: React.ReactNode,
+    text: string,
+    key: string,
 }
 
-const Card: React.FunctionComponent<CardProps> = ({text, children} : CardProps) => {
+const Card: React.FunctionComponent<CardProps> = ({text, children, key} : CardProps) => {
 
     const exitVariant = {
 
@@ -20,11 +21,11 @@ const Card: React.FunctionComponent<CardProps> = ({text, children} : CardProps) 
 
     return (
             <motion.div
+            key = {key}
             data-isOpen = {isOpen}
             transition={{
                 duration: 0.2,
                 delay: 0.15
-
             }}
             id = "card"
             layout

@@ -66,7 +66,7 @@ export default function DesktopLayout({}: Props) {
                   row-span-5
                   p-5 2xl:p-12
                   ">
-                    <Card text="About Me">
+                    <Card text="About Me" key="about_me_card">
 
                       <div
                         className="
@@ -117,8 +117,7 @@ export default function DesktopLayout({}: Props) {
 
                     </Card>
 
-                    <Card
-                      text="Experience">
+                    <Card text="Experience" key="experience_card">
                       <div
                         className="
                         flex
@@ -136,9 +135,7 @@ export default function DesktopLayout({}: Props) {
 
                     </Card>
 
-                    <Card
-                      text="Projects">
-
+                    <Card text="Projects" key="projects_card">
                       <div
                         className="
                         flex
