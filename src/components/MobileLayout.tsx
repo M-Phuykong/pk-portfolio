@@ -42,7 +42,7 @@ export default function MobileLayout({}: Props) {
             variants={variant}
             initial = "hidden"
             animate = "show"
-            
+
             id="overlay"
             key = "main_container"
             className="relative">
@@ -122,7 +122,8 @@ export default function MobileLayout({}: Props) {
 
               <motion.div
               variants={itemVariant}
-              key="phone_accordion_container">
+              key="phone_accordion_container"
+              className="pb-10">
                 <PhoneAccordion />
 
               </motion.div>

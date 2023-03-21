@@ -1,204 +1,200 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {motion, AnimatePresence, usePresence, color, LayoutGroup} from "framer-motion"
-import { gsap } from 'gsap'
 
 import { CircleChevronRightFill } from 'akar-icons'
 import { GithubFill, LinkedinBoxFill, File } from 'akar-icons'
 
+import "../styles/phoneLayout.scss"
 
 interface AccordionProps {
+    i: number,
+    expanded: false | number,
+    setExpanded: React.Dispatch<React.SetStateAction<number | false>>,
     children: React.ReactNode,
     title: string,
-    id: number
 }
 
-const Accordion = ({ children, title, id } : AccordionProps) => {
-
-    const [isExpanded, setExpanded] = React.useState<boolean>(false);
+const Accordion = ({ i, expanded, setExpanded, children, title } : AccordionProps) => {
+    const isOpen = i === expanded;
 
     const accordionVariants = {
         collapsed: {
-            height: "4rem",
-            rotate: 0,
-            transition: {
-                duration: 0.5,
-                ease: [0.04, 0.62, 0.23, 0.98],
-            }
+            height: "0",
+            opacity: 0,
         },
-        expanded: {
+        open: {
             height : "auto",
-            rotate: 0,
-            transition: {
-                duration: 1.2,
-                ease: [0.04, 0.62, 0.23, 0.98],
-            }
+            opacity: 1,
         },
 
     };
-
-    const contentVariants = {
-        show: {
-            opacity: 1,
-            transition: {
-                duration: 1.1,
-                ease: [0.83, 0, 0.17, 1]
-            }
-        },
-        hidden: {
-            opacity: 0,
-        }
-    }
-
-    return(
-        <motion.section
-        key={id}
+  // By using `AnimatePresence` to mount and unmount the contents, we can animate
+  // them in and out while also only rendering the contents of open accordions
+    return (
+    <>
+    <motion.header
+        key="content"
+        initial="collapsed"
+        animate="open"
+        exit="collapsed"
         variants={accordionVariants}
-        animate = {
-            isExpanded ? "expanded" : "collapsed"
-        }
 
-        onClick={() => {setExpanded(!isExpanded)}}
-        className="mb-5 px-5 relative rounded-2xl bg-white
-        leading-[4rem] text-2xl font-semibold overlay"
+        style={{
+            marginBottom: 25,
+        }}
+        onClick={() => setExpanded(isOpen ? false : i)}
+        className='h-[4rem] mb-5 px-5 relative rounded-2xl bg-white
+                leading-[4rem] text-2xl font-semibold overlay'>
+        <div className="flex justify-between items-center noselect" >
+            {title}
+            <motion.span
+            key = "button"
+            animate = { {
+                rotate: expanded ? 90 : 0,
+            }}
+            transition={ { duration : 0.35}}
             >
-                <div className="flex justify-between items-center noselect" >
-                    {title}
-                    <motion.span
-                    key = "button"
-                    animate = { {
-                        rotate: isExpanded ? 90 : 0
-                    }}
-                    transition={ { duration : 0.35}}
-                    >
-                        <CircleChevronRightFill strokeWidth={2} size={32}
-                        id="label_button"
-                        />
-                    </motion.span>
-                </div>
+                <CircleChevronRightFill strokeWidth={2} size={32}id="label_button"/>
+            </motion.span>
+        </div>
 
-                { isExpanded && (
-                        <motion.div
-                        key="content"
-                        variants={contentVariants}
-                        initial = "hidden"
-                        animate = "show"
-                        className="text-base leading-relaxed pb-3"
-                        >
-                            <motion.hr
-                            className="m-0 mb-3 w-full h-[2px]"></motion.hr>
-                            {children}
-                        </motion.div>
-                )}
-        </motion.section>
+        <AnimatePresence initial={false}>
+            {isOpen && (
+            <motion.section
+                key="content"
+                initial="collapsed"
+                animate="open"
+                exit="collapsed"
+                variants={{
+                    open: { opacity: 1, height: "auto" },
+                    collapsed: { opacity: 0, height: 0 }
+                }}
+                transition={{ type: "tween", duration: 0.5 }}
+                className="overflow-hidden text-base leading-relaxed"
+            >
+                <motion.hr
+                className="m-0 mb-3 w-full h-[2px]"></motion.hr>
+                {children}
+            </motion.section>
+            )}
+        </AnimatePresence>
+    </motion.header>
+    </>
     );
 };
 
 export const PhoneAccordion = () => {
 
+    const [expanded, setExpanded] = useState<false | number>(false);
+    const [expanded1, setExpanded1] = useState<false | number>(false);
+    const [expanded2, setExpanded2] = useState<false | number>(false);
 
     return (
-        <AnimatePresence mode="wait">
 
-            <motion.div
-            key = "phone_accordion_container"
-            className='p-5 pt-0'>
+        <div className='p-5 pt-0'>
 
-                <Accordion id={0} title="About Me">
+            <Accordion title="About Me"
+            i={1} expanded={expanded} setExpanded={setExpanded}>
+                <div className="pb-5">
                     A sophomore at Temple University, PA pursuing a degree in Computer Science.
                     I have a keen interest in Machine Language and Front-End Development.
-                </Accordion>
-                <Accordion id={1} title="Experience">
-                    <div>
-                        <div className="leading-tight font-bold">
-                            Software Developer @ NEDC <br/>
-                            <span className="font-medium">
-                                Aug 2021 - Present
+                </div>
+            </Accordion>
+
+            <Accordion title="Experience"
+            i={2} expanded={expanded1} setExpanded={setExpanded1}>
+                <div className="pb-5">
+                    <div className="leading-tight font-bold">
+                        Software Developer @ NEDC <br/>
+                        <span className="font-medium">
+                            Aug 2021 - Present
+                        </span>
+                    </div>
+
+                    <ul className="list-disc p-5 pt-2 pb-0">
+                        <li>
+                            <span>
+                                Work with a variety of different languages such as
+                                Python, Javascript, PHP and C++.
                             </span>
+                        </li>
+                        <li>
+                            <span>
+                                Led a software team of 3 other developers by doing
+                                code reviews on style formatting and weekly progress
+                                update. Collaborated with them to score and evaluate
+                                two machine learning systems that deals with EEG Seizure
+                                Detection and Digital Pathology.
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                Developed and maintain over 5 websites that display
+                                current projects, a conference website for IEEE, and
+                                a website that monitors our server's load. Learned
+                                PHP in a month to create submission form that streamline
+                                the signing up process for the IEEE conference.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </Accordion>
+
+            <Accordion title="Projects"
+            i={3} expanded={expanded2} setExpanded={setExpanded2}>
+                <div className="pb-5">
+                    <div className="leading-tight font-bold">
+
+                        <div className="flex">
+                            E-Commerce Store <br />
+
+                            <a className='w-fit' href="https://github.com/M-Phuykong/Aesthetique-Trend-Frontend" target="_blank" onClick={(e) => e.stopPropagation()}>
+                                <GithubFill strokeWidth={2} size={20} className="
+                                ml-2"/>
+                            </a>
                         </div>
 
-                        <ul className="list-disc p-5 pt-2">
-                            <li>
-                                <span>
-                                    Work with a variety of different languages such as
-                                    Python, Javascript, PHP and C++.
-                                </span>
-                            </li>
-                            <li>
-                                <span>
-                                    Led a software team of 3 other developers by doing
-                                    code reviews on style formatting and weekly progress
-                                    update. Collaborated with them to score and evaluate
-                                    two machine learning systems that deals with EEG Seizure
-                                    Detection and Digital Pathology.
-                                </span>
-                            </li>
-                            <li>
-                                <span>
-                                    Developed and maintain over 5 websites that display
-                                    current projects, a conference website for IEEE, and
-                                    a website that monitors our server's load. Learned
-                                    PHP in a month to create submission form that streamline
-                                    the signing up process for the IEEE conference.
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </Accordion>
-                <Accordion id={2} title="Projects">
-                    <div className="pb-3">
-                        <div className="leading-tight font-bold">
-
-                            <div className="flex">
-                                E-Commerce Store <br />
-
-                                <a className='w-fit' href="https://github.com/M-Phuykong/Aesthetique-Trend-Frontend" target="_blank" onClick={(e) => e.stopPropagation()}>
-                                    <GithubFill strokeWidth={2} size={20} className="
-                                    ml-2"/>
-                                </a>
-                            </div>
-
-                            <div className="font-semibold pt-2">
-                                A full-stack online store using Vue JS Framework utilizing MongoDB as the database. Created a REST
-                                API with Express JS that simplified data retrieval and update from and to the database.
-                            </div>
-                        </div>
-
-                        <div className="leading-tight font-bold pt-5">
-
-                            <div className="flex">
-                                Synthboard <br/>
-
-                                <a className='w-fit' href="https://github.com/M-Phuykong/synthboard-react" target="_blank" onClick={(e) => e.stopPropagation()}>
-                                    <GithubFill strokeWidth={2} size={20} className="
-                                    ml-2"/>
-                                </a>
-                            </div>
-
-                            <div className="font-semibold pt-2">
-                                Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and
-                                artists that allow the user to customize their date range with a twist of physics rendering and 90s inspired
-                                theme. I started this project as I wanted to be comfortable with REST API, React Framework and interactive
-                                user experience.
-                            </div>
-                        </div>
-
-                        <div className="leading-tight font-bold pt-5">
-
-                            <div className="flex">
-                                CUDA Signal Resampling <br/>
-                                Synthboard <br/>
-
-                            </div>
-
-                            <div className="font-semibold pt-2">
-                                Built a signal resampling tool in C++ with the CUDA API to utilize the GPU computation powers. By using
-                                parallel reduction and multithreading,
-                            </div>
+                        <div className="font-semibold pt-2">
+                            A full-stack online store using Vue JS Framework utilizing MongoDB as the database. Created a REST
+                            API with Express JS that simplified data retrieval and update from and to the database.
                         </div>
                     </div>
-                </Accordion>
-            </motion.div>
-        </AnimatePresence>
+
+                    <div className="leading-tight font-bold pt-5">
+
+                        <div className="flex">
+                            Synthboard <br/>
+
+                            <a className='w-fit' href="https://github.com/M-Phuykong/synthboard-react" target="_blank" onClick={(e) => e.stopPropagation()}>
+                                <GithubFill strokeWidth={2} size={20} className="
+                                ml-2"/>
+                            </a>
+                        </div>
+
+                        <div className="font-semibold pt-2">
+                            Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and
+                            artists that allow the user to customize their date range with a twist of physics rendering and 90s inspired
+                            theme. I started this project as I wanted to be comfortable with REST API, React Framework and interactive
+                            user experience.
+                        </div>
+                    </div>
+
+                    <div className="leading-tight font-bold pt-5 pb-0">
+
+                        <div className="flex">
+                            CUDA Signal Resampling <br/>
+                            Synthboard <br/>
+
+                        </div>
+
+                        <div className="font-semibold pt-2">
+                            Built a signal resampling tool in C++ with the CUDA API to utilize the GPU computation powers. By using
+                            parallel reduction and multithreading,
+                        </div>
+                    </div>
+                </div>
+            </Accordion>
+        </div>
     )
 };
 
