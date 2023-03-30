@@ -41,7 +41,8 @@
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "sass": "^1.57.1",
-    "simplex-noise": "^4.0.1"
+    "simplex-noise": "^4.0.1",
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "@types/debounce": "^1.2.1",
