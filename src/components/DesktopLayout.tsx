@@ -1,5 +1,4 @@
 import React from 'react'
-import { Download, GithubFill, LinkedinBoxFill } from "akar-icons"
 import { motion } from "framer-motion"
 
 import "../styles/index.scss"
@@ -8,7 +7,6 @@ import Background from './Background'
 import { CardGroup } from './CardGroup'
 
 import self_photo from "../images/self_photo.jpg"
-import resume from "../download/Phuykong_Meng_Resume.pdf"
 
 type Props = {
 
@@ -42,7 +40,7 @@ export default function DesktopLayout({}: Props) {
                 grid grid-rows-5
                 ">
 
-                  {/* <img src={self_photo}
+                  <img src={self_photo}
                   alt="Phuykong_Meng_photo"
                   className="
                   absolute
@@ -52,7 +50,7 @@ export default function DesktopLayout({}: Props) {
                   w-auto
                   border border-solid border-white border-8
                   shadow-xl
-                  rounded-full" /> */}
+                  rounded-full" />
 
                   <div className="
                   mt-5 2xl:mt-10
