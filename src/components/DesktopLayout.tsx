@@ -53,10 +53,11 @@ export default function DesktopLayout({}: Props) {
                   rounded-full" />
 
                   <div className="
+
                   mt-5 2xl:mt-10
                   ml-[15rem] 2xl:ml-[20rem]
                   ">
-                    <h1 className='text-5xl 2xl:text-6xl'> Hello, I'm Phuykong Meng.</h1>
+                    <h1 className='text-3xl lg:text-5xl 2xl:text-6xl'> Hello, I'm Phuykong Meng.</h1>
                   </div>
 
                   <CardGroup></CardGroup>

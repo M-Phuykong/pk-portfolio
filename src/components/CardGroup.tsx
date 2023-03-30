@@ -102,7 +102,7 @@ const Card = ({ i, expanded, setExpanded, children, title} : CardProps) => {
                         h-full w-full
                         rounded-[10px]
                         p-2
-                        text-4xl
+                        text-xl xl:text-4xl
                         border border-black border-solid border-3">
 
                             <a href="#" className="">
