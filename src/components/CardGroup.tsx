@@ -102,8 +102,9 @@ const Card = ({ i, expanded, setExpanded, children, title} : CardProps) => {
                         h-full w-full
                         rounded-[10px]
                         p-2
+                        shadow-xl
                         text-xl xl:text-4xl
-                        border border-black border-solid border-3">
+                        border border-white border-solid border-4">
 
                             <a href="#" className="">
                                 > {title}
@@ -125,6 +126,7 @@ const Card = ({ i, expanded, setExpanded, children, title} : CardProps) => {
     );
 
 };
+
 
 export const CardGroup = () => {
 

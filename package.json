@@ -20,7 +20,10 @@
     "@gatsbyjs/reach-router": "^2.0.0",
     "@pixi/filter-kawase-blur": "^5.1.1",
     "@pixi/react-pixi": "^7.0.0-alpha.0",
+    "@react-three/drei": "^9.60.0",
+    "@react-three/fiber": "^8.12.0",
     "@types/hsl-to-hex": "^1.0.0",
+    "@types/three": "^0.150.0",
     "add": "^2.0.6",
     "akar-icons": "^1.9.22",
     "debounce": "^1.2.1",
@@ -42,7 +45,8 @@
     "react-dom": "^18.2.0",
     "sass": "^1.57.1",
     "simplex-noise": "^4.0.1",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "three": "^0.151.0"
   },
   "devDependencies": {
     "@types/debounce": "^1.2.1",
