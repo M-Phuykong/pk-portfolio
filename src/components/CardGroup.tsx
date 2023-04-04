@@ -34,7 +34,8 @@ const cardVariant = {
 const CardLink = styled(motion.div)`
     height: 100%;
     width: 100%;
-    padding: 4rem;
+    min-width: 400px;
+
 
     ${(props) =>
         props.isCardOpened &&
@@ -63,7 +64,7 @@ const Card = ({ i, expanded, setExpanded, children, title} : CardProps) => {
     const card = useRef<HTMLDivElement>(null);
 
     return (
-        <>
+        <div className="p-[4rem]">
 
             <CardLink
 
@@ -92,6 +93,7 @@ const Card = ({ i, expanded, setExpanded, children, title} : CardProps) => {
                         h-full w-full
                         bg-white
                         rounded-[10px]
+                        will-change-transform
                         ">
                             {children}
                         </div>
@@ -99,11 +101,13 @@ const Card = ({ i, expanded, setExpanded, children, title} : CardProps) => {
                         :
 
                         <div className="
+                        noselect
                         h-full w-full
                         rounded-[10px]
                         p-2
                         shadow-xl
-                        text-xl xl:text-4xl
+                        text-base xl:text-3xl
+                        will-change-transform
                         border border-white border-solid border-4">
 
                             <a href="#" className="">
@@ -122,7 +126,7 @@ const Card = ({ i, expanded, setExpanded, children, title} : CardProps) => {
                     }}></div>
                 </>
             )}
-        </>
+        </div>
     );
 
 };
@@ -142,9 +146,9 @@ export const CardGroup = () => {
             className="
             h-auto w-full
             grid grid-cols-3
+
             row-span-4
             ">
-
                 <Card i = {1} expanded = {expanded} setExpanded={setExpanded} title="About Me">
                     <div
                         className="
@@ -286,7 +290,6 @@ export const CardGroup = () => {
                     </div>
                 </Card>
             </motion.div>
-
 
         </LayoutGroup>
     );

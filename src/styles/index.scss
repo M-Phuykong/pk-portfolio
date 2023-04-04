@@ -54,6 +54,22 @@ html, body {
     // background: var(--bg-gradient);
 }
 
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 .overlay {
     background: rgba(255, 255, 255, 0.55);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
