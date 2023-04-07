@@ -5,6 +5,10 @@ import { OrbitControls } from '@react-three/drei'
 
 import "../styles/index.scss"
 
+// Hook
+import { useTheme } from '../context/ThemeContext'
+
+// Components
 import Background from './Background'
 import { MainCard } from './MainCard'
 
@@ -20,10 +24,21 @@ const cameraProps = {
 
 
 export default function DesktopLayout({}: Props) {
+
+  const { darkMode, setDarkMode } = useTheme()
+
   return (
     <main
     className="md:overflow-hidden min-w-fit">
         <Background>
+          <button
+          style={ darkMode ? {color: "white"} : {color: "black"}}}
+          onClick={() => setDarkMode(() => !darkMode)}>
+            Change theme
+
+          </button>
+
+
           <motion.div
             initial = {{
               opacity: 0,
