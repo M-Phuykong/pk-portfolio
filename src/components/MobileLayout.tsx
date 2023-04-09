@@ -80,8 +80,9 @@ export default function MobileLayout({}: Props) {
               key = "name_text_container"
               id = "name_text_container">
                 <p className="
-                text-4xl
+                text-3xl
                 font-semibold
+                font-sans
                 ">
                   Hello, <br/>I'm Phuykong Meng.
                 </p>
