@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import "reset";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "@theme-toggles/react/css/Around.css";
 
 .noselect {
     -webkit-touch-callout: none;
@@ -51,7 +53,7 @@ html, body {
     height: 100%;
     width: 100%;
 
-    // background: var(--bg-gradient);
+    background-color: var(--base-color);
 }
 
 .noselect {
@@ -76,8 +78,4 @@ html, body {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 10px;
-}
-
-h1, p {
-    font-family: "League Spartan", Arial, Helvetica, sans-serif;
 }

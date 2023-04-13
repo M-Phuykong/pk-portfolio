@@ -16,26 +16,10 @@ interface CardProps {
     title: string,
 }
 
-const cardVariant = {
-
-    open: {
-        height: "100%",
-        width: "100%",
-
-    },
-
-    close: {
-        height: "20rem",
-        width: "100rem",
-
-    }
-}
-
 const CardLink = styled(motion.div)`
     height: 100%;
     width: 100%;
     min-width: 400px;
-
 
     ${(props) =>
         props.isCardOpened &&

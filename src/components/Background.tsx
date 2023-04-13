@@ -6,6 +6,8 @@ import { createNoise2D } from "simplex-noise";
 import hslToHex from "hsl-to-hex";
 import { debounce } from "debounce";
 
+import { useTheme } from "../context/ThemeContext";
+
 interface BackgroundProps {
     children: React.ReactNode
 }
@@ -14,6 +16,8 @@ const Background : React.FC<BackgroundProps> = ({children} : BackgroundProps) =>
 
     const noise2D = createNoise2D();
     const canvasRef = React.useRef<HTMLCanvasElement>();
+
+    const {darkMode, setDarkMode} = useTheme();
 
     // return a random number within a range
     //
@@ -200,6 +204,13 @@ const Background : React.FC<BackgroundProps> = ({children} : BackgroundProps) =>
                 '--hue-complimentary2',
                 this.complimentaryHue2.toString()
             )
+
+            // let backgroundColor = "white";
+            // if (darkMode){
+            //     backgroundColor = hslToHex(0,0,10);
+            // }
+
+            // document.documentElement.style.setProperty('--base-color', backgroundColor);
         }
     }
 

@@ -1,29 +1,52 @@
 import React from 'react'
-import { motion } from "framer-motion"
+import { color, delay, motion } from "framer-motion"
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
+import { Around } from "@theme-toggles/react"
 
 import "../styles/index.scss"
 
+// Hook
+import { useTheme } from '../context/ThemeContext'
+
+// Components
 import Background from './Background'
 import { MainCard } from './MainCard'
-
-
-type Props = {
-
-}
 
 const cameraProps = {
   enablePan: false,
   enableZoom: false,
 }
 
+const mainVariant = {
+  light: {
+    backgroundColor: "white",
 
-export default function DesktopLayout({}: Props) {
+  },
+  dark: {
+    backgroundColor: "black",
+
+  }
+}
+
+
+
+export default function DesktopLayout() {
+
+  const { darkMode, setDarkMode } = useTheme()
+
   return (
-    <main
-    className="md:overflow-hidden min-w-fit">
+    <motion.main
+    className="md:overflow-hidden min-w-fit"
+    variants = {mainVariant}
+    animate = {darkMode ? "dark" : "light"}
+    >
+
+        <Around duration={500} toggle={setDarkMode} toggled={darkMode}
+        className='p-2' style={{color: darkMode ? "white" : "black"}}/>
+
         <Background>
+
           <motion.div
             initial = {{
               opacity: 0,
@@ -44,12 +67,12 @@ export default function DesktopLayout({}: Props) {
 
                 <MainCard />
 
-                <OrbitControls {...cameraProps}/>
+                {/* <OrbitControls {...cameraProps}/> */}
               </Canvas>
 
           </motion.div>
         </Background>
-    </main>
+    </motion.main>
   )
 }
 
