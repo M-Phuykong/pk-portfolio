@@ -1,5 +1,5 @@
 import React from 'react'
-import { color, motion } from "framer-motion"
+import { color, delay, motion } from "framer-motion"
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { Around } from "@theme-toggles/react"
@@ -21,13 +21,10 @@ const cameraProps = {
 const mainVariant = {
   light: {
     backgroundColor: "white",
+
   },
   dark: {
     backgroundColor: "black",
-    transition: {
-        duration: 2,
-        ease: [0.075, 0.82, 0.165, 1],
-    }
 
   }
 }
@@ -42,7 +39,8 @@ export default function DesktopLayout() {
     <motion.main
     className="md:overflow-hidden min-w-fit"
     variants = {mainVariant}
-    animate = {darkMode ? "dark" : "light"}>
+    animate = {darkMode ? "dark" : "light"}
+    >
 
         <Around duration={500} toggle={setDarkMode} toggled={darkMode}
         className='p-2' style={{color: darkMode ? "white" : "black"}}/>

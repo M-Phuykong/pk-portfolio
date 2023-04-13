@@ -1,17 +1,23 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-
 import Background from './Background'
 import { PhoneAccordion } from './PhoneAccordion'
+import { Around } from "@theme-toggles/react"
+import { GithubFill, LinkedinBoxFill, File } from 'akar-icons'
 
+// Hook
+import { useTheme } from '../context/ThemeContext'
+
+// Resources
 import self_photo from "../images/self_photo.jpg"
 import resume from "../download/Phuykong_Meng_Resume.pdf"
 
-import { GithubFill, LinkedinBoxFill, File } from 'akar-icons'
-
+// Styles
 import "../styles/phoneLayout.scss"
 
 export default function MobileLayout({}: Props) {
+
+  const { darkMode, setDarkMode } = useTheme()
 
   const variant = {
     hidden: {
@@ -44,15 +50,21 @@ export default function MobileLayout({}: Props) {
             animate = "show"
 
             id="overlay"
+            style={{backgroundColor: darkMode ? "black" : "white"}}
             key = "main_container"
             className="relative">
+
+              <motion.div>
+              <Around duration={500} toggle={setDarkMode} toggled={darkMode}
+                className='p-2' style={{color: darkMode ? "white" : "black"}}/>
+              </motion.div>
 
               <motion.div className="
               flex
               min-h-fit
               h-fit
               w-full
-              pt-10
+
               justify-center"
               variants={itemVariant}
 
