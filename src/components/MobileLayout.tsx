@@ -50,7 +50,7 @@ export default function MobileLayout({}: Props) {
             animate = "show"
 
             id="overlay"
-            style={{backgroundColor: darkMode ? "black" : "white"}}
+            
             key = "main_container"
             className="relative">
 
