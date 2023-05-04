@@ -17,6 +17,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <ThemeProvider>
 
         <MotionConfig reducedMotion="user">
+          
             <MobileView>
               <MobileLayout />
             </MobileView>

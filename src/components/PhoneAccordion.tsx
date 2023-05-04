@@ -54,7 +54,7 @@ const Accordion = ({ i, expanded, setExpanded, children, title } : AccordionProp
             }}
             transition={ { duration : 0.35}}
             >
-                <CircleChevronRightFill strokeWidth={2} size={32}id="label_button"/>
+                <CircleChevronRightFill strokeWidth={2} size={32} id="label_button" className=""/>
             </motion.span>
         </div>
 

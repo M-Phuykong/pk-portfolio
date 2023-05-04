@@ -37,9 +37,24 @@ export default function MobileLayout({}: Props) {
     show: { opacity: 1 }
   };
 
+  const mainVariant = {
+    light: {
+      backgroundColor: "white",
+
+    },
+    dark: {
+      backgroundColor: "black",
+
+    }
+  }
+
   return (
 
-      <main>
+      <motion.main
+      variants={mainVariant}
+      animate={darkMode ? "dark" : "light"}
+      className={"min-h-screen min-w-screen " + (darkMode ? "dark" : "") }
+      >
         <Background>
           <AnimatePresence>
 
@@ -50,13 +65,13 @@ export default function MobileLayout({}: Props) {
             animate = "show"
 
             id="overlay"
-            
+
             key = "main_container"
             className="relative">
 
               <motion.div>
-              <Around duration={500} toggle={setDarkMode} toggled={darkMode}
-                className='p-2' style={{color: darkMode ? "white" : "black"}}/>
+                <Around duration={500} toggle={setDarkMode} toggled={darkMode}
+                  className='p-2' style={{color: darkMode ? "white" : "black"}}/>
               </motion.div>
 
               <motion.div className="
@@ -75,7 +90,8 @@ export default function MobileLayout({}: Props) {
                           className="
                           h-32
                           w-auto
-                          border border-solid border-black border-4
+                          border border-solid border-black dark:border-white border-4
+
                           shadow-xl
                           rounded-full" />
 
@@ -92,7 +108,7 @@ export default function MobileLayout({}: Props) {
               key = "name_text_container"
               id = "name_text_container">
                 <p className="
-                text-3xl
+                text-3xl  dark:text-white
                 font-semibold
                 font-sans
                 ">
@@ -116,6 +132,7 @@ export default function MobileLayout({}: Props) {
                 flex
                 p-5
                 justify-around
+                dark:text-white
                 "
                 id = "icon_container">
                   <a href="https://github.com/M-Phuykong" target="_blank">
@@ -144,6 +161,6 @@ export default function MobileLayout({}: Props) {
             </motion.div>
           </AnimatePresence>
         </Background>
-      </main>
+      </motion.main>
   )
 }
