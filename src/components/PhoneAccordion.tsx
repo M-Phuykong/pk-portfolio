@@ -28,8 +28,10 @@ const Accordion = ({ i, expanded, setExpanded, children, title } : AccordionProp
         },
 
     };
-  // By using `AnimatePresence` to mount and unmount the contents, we can animate
-  // them in and out while also only rendering the contents of open accordions
+
+    // By using `AnimatePresence` to mount and unmount the contents, we can animate
+    // them in and out while also only rendering the contents of open accordions
+    //
     return (
     <>
     <motion.header
@@ -43,9 +45,16 @@ const Accordion = ({ i, expanded, setExpanded, children, title } : AccordionProp
             marginBottom: 25,
         }}
         onClick={() => setExpanded(isOpen ? false : i)}
-        className='h-[4rem] mb-5 px-5 relative rounded-2xl bg-white
-                leading-[4rem] text-xl font-bold overlay'>
-        <div className="flex justify-between items-center noselect" >
+        className='h-[4rem] mb-5 px-5 relative
+                leading-[4rem] text-xl font-bold
+
+                rounded-[10px] bg-[#ffffff8c] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[20px]
+                dark:bg-[#111928bd]
+                '>
+        <div className="
+                    flex justify-between items-center noselect
+                    dark:text-white
+                    " >
             {title}
             <motion.span
             key = "button"
@@ -85,13 +94,13 @@ const Accordion = ({ i, expanded, setExpanded, children, title } : AccordionProp
 
 export const PhoneAccordion = () => {
 
-    const [expanded, setExpanded] = useState<false | number>(false);
+    const [expanded, setExpanded] = useState<false | number>(1);
     const [expanded1, setExpanded1] = useState<false | number>(false);
     const [expanded2, setExpanded2] = useState<false | number>(false);
 
     return (
 
-        <div className='p-5 pt-0'>
+        <div className={'p-5 pt-0 ' + (expanded2 ? "pb-3" : "")}>
 
             <Accordion title="About Me"
             i={1} expanded={expanded} setExpanded={setExpanded}>
@@ -186,8 +195,7 @@ export const PhoneAccordion = () => {
                         </div>
 
                         <div className="pt-1 text-sm leading-snug font-normal">
-                            Built a signal resampling tool in C++ with the CUDA API to utilize the GPU computation powers. By using
-                            parallel reduction and multithreading,
+                            Built a signal resampling tool in C++ with the CUDA API to utilize the GPU computation powers.
                         </div>
                     </div>
 
@@ -203,7 +211,7 @@ export const PhoneAccordion = () => {
                         </div>
 
                         <div className="pt-1 text-sm leading-snug font-normal">
-                            Create a website that promotes healthy eating habits
+                            Developed a website that promotes healthy eating habits
                             by providing them with various shopping list, meal suggestions and recipes
                             based on their current ingredients. Winner for the Best Health and Wellness
                             category.

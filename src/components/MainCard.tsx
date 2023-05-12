@@ -30,12 +30,12 @@ export function MainCard() {
                 id = "main_card"
 
                 className="
-                overlay
-
                 relative
                 w-full
                 h-full
                 grid grid-rows-5
+                
+                rounded-[10px] bg-[#ffffff8c] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[20px]
                 ">
 
                     <img src={self_photo}

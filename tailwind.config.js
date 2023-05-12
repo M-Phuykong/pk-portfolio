@@ -20,7 +20,7 @@ module.exports = {
       '5xl': '60px',
     },
     fontFamily: {
-      "sans": ["Roboto", ...defaultTheme.fontFamily.sans],
+      "sans": ["Poppins","Roboto", ...defaultTheme.fontFamily.sans],
     },
     extend: {},
   },

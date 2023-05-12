@@ -153,7 +153,7 @@ export default function MobileLayout({}: Props) {
               <motion.div
               variants={itemVariant}
               key="phone_accordion_container"
-              className="pb-10">
+              className="">
                 <PhoneAccordion />
 
               </motion.div>
