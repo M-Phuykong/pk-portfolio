@@ -10,6 +10,7 @@ import resume from "../download/Phuykong_Meng_Resume.pdf"
 
 interface CardProps {
     i: number,
+    parentCard: React.RefObject<HTMLDivElement>,
     expanded: false | number,
     setExpanded: React.Dispatch<React.SetStateAction<number | false>>,
     children: React.ReactNode,
@@ -40,7 +41,7 @@ const CardLink = styled(motion.div)`
         flex-direction: column;
     `}
 `;
-const Card = ({ i, expanded, setExpanded, children, title} : CardProps) => {
+const Card = ({ i, parentCard, expanded, setExpanded, children, title} : CardProps) => {
 
     const isOpen = expanded === i;
 
@@ -65,6 +66,12 @@ const Card = ({ i, expanded, setExpanded, children, title} : CardProps) => {
                         width: card.current!.clientWidth,
                         height: card.current!.clientHeight
                     });
+                    parentCard.current!.getElementsByTagName("img")[0].style.opacity = "0";
+
+                }
+                else {
+                    parentCard.current!.getElementsByTagName("img")[0].style.opacity = "1";
+
                 }
 
             }}
@@ -115,8 +122,10 @@ const Card = ({ i, expanded, setExpanded, children, title} : CardProps) => {
 
 };
 
-
-export const CardGroup = () => {
+interface CardGroupInterface {
+    mainParent: React.RefObject<HTMLDivElement>,
+}
+export const CardGroup = ({mainParent} : CardGroupInterface) => {
 
     const [expanded, setExpanded] = useState<false | number>(0);
 
@@ -133,9 +142,8 @@ export const CardGroup = () => {
 
             row-span-4
             ">
-                <Card i = {1} expanded = {expanded} setExpanded={setExpanded} title="About Me">
-                    <div
-                        className="
+                <Card i = {1} parentCard = {mainParent} expanded = {expanded} setExpanded={setExpanded} title="About Me">
+                    <div className="
                         flex
                         items-center
                         text-sm 2xl:text-xl
@@ -143,7 +151,6 @@ export const CardGroup = () => {
                         "
                         id="sub_intro_text_box">
                         <p className="
-                        text-base 2xl:text-2xl
                         ">
                             A sophomore at Temple University, PA pursuing a degree Computer Science. <br />
                             I work as a software developer at the Neural Engineer Data Consortium Research Lab (NEDC).
@@ -182,8 +189,8 @@ export const CardGroup = () => {
                 </div>
                 </Card>
 
-                <Card i = {2} expanded = {expanded} setExpanded={setExpanded} title="Experience">
-                    <div className="p-8">
+                <Card i = {2} parentCard = {mainParent} expanded = {expanded} setExpanded={setExpanded} title="Experience">
+                    <div className="p-8 text-sm 2xl:text-xl">
                         <div className="leading-tight font-bold">
                             Software Developer @ NEDC <br/>
                             <span className="font-medium">
@@ -220,11 +227,11 @@ export const CardGroup = () => {
                     </div>
                 </Card>
 
-                <Card i = {3} expanded = {expanded} setExpanded={setExpanded} title="Projects">
+                <Card i = {3} parentCard = {mainParent} expanded = {expanded} setExpanded={setExpanded} title="Projects">
                     <div className="p-8">
-                        <div className="leading-tight font-bold">
+                        <div className="leading-tight font-medium text-base">
 
-                            <div className="flex">
+                            <div className="flex text-gray-950">
                                 E-Commerce Store <br />
 
                                 <a className='w-fit' href="https://github.com/M-Phuykong/Aesthetique-Trend-Frontend" target="_blank" onClick={(e) => e.stopPropagation()}>
@@ -233,13 +240,13 @@ export const CardGroup = () => {
                                 </a>
                             </div>
 
-                            <div className="font-semibold pt-2">
+                            <div className="pt-1 text-sm leading-snug font-normal">
                                 A full-stack online store using Vue JS Framework utilizing MongoDB as the database. Created a REST
                                 API with Express JS that simplified data retrieval and update from and to the database.
                             </div>
                         </div>
 
-                        <div className="leading-tight font-bold pt-5">
+                        <div className="leading-tight font-medium text-base pt-5">
 
                             <div className="flex">
                                 Synthboard <br/>
@@ -250,7 +257,7 @@ export const CardGroup = () => {
                                 </a>
                             </div>
 
-                            <div className="font-semibold pt-2">
+                            <div className="pt-1 text-sm leading-snug font-normal">
                                 Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and
                                 artists that allow the user to customize their date range with a twist of physics rendering and 90s inspired
                                 theme. I started this project as I wanted to be comfortable with REST API, React Framework and interactive
@@ -258,17 +265,33 @@ export const CardGroup = () => {
                             </div>
                         </div>
 
-                        <div className="leading-tight font-bold pt-5 pb-0">
+                        <div className="leading-tight font-medium text-base pt-5">
 
                             <div className="flex">
                                 CUDA Signal Resampling <br/>
-                                Synthboard <br/>
-
                             </div>
 
-                            <div className="font-semibold pt-2">
-                                Built a signal resampling tool in C++ with the CUDA API to utilize the GPU computation powers. By using
-                                parallel reduction and multithreading,
+                            <div className="pt-1 text-sm leading-snug font-normal">
+                                Built a signal resampling tool in C++ with the CUDA API to utilize the GPU computation powers.
+                            </div>
+                        </div>
+
+                        <div className="leading-tight font-medium text-base pt-5 pb-3">
+
+                            <div className="flex">
+                                OwlHack 2023 Winner <br/>
+
+                                <a className='w-fit' href="https://github.com/M-Phuykong/OwlHack2023" target="_blank" onClick={(e) => e.stopPropagation()}>
+                                    <GithubFill strokeWidth={2} size={20} className="
+                                    ml-2"/>
+                                </a>
+                            </div>
+
+                            <div className="pt-1 text-sm leading-snug font-normal">
+                                Developed a website that promotes healthy eating habits
+                                by providing them with various shopping list, meal suggestions and recipes
+                                based on their current ingredients. Winner for the Best Health and Wellness
+                                category.
                             </div>
                         </div>
                     </div>
