@@ -28,9 +28,7 @@ export default function ThemeDropdown() {
     return (
     <div>
         <select value={option} onChange={handleSelectChange} name="" id="">
-            <option value="bento">
-                Bento
-            </option>
+            <option value="bento">bento</option>
             <option value="darling">darling</option>
             <option value="aether">aether</option>
             <option value="dark magic girl">dark magic girl</option>
