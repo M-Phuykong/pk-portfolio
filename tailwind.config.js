@@ -20,10 +20,31 @@ module.exports = {
       '5xl': '60px',
     },
     fontFamily: {
-      "sans": ["Poppins","Roboto", ...defaultTheme.fontFamily.sans],
+      "sans": ["Roboto Mono", "Poppins", ...defaultTheme.fontFamily.sans],
     },
-    extend: {},
+    extend: {
+      animation: {
+        handwave: 'handwave 2.5s infinite',
+      },
+      keyframes: {
+        handwave:{
+          '0%': { transform: 'rotate(0deg)' },
+          '10%': { transform: 'rotate(14deg)' },
+          '20%': { transform: 'rotate(-8deg)' },
+          '30%': { transform: 'rotate(14deg)' },
+          '40%': { transform: 'rotate(-4deg)' },
+          '50%': { transform: 'rotate(10deg)' },
+          '60%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(0deg)' }
+        },
+
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-bootstrap-grid')({
+        containerMaxWidths: { sm: '540px', md: '720px', lg: '960px', xl: '1140px' },
+      }),
+  ],
 }
 
