@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import {motion, AnimatePresence, usePresence, color, LayoutGroup} from "framer-motion"
 
-import { CircleChevronRightFill } from 'akar-icons'
-import { GithubFill, LinkedinBoxFill, File } from 'akar-icons'
+import { GithubFill, LinkedinBoxFill, File, CircleChevronRightFill } from 'akar-icons'
 
 import "../styles/phoneLayout.scss"
 
