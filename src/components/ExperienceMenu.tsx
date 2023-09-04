@@ -77,7 +77,7 @@ export default function ExperienceMenu(props : any) {
 
     return (
         <div
-        className="container relative max-w-full ">
+        className="container relative max-w-full min-h-[30rem]">
             <div className='row'>
                 <div className='col sm:col-3'>
                     <div>

@@ -30,7 +30,7 @@
     "bootstrap": "^5.3.1",
     "debounce": "^1.2.1",
     "dotenv": "^16.3.1",
-    "framer-motion": "^10.0.0",
+    "framer-motion": "^10.16.1",
     "gatsby": "^5.3.3",
     "gatsby-link": "^5.4.0",
     "gatsby-plugin-image": "^3.3.2",
