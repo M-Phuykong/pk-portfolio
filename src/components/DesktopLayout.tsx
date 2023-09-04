@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import self_photo from '../images/self_photo.jpg'
 import gsap from 'gsap'
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 
 import "../styles/index.scss"
 
@@ -38,7 +38,7 @@ function ProfileTitleHeader({ theme } : {theme : any}) {
 
   return(
     <div ref = {container} style={{color: theme.text_color}}
-    className='text-4xl font-medium'>
+    className='text-lg md:text-2xl 2xl:text-4xl font-medium'>
 
       <div className='line relative h-16 overflow-hidden'>
         <span className='text absolute'>
@@ -79,7 +79,7 @@ function ProfileDescription({ theme } : {theme : any}) {
 
   return(
       <div ref={container} style={{color: theme.sub_color}}
-          className='text-lg'>
+          className='text-base md:text-lg'>
           <span>
             A sophomore at Temple University, PA pursuing a degree in Computer Science.
             I have a keen interest in Machine Language and Front-End Development.
@@ -112,7 +112,7 @@ function ProfileLink({ theme } : {theme : any}) {
 
   return(
     <div ref={container} style={{color: theme.main_color}}
-    className='flex gap-10'>
+    className='flex gap-10 text-sm'>
       <a onMouseEnter={() => {}}>Resume</a>
       <a href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">Linked In</a>
       <a href="https://github.com/M-Phuykong" target="_blank">Github</a>
@@ -142,7 +142,7 @@ function  Accordion(
             {title}
       </motion.header>
 
-      <AnimatePresence initial={false} mode='wait'>
+      <AnimatePresence mode='wait'>
         {isOpen && (
           <motion.section
             key="content"
@@ -150,10 +150,10 @@ function  Accordion(
             animate="open"
             exit="collapsed"
             variants={{
-              open: { opacity: 1, height: "35rem", y:0},
-              collapsed: { opacity: 0, height: 0 }
+              open: { opacity: 1, height: "auto"},
+              collapsed: { opacity: 0, height: 0}
             }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
             style={{order: order}}
           >
             {children}
@@ -238,25 +238,29 @@ export default function DesktopLayout() {
         </div>
 
         <div
-        className='flex flex-1 flex-col text-center '>
+        className='flex flex-1 flex-col text-center h-full justify-center'>
 
-          <Accordion i = {0}
-          expanded={expanded}
-          setExpanded = {setExpanded}
-          title="EXPERIENCES"
-          theme={theme}
-          order = {-1}  >
-            <ExperienceMenu data={resumeData}/>
-          </Accordion>
+          <LayoutGroup>
+            <Accordion i = {0}
+            expanded={expanded}
+            setExpanded = {setExpanded}
+            title="EXPERIENCES"
+            theme={theme}
+            order = {-1}  >
+              <ExperienceMenu data={resumeData}/>
+            </Accordion>
 
-          <Accordion i = {1}
-          expanded={expanded}
-          setExpanded = {setExpanded}
-          title="PROJECTS"
-          theme={theme}
-          order = {0} >
-            <ProjectCards />
-          </Accordion>
+            <Accordion i = {1}
+            expanded={expanded}
+            setExpanded = {setExpanded}
+            title="PROJECTS"
+            theme={theme}
+            order = {0} >
+              <ProjectCards />
+              {/* <ExperienceMenu data={resumeData}/> */}
+
+            </Accordion>
+          </LayoutGroup>
 
         </div>
 

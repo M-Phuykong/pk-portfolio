@@ -10,18 +10,16 @@ export const containerVariants = {
     visible: {
         opacity: 1,
     },
-
 };
 
 export const dropUpVariants = {
     hidden: {
         x: -100,
         display:"none",
-
     },
     visible:  (i : number) => ({
         x: 0,
-        display:"block",
+        opacity: 1,
         transition: {
             type: "spring",
             damping: 6,
@@ -30,11 +28,10 @@ export const dropUpVariants = {
         }
     }),
     exit : {
-        x: 1200,
+        x: "100vw",
+        opacity: 0,
         transition: {
-            type: "spring",
-            damping: 6,
-            stiffness: 75,
+            duration: 0.5,
         }
     }
 };
@@ -51,7 +48,6 @@ function GithubCard({ind, data} : {ind : number, data : any}) {
     }}
     whileHover={{scale: 1.1}}
     custom={ind}
-    variants={dropUpVariants}
 
     className="flex flex-1 flex-col
     min-w-96 p-3 my-2
@@ -89,8 +85,7 @@ const baseURL = (repo : string) => {
     return `https://api.github.com/repos/M-Phuykong/${repo}`
 }
 
-export default function ProjectCards() {
-
+function ProjectList() {
     const [repoData, setRepoData] = useState<any>([]);
 
     //TODO: remove token and add to env file
@@ -102,7 +97,7 @@ export default function ProjectCards() {
         baseURL("Hamming_Code_Correction_Detection"),
     ]
 
-    function fetchRepo(repo: string) {
+        function fetchRepo(repo: string) {
         fetch(repo, {
             headers: {
                 'Authorization': `token ${process.env.GITHUB_ACCESS_TOKEN}`
@@ -123,18 +118,43 @@ export default function ProjectCards() {
         repos.forEach((repo) => fetchRepo(repo))
     }, [])
 
+    return (
+        <>
+            {
+                repoData.map((data: any, ind : number) => {
+                    return <GithubCard key={ind} ind={ind} data={data} />
+                })
+            }
+        </>
+        )
+}
+
+export default function ProjectCards() {
+
 
     return (
     <motion.ul
+
     initial="hidden"
     animate="visible"
     exit="exit"
-    variants={containerVariants}>
-        {
-            repoData.map((data: any, ind : number) => {
-                return <GithubCard key={ind} ind={ind} data={data} />
-            })
-        }
+    variants={containerVariants} layout>
+        {/* <ProjectList /> */}
+
+        <GithubCard ind={0} key={0} data={{
+            id: 0,
+            name: "pk-portfolio",
+            html_url: "https://github.com/M-Phuykong/pk-portfolio",
+            description: "Personal Portfolio",
+            language: "TypeScript"
+        }} />
+        <GithubCard ind={1} key={1} data={{
+            id: 1,
+            name: "TokiniAndyBot",
+            html_url: "https://github.com/M-Phuykong/TokiniAndyBot",
+            description: null,
+            language: "Python"
+        }} />
     </motion.ul>
     );
 }

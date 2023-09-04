@@ -17,13 +17,13 @@ const IndexPage: React.FC<PageProps> = () => {
       <ThemeProvider>
 
         <MotionConfig reducedMotion="user">
-          
-            <MobileView>
-              <MobileLayout />
-            </MobileView>
 
+            {/* <MobileView>
+              <MobileLayout />
+            </MobileView> */}
+
+            <DesktopLayout />
             <BrowserView>
-              <DesktopLayout />
             </BrowserView>
 
         </MotionConfig>
