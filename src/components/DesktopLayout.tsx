@@ -23,7 +23,7 @@ function ProfileTitleHeader({ theme } : {theme : any}) {
   useEffect(() => {
     const tl = gsap.timeline();
 
-    tl.from(q("span.text"), {
+    tl.from(q("span"), {
       duration: 1,
       y: 100,
       ease: "power4.out",
@@ -31,24 +31,25 @@ function ProfileTitleHeader({ theme } : {theme : any}) {
       skewY: 7,
       stagger: {
         amount: 0.3
-      }
+      },
+      autoAlpha: 0,
     })
 
   }, [])
 
   return(
-    <div ref = {container} style={{color: theme.text_color}}
+    <div ref = {container}  style={{color: theme.text_color}}
     className='text-lg md:text-4xl font-medium'>
 
       <div className='line relative h-16 overflow-hidden'>
-        <span className='text absolute'>
+        <span className='text absolute invisible'>
           Hello,
         </span>
       </div>
 
       <div className='line relative h-16 overflow-hidden'>
         <span style={{color: theme.main_color}}
-        className='text absolute overflow-hidden'>
+        className='text absolute overflow-hidden invisible'>
           <span style={{color: theme.text_color}}>I'm </span>
           Phuykong Meng
           <span style={{color: theme.text_color}}>.</span>
@@ -80,7 +81,7 @@ function ProfileDescription({ theme } : {theme : any}) {
   return(
       <div ref={container} style={{color: theme.sub_color}}
           className='text-base lg:text-lg'>
-          <span>
+          <span className='invisible'>
             A sophomore at Temple University, PA pursuing a degree in Computer Science.
             I have a keen interest in Machine Language and Front-End Development.
           </span>
@@ -113,10 +114,10 @@ function ProfileLink({ theme } : {theme : any}) {
   return(
     <div ref={container} style={{color: theme.main_color}}
     className='flex gap-10 text-sm'>
-      <a onMouseEnter={() => {}}>Resume</a>
-      <a href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">Linked In</a>
-      <a href="https://github.com/M-Phuykong" target="_blank">Github</a>
-      <a>Email</a>
+      <a className='invisible' onMouseEnter={() => {}}>Resume</a>
+      <a className='invisible' href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">Linked In</a>
+      <a className='invisible' href="https://github.com/M-Phuykong" target="_blank">Github</a>
+      <a className='invisible'>Email</a>
     </div>
     )
 }
@@ -249,7 +250,6 @@ export default function DesktopLayout() {
               theme={theme}
               order = {-1} >
                 <ProjectCards />
-                {/* <ExperienceMenu data={resumeData}/> */}
 
             </Accordion>
 
