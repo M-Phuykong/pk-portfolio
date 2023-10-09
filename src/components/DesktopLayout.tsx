@@ -38,7 +38,7 @@ function ProfileTitleHeader({ theme } : {theme : any}) {
 
   return(
     <div ref = {container} style={{color: theme.text_color}}
-    className='text-lg md:text-2xl 2xl:text-4xl font-medium'>
+    className='text-lg md:text-4xl font-medium'>
 
       <div className='line relative h-16 overflow-hidden'>
         <span className='text absolute'>
@@ -79,7 +79,7 @@ function ProfileDescription({ theme } : {theme : any}) {
 
   return(
       <div ref={container} style={{color: theme.sub_color}}
-          className='text-base md:text-lg'>
+          className='text-base lg:text-lg'>
           <span>
             A sophomore at Temple University, PA pursuing a degree in Computer Science.
             I have a keen interest in Machine Language and Front-End Development.
@@ -212,7 +212,7 @@ export default function DesktopLayout() {
 
       <div
       id="content_container"
-      className='max-w-[70%] self-center flex grow items-center justify-center mx-56 gap-20'>
+      className='max-w-[70%] max-h-screen overflow-y-hidden self-center flex grow items-center justify-center mx-56 gap-20'>
 
         <div
         className='flex flex-1 flex-col gap-10'>
@@ -241,26 +241,29 @@ export default function DesktopLayout() {
         className='flex flex-1 flex-col text-center h-full justify-center'>
 
           <LayoutGroup>
+
+            <Accordion i = {1}
+              expanded={expanded}
+              setExpanded = {setExpanded}
+              title="PROJECTS"
+              theme={theme}
+              order = {-1} >
+                <ProjectCards />
+                {/* <ExperienceMenu data={resumeData}/> */}
+
+            </Accordion>
+
             <Accordion i = {0}
             expanded={expanded}
             setExpanded = {setExpanded}
             title="EXPERIENCES"
             theme={theme}
-            order = {-1}  >
+            order = {0}  >
               <ExperienceMenu data={resumeData}/>
             </Accordion>
-
-            <Accordion i = {1}
-            expanded={expanded}
-            setExpanded = {setExpanded}
-            title="PROJECTS"
-            theme={theme}
-            order = {0} >
-              <ProjectCards />
-              {/* <ExperienceMenu data={resumeData}/> */}
-
-            </Accordion>
           </LayoutGroup>
+
+
 
         </div>
 
