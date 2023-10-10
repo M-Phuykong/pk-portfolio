@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Select from 'react-select'
 
 // Hook
 import { useTheme } from '../context/ThemeContext'
@@ -15,26 +16,33 @@ function ThemePill({ themeName}: { themeName: string}) {
 
 export default function ThemeDropdown() {
 
-    const { theme, updateTheme } = useTheme();
+    const { theme, updateTheme, themeMap } = useTheme();
+    const [selections, setSelections] = useState<{value: string, label: string}[]>([]);
 
-    const [option, setOption] = useState([]);
+    useEffect(() => {
+        // console.log(themeMap, typeof(themeMap))
+        const value = Array.from(Object.keys(themeMap)).map((theme) => {
+            return {value: theme, label: theme}
+        });
 
-    function handleSelectChange(event: any) {
-        setOption(event.target.value);
-        updateTheme(event.target.value);
+        console.log(value)
+        setSelections(value);
+
+    }, [])
+
+
+    function handleSelectChange(option: Option | null, actionMeta: ActionMeta<Option>) {
+        updateTheme(option.value);
     }
 
-
     return (
-    <div>
-        <select value={option} onChange={handleSelectChange} name="" id="">
-            <option value="bento">bento</option>
-            <option value="darling">darling</option>
-            <option value="aether">aether</option>
-            <option value="dark magic girl">dark magic girl</option>
-            <option value="thai tea">thai tea</option>
-
-        </select>
+    <div className="ml-3">
+        <Select
+        options={selections}
+        placeholder={theme.name}
+        unstyled
+        onChange={handleSelectChange}
+        />
     </div>
     );
 };

@@ -1,4 +1,3 @@
-import { strict } from "assert";
 import React, { useContext, createContext, useEffect } from "react";
 
 
@@ -15,7 +14,7 @@ interface Theme {
         "text_color": string
 };
 
-const backgroundTheme: { [key: string] : Theme} = {
+const themeMap: { [key: string] : Theme} = {
     "bento": {
         "name": "bento",
         "background": "#2d394d",
@@ -58,44 +57,38 @@ const backgroundTheme: { [key: string] : Theme} = {
     }
 }
 
+const initTheme = Object.keys(themeMap)[Math.floor(Math.random() * Object.keys(themeMap).length)];
+
+
 // Type for the context
 // This is basically the type for all the value we're passing down
 // to all the props that are using it
 interface ThemeContextInterface {
     theme: Theme;
     updateTheme: (theme: string) => void;
+    themeMap: { [key: string] : Theme};
 }
 
 // The initial value for it
 const InitThemeContext = {
-    theme: backgroundTheme["bento"],
-    updateTheme: (theme: string) => {}
+    theme: themeMap[initTheme],
+    updateTheme: (theme: string) => {},
+    themeMap: themeMap
 }
-
-function getThemeTable() {
-
-
-
-}
-
 
 const ThemeContext = createContext<ThemeContextInterface>(InitThemeContext);
 
 export function ThemeProvider({ children } : Props ) {
 
-    const chosenTheme = Object.keys(backgroundTheme)[Math.floor(Math.random() * Object.keys(backgroundTheme).length)];
-
-    const [theme, setTheme] = React.useState<Theme>(backgroundTheme[chosenTheme]);
-
-
+    const [theme, setTheme] = React.useState<Theme>(themeMap[initTheme]);
 
     function updateTheme(theme: string) {
-        return setTheme(backgroundTheme[theme]);
+        return setTheme(themeMap[theme]);
     }
 
     return (
         <ThemeContext.Provider
-        value={{theme, updateTheme}}>
+        value={{theme, updateTheme, themeMap}}>
             {children}
         </ThemeContext.Provider>
     )

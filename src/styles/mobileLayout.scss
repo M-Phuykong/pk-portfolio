@@ -16,11 +16,12 @@ li {
     color: hsl(var(--hue), 100%, 65%);
     padding-top: 5px;
     padding-bottom: 5px;
+
+    span {
+        color: black;
+        font-weight: 500;
+    }
 }
 
-li span  {
-    color: black;
-    font-weight: 500;
-}
 
 

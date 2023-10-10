@@ -1,19 +1,19 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import Background from './Background'
+import Background from '../Background'
 import { PhoneAccordion } from './PhoneAccordion'
 import { Around } from "@theme-toggles/react"
 import { GithubFill, LinkedinBoxFill, File } from 'akar-icons'
 
 // Hook
-import { useTheme } from '../context/ThemeContext'
+import { useTheme } from '../../context/ThemeContext'
 
 // Resources
-import self_photo from "../images/self_photo.jpg"
-import resume from "../download/Phuykong_Meng_Resume.pdf"
+import self_photo from "../../images/self_photo.jpg"
+import resume from "../../download/Phuykong_Meng_Resume.pdf"
 
 // Styles
-import "../styles/phoneLayout.scss"
+import "../../styles/mobileLayout.scss"
 
 export default function MobileLayout({}: Props) {
 

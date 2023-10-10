@@ -1,10 +1,10 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import { BrowserView, MobileView, isMobile } from 'react-device-detect';
+import { BrowserView, MobileView } from 'react-device-detect';
 import { MotionConfig } from "framer-motion"
 
 import DesktopLayout from "../components/DesktopLayout"
-import MobileLayout from "../components/MobileLayout";
+import MobileLayout from "../components/Mobile/MobileLayout";
 
 import { ThemeProvider } from "../context/ThemeContext";
 
@@ -18,12 +18,12 @@ const IndexPage: React.FC<PageProps> = () => {
 
         <MotionConfig reducedMotion="user">
 
-            {/* <MobileView>
+            <MobileView>
               <MobileLayout />
-            </MobileView> */}
+            </MobileView>
 
             <DesktopLayout />
-            <BrowserView>
+              <BrowserView>
             </BrowserView>
 
         </MotionConfig>
