@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 
 import "../styles/index.scss"
+import "../styles/desktopLayout.scss"
 
 // components
 import ThemeDropdown from './ThemeDropdown'
@@ -82,7 +83,7 @@ function ProfileDescription({ theme } : {theme : any}) {
       <div ref={container} style={{color: theme.sub_color}}
           className='text-base lg:text-lg'>
           <span className='invisible'>
-            A sophomore at Temple University, PA pursuing a degree in Computer Science.
+            A junior at Temple University, PA pursuing a degree in Computer Science.
             I have a keen interest in Machine Language and Front-End Development.
           </span>
       </div>
@@ -207,8 +208,8 @@ export default function DesktopLayout() {
       <div
       style={{color: theme.main_color}}
       className='basis-10 p-3'>
-        {theme.name}
-        {/* <ThemeDropdown /> */}
+        {/* {theme.name} */}
+        <ThemeDropdown />
       </div>
 
       <div

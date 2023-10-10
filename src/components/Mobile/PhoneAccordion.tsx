@@ -3,7 +3,7 @@ import {motion, AnimatePresence, usePresence, color, LayoutGroup} from "framer-m
 
 import { GithubFill, LinkedinBoxFill, File, CircleChevronRightFill } from 'akar-icons'
 
-import "../styles/phoneLayout.scss"
+import "../../styles/mobileLayout.scss"
 
 interface AccordionProps {
     i: number,
