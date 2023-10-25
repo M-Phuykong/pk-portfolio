@@ -72,7 +72,7 @@ function GithubCard({ind, data} : {ind : number, data : any}) {
         </div>
         <div className='flex text-sm'>
             <svg className='inline-block h-full w-5 mr-1' viewBox='0 0 16 16' xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50%" cy="65%" r="5" fill="red" />
+                <circle cx="50%" cy="65%" r="5" style={{ fill : theme.sub_color}} />
             </svg>
             {data.language}
         </div>
@@ -154,6 +154,27 @@ export default function ProjectCards() {
             html_url: "https://github.com/M-Phuykong/TokiniAndyBot",
             description: null,
             language: "Python"
+        }} />
+        <GithubCard ind={2} key={2} data={{
+            id: 1,
+            name: "Synthboard",
+            html_url: "https://github.com/M-Phuykong/synthboard-react",
+            description: null,
+            language: "TypeScript"
+        }} />
+        <GithubCard ind={3} key={3} data={{
+            id: 1,
+            name: "Fit-tastic (OwlHacks 2023)",
+            html_url: "https://github.com/M-Phuykong/OwlHack2023",
+            description: null,
+            language: "Javascript"
+        }} />
+        <GithubCard ind={4} key={4} data={{
+            id: 1,
+            name: "ISIP Picone Press Website",
+            html_url: "https://isip.piconepress.com/",
+            description: "I created a website from scratch for the research lab \"ISIP Picone Press.\" The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
+            language: "HTML / CSS / Javascript"
         }} />
     </motion.ul>
     );
