@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import self_photo from '../images/self_photo.jpg'
 import gsap from 'gsap'
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { Download, TriangleRightFill } from 'akar-icons';
 
 import "../styles/index.scss"
 import "../styles/desktopLayout.scss"
@@ -115,10 +116,22 @@ function ProfileLink({ theme } : {theme : any}) {
   return(
     <div ref={container} style={{color: theme.main_color}}
     className='flex gap-10 text-sm'>
-      <a className='invisible' onMouseEnter={() => {}}>Resume</a>
-      <a className='invisible' href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">Linked In</a>
-      <a className='invisible' href="https://github.com/M-Phuykong" target="_blank">Github</a>
-      <a className='invisible'>Email</a>
+      <a className='flex items-center'>
+        Resume
+        <Download strokeWidth={2} size={20} className='ml-2'/>
+      </a>
+      <a className='flex items-center' href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">
+        Linked In
+        <TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>
+      </a>
+      <a className='flex items-center' href="https://github.com/M-Phuykong" target="_blank">
+        Github
+        <TriangleRightFill strokeWidth={2} size={20} className='ml-1'/>
+      </a>
+      <a className='flex items-center'>
+        Email
+        <TriangleRightFill strokeWidth={2} size={20} className='ml-1'/>
+      </a>
     </div>
     )
 }
@@ -194,7 +207,8 @@ export default function DesktopLayout() {
 
   const { theme, updateTheme } = useTheme();
 
-  const [expanded, setExpanded] = useState<false | number>(false);
+  const [expanded, setExpanded] = useState<false | number>(0);
+  const [expanded1, setExpanded1] = useState<false | number>(false);
 
   return (
     <div
@@ -227,7 +241,7 @@ export default function DesktopLayout() {
           className={`
           h-56
           w-56
-          self-center
+          self-start
           border border-solid border-4
           rounded-full`} />
 
@@ -244,15 +258,6 @@ export default function DesktopLayout() {
 
           <LayoutGroup>
 
-            <Accordion i = {1}
-              expanded={expanded}
-              setExpanded = {setExpanded}
-              title="PROJECTS"
-              theme={theme}
-              order = {-1} >
-                <ProjectCards />
-
-            </Accordion>
 
             <Accordion i = {0}
             expanded={expanded}
@@ -262,10 +267,17 @@ export default function DesktopLayout() {
             order = {0}  >
               <ExperienceMenu data={resumeData}/>
             </Accordion>
+
+            <Accordion i = {1}
+              expanded={expanded1}
+              setExpanded = {setExpanded1}
+              title="PROJECTS"
+              theme={theme}
+              order = {0} >
+                <ProjectCards />
+            </Accordion>
+
           </LayoutGroup>
-
-
-
         </div>
 
       </div>

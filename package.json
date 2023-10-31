@@ -26,7 +26,7 @@
     "@types/hsl-to-hex": "^1.0.0",
     "@types/three": "^0.150.0",
     "add": "^2.0.6",
-    "akar-icons": "^1.9.22",
+    "akar-icons": "^1.9.30",
     "bootstrap": "^5.3.1",
     "debounce": "^1.2.1",
     "dotenv": "^16.3.1",
