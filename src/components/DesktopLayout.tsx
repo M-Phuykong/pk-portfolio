@@ -208,7 +208,6 @@ export default function DesktopLayout() {
   const { theme, updateTheme } = useTheme();
 
   const [expanded, setExpanded] = useState<false | number>(0);
-  const [expanded1, setExpanded1] = useState<false | number>(false);
 
   return (
     <div
@@ -269,8 +268,8 @@ export default function DesktopLayout() {
             </Accordion>
 
             <Accordion i = {1}
-              expanded={expanded1}
-              setExpanded = {setExpanded1}
+              expanded={expanded}
+              setExpanded = {setExpanded}
               title="PROJECTS"
               theme={theme}
               order = {0} >
