@@ -7,13 +7,13 @@ import { useTheme } from '../context/ThemeContext'
 
 const ThemePill = ({ value, label, color}:{ value: string, label: string, color: any})  => (
 
-    <div className="flex items-center my-2 w-96">
+    <div className="flex items-center my-2 min-w-full">
         {value}
 
-        <div className='flex ml-2 bg-white rounded-full items-center' >
-            <div className="w-2 h-2 rounded-full p-2" style={{background: color.background }}></div>
-            <div className="w-2 h-2 rounded-full p-2" style={{background: color.main_color }}></div>
-            <div className="w-2 h-2 rounded-full p-2" style={{background: color.sub_color }}></div>
+        <div className='flex ml-2 px-2 py-1 gap-1 bg-white rounded-full items-center' >
+            <div className="w-1 h-1 rounded-full p-2" style={{background: color.background }}></div>
+            <div className="w-1 h-1 rounded-full p-2" style={{background: color.main_color }}></div>
+            <div className="w-1 h-1 rounded-full p-2" style={{background: color.sub_color }}></div>
         </div>
     </div>
 );
@@ -50,9 +50,9 @@ export default function ThemeDropdown() {
         onClick={randomizeColor}/>
 
         <Select
+        value={{value: theme.name, label: theme.name, color: theme}}
         formatOptionLabel={ThemePill}
         options={selections}
-        placeholder={theme.name}
         isSearchable={false}
         unstyled
         components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
