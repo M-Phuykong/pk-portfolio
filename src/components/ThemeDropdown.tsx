@@ -10,10 +10,14 @@ const ThemePill = ({ value, label, color}:{ value: string, label: string, color:
     <div className="flex items-center my-2 min-w-full">
         {value}
 
-        <div className='flex ml-2 px-2 py-1 gap-1 bg-white rounded-full items-center' >
-            <div className="w-1 h-1 rounded-full p-2" style={{background: color.background }}></div>
-            <div className="w-1 h-1 rounded-full p-2" style={{background: color.main_color }}></div>
-            <div className="w-1 h-1 rounded-full p-2" style={{background: color.sub_color }}></div>
+        <div className='flex outline outline-[0.25rem] ml-2 gap-1 bg-white rounded-full items-center'
+        style={{
+            outlineColor: color.sub_alt_color,
+            background  : color.sub_alt_color,
+        }}>
+            <div className="w-3 h-3 rounded-full" style={{background: color.background }}></div>
+            <div className="w-3 h-3 rounded-full" style={{background: color.main_color }}></div>
+            <div className="w-3 h-3 rounded-full" style={{background: color.sub_color }}></div>
         </div>
     </div>
 );
@@ -49,15 +53,18 @@ export default function ThemeDropdown() {
         className='mr-2 cursor-pointer'
         onClick={randomizeColor}/>
 
-        <Select
-        value={{value: theme.name, label: theme.name, color: theme}}
-        formatOptionLabel={ThemePill}
-        options={selections}
-        isSearchable={false}
-        unstyled
-        components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
-        onChange={handleSelectChange}
-        />
+        <div className='w-64'>
+            <Select
+            value={{value: theme.name, label: theme.name, color: theme}}
+            formatOptionLabel={ThemePill}
+            options={selections}
+            isSearchable={false}
+            unstyled
+            components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
+            onChange={handleSelectChange}
+            />
+        </div>
+
     </div>
     );
 };

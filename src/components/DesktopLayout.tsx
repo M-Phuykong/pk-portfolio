@@ -164,6 +164,7 @@ function  Accordion(
             initial="collapsed"
             animate="open"
             exit="collapsed"
+
             variants={{
               open: { opacity: 1, height: "auto"},
               collapsed: { opacity: 0, height: 0}
@@ -206,8 +207,14 @@ const resumeData = [
 export default function DesktopLayout() {
 
   const { theme, updateTheme } = useTheme();
-
   const [expanded, setExpanded] = useState<false | number>(0);
+
+  const leftContainer = useRef<React.RefObject<HTMLDivElement>>();
+  const rightContainer = useRef<React.RefObject<HTMLDivElement>>();
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     <div
@@ -216,7 +223,7 @@ export default function DesktopLayout() {
           WebkitTransition: "all .5s ease",
           MozTransition: "all .5s ease"
     }}
-    className='h-screen w-screen max-h-screen flex flex-col'
+    className='h-screen w-screen max-h-screen flex flex-col '
     >
       <div
       style={{color: theme.main_color}}
@@ -225,11 +232,12 @@ export default function DesktopLayout() {
         <ThemeDropdown />
       </div>
 
-      <div
+      <motion.div
       id="content_container"
-      className='max-w-[70%] max-h-screen overflow-y-hidden self-center flex grow items-center justify-center mx-56 gap-20'>
+      className='max-w-[70%] max-h-screen self-center flex grow items-center justify-center mx-56 gap-20'>
 
         <div
+        ref = {leftContainer}
         className='flex flex-1 flex-col gap-10'>
           <img
           style={{borderColor: theme.main_color}}
@@ -253,6 +261,7 @@ export default function DesktopLayout() {
         </div>
 
         <div
+        ref = {rightContainer}
         className='flex flex-1 flex-col text-center h-full justify-center'>
 
           <LayoutGroup>
@@ -279,7 +288,7 @@ export default function DesktopLayout() {
           </LayoutGroup>
         </div>
 
-      </div>
+      </motion.div>
 
       <div
       style={{color: theme.main_color}}
