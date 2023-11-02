@@ -133,49 +133,58 @@ export default function ProjectCards() {
 
 
     return (
-    <motion.ul
+    <div
+    >        <motion.ul
+        className='h-full  '
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={containerVariants} layout>
 
-    initial="hidden"
-    animate="visible"
-    exit="exit"
-    variants={containerVariants} layout>
-        {/* <ProjectList /> */}
+            <GithubCard ind={0} key={0} data={{
+                id: 0,
+                name: "pk-portfolio",
+                html_url: "https://github.com/M-Phuykong/pk-portfolio",
+                description: "Personal Portfolio",
+                language: "TypeScript"
+            }} />
+            <GithubCard ind={1} key={1} data={{
+                id: 1,
+                name: "TokiniAndyBot",
+                html_url: "https://github.com/M-Phuykong/TokiniAndyBot",
+                description: null,
+                language: "Python"
+            }} />
+            <GithubCard ind={2} key={2} data={{
+                id: 1,
+                name: "Synthboard",
+                html_url: "https://github.com/M-Phuykong/synthboard-react",
+                description: null,
+                language: "TypeScript"
+            }} />
+            <GithubCard ind={3} key={3} data={{
+                id: 1,
+                name: "Fit-tastic (OwlHacks 2023)",
+                html_url: "https://github.com/M-Phuykong/OwlHack2023",
+                description: null,
+                language: "Javascript"
+            }} />
+            <GithubCard ind={4} key={4} data={{
+                id: 1,
+                name: "ISIP Picone Press Website",
+                html_url: "https://isip.piconepress.com/",
+                description: "I created a website from scratch for the research lab \"ISIP Picone Press.\" The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
+                language: "HTML / CSS / Javascript"
+            }} />
+                {/* <GithubCard ind={4} key={4} data={{
+                id: 1,
+                name: "ISIP Picone Press Website",
+                html_url: "https://isip.piconepress.com/",
+                description: "I created a website from scratch for the research lab \"ISIP Picone Press.\" The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
+                language: "HTML / CSS / Javascript"
+            }} /> */}
 
-        <GithubCard ind={0} key={0} data={{
-            id: 0,
-            name: "pk-portfolio",
-            html_url: "https://github.com/M-Phuykong/pk-portfolio",
-            description: "Personal Portfolio",
-            language: "TypeScript"
-        }} />
-        <GithubCard ind={1} key={1} data={{
-            id: 1,
-            name: "TokiniAndyBot",
-            html_url: "https://github.com/M-Phuykong/TokiniAndyBot",
-            description: null,
-            language: "Python"
-        }} />
-        <GithubCard ind={2} key={2} data={{
-            id: 1,
-            name: "Synthboard",
-            html_url: "https://github.com/M-Phuykong/synthboard-react",
-            description: null,
-            language: "TypeScript"
-        }} />
-        <GithubCard ind={3} key={3} data={{
-            id: 1,
-            name: "Fit-tastic (OwlHacks 2023)",
-            html_url: "https://github.com/M-Phuykong/OwlHack2023",
-            description: null,
-            language: "Javascript"
-        }} />
-        <GithubCard ind={4} key={4} data={{
-            id: 1,
-            name: "ISIP Picone Press Website",
-            html_url: "https://isip.piconepress.com/",
-            description: "I created a website from scratch for the research lab \"ISIP Picone Press.\" The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
-            language: "HTML / CSS / Javascript"
-        }} />
-    </motion.ul>
+        </motion.ul>
+    </div>
     );
 }
