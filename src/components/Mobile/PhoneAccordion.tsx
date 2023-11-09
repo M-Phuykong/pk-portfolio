@@ -13,7 +13,7 @@ interface AccordionProps {
     title: string,
 }
 
-const Accordion = ({ i, expanded, setExpanded, children, title } : AccordionProps) => {
+export const Accordion = ({ i, expanded, setExpanded, children, title } : AccordionProps) => {
     const isOpen = i === expanded;
 
     const accordionVariants = {

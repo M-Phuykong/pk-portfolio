@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { motion, AnimatePresence, delay } from "framer-motion";
+import { motion, AnimatePresence, delay, Reorder } from "framer-motion";
 
 import { useTheme } from '../context/ThemeContext'
 
@@ -41,19 +41,20 @@ function GithubCard({ind, data} : {ind : number, data : any}) {
     const { theme, updateTheme } = useTheme()
 
     return (
-    <motion.li
-    style={{
-        borderColor: theme.main_color,
-        color: theme.text_color
-    }}
-    whileHover={{scale: 1.1}}
-    custom={ind}
+    <Reorder.Item
+        value={data}
+        key={data}
 
-    className="flex flex-1 flex-col
-    min-w-96 p-3 my-2
-    border border-solid
-    rounded-lg text-start "
-    key={data.id}>
+        style={{
+            borderColor: theme.main_color,
+            color: theme.text_color
+        }}
+        className="flex flex-1 flex-col
+        min-w-96 p-3 my-2
+        border border-solid
+        rounded-lg text-start "
+    >
+
         <div className='text-base'>
             <svg className='inline-block h-5 w-5 mr-2' viewBox='0 0 16 16'>
                 <path style={{fill: theme.main_color}}
@@ -76,7 +77,7 @@ function GithubCard({ind, data} : {ind : number, data : any}) {
             </svg>
             {data.language}
         </div>
-    </motion.li>
+    </Reorder.Item>
     )
 }
 
@@ -129,62 +130,63 @@ function ProjectList() {
         )
 }
 
+const projectsItems = [
+    {
+        id: 0,
+        name: "pk-portfolio",
+        html_url: "https://github.com/M-Phuykong/pk-portfolio",
+        description: "Personal Portfolio",
+        language: "TypeScript"
+    },
+    {
+        id: 1,
+        name: "TokiniAndyBot",
+        html_url: "https://github.com/M-Phuykong/TokiniAndyBot",
+        description: null,
+        language: "Python"
+    },
+    {
+        id: 2,
+        name: "Synthboard",
+        html_url: "https://github.com/M-Phuykong/synthboard-react",
+        description: null,
+        language: "TypeScript"
+    },
+    {
+        id: 3,
+        name: "Fit-tastic (OwlHacks 2023)",
+        html_url: "https://github.com/M-Phuykong/OwlHack2023",
+        description: null,
+        language: "Javascript"
+    },
+    {
+        id: 4,
+        name: "ISIP Picone Press Website",
+        html_url: "https://isip.piconepress.com/",
+        description: "I created a website from scratch for the research lab \"ISIP Picone Press.\" The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
+        language: "HTML / CSS / Javascript"
+    }
+
+]
+
 export default function ProjectCards() {
 
-
+    const [items, setItems] = useState(projectsItems)
     return (
-    <div
-    >        <motion.ul
-        className='h-full  '
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        variants={containerVariants} layout>
+        <Reorder.Group
+        axis='y'
+        values={items}
+        onReorder={setItems}
+        style={{  }}
+        >
+            {items.map((item) => (
+                <GithubCard
+                    key = {item.id}
+                    ind= {item.id}
+                    data={item}
+                />
+            ))}
+        </Reorder.Group>
 
-            <GithubCard ind={0} key={0} data={{
-                id: 0,
-                name: "pk-portfolio",
-                html_url: "https://github.com/M-Phuykong/pk-portfolio",
-                description: "Personal Portfolio",
-                language: "TypeScript"
-            }} />
-            <GithubCard ind={1} key={1} data={{
-                id: 1,
-                name: "TokiniAndyBot",
-                html_url: "https://github.com/M-Phuykong/TokiniAndyBot",
-                description: null,
-                language: "Python"
-            }} />
-            <GithubCard ind={2} key={2} data={{
-                id: 1,
-                name: "Synthboard",
-                html_url: "https://github.com/M-Phuykong/synthboard-react",
-                description: null,
-                language: "TypeScript"
-            }} />
-            <GithubCard ind={3} key={3} data={{
-                id: 1,
-                name: "Fit-tastic (OwlHacks 2023)",
-                html_url: "https://github.com/M-Phuykong/OwlHack2023",
-                description: null,
-                language: "Javascript"
-            }} />
-            <GithubCard ind={4} key={4} data={{
-                id: 1,
-                name: "ISIP Picone Press Website",
-                html_url: "https://isip.piconepress.com/",
-                description: "I created a website from scratch for the research lab \"ISIP Picone Press.\" The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
-                language: "HTML / CSS / Javascript"
-            }} />
-                {/* <GithubCard ind={4} key={4} data={{
-                id: 1,
-                name: "ISIP Picone Press Website",
-                html_url: "https://isip.piconepress.com/",
-                description: "I created a website from scratch for the research lab \"ISIP Picone Press.\" The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
-                language: "HTML / CSS / Javascript"
-            }} /> */}
-
-        </motion.ul>
-    </div>
     );
 }
