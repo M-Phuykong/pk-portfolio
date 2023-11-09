@@ -144,6 +144,7 @@ function  Accordion(
     theme,
     order,
     children} : any) {
+
   const isOpen = i === expanded;
 
   // By using `AnimatePresence` to mount and unmount the contents, we can animate
@@ -153,8 +154,17 @@ function  Accordion(
       <motion.header initial={false}
         animate={{ color: isOpen ? theme.main_color : theme.main_color }}
         onClick={() => setExpanded(isOpen ? false : i)}
-        className='relative text-5xl font-bold text-start'>
+        className='flex items-center justify-between text-5xl font-bold '>
             {title}
+            <motion.span
+            key = "button"
+            animate = { {
+                rotate: isOpen ? 90 : 0,
+            }}
+            transition={ { duration : 0.5}}
+            >
+                <TriangleRightFill strokeWidth={2} size={32} id="label_button"/>
+            </motion.span>
       </motion.header>
 
       <AnimatePresence mode='wait'>
@@ -169,7 +179,7 @@ function  Accordion(
               open: { opacity: 1, height: "auto"},
               collapsed: { opacity: 0, height: 0}
             }}
-            transition={{ duration: 1, ease: "easeInOut" }}
+            transition={{ duration: 1.5, ease: [0.04, 0.62, 0.23, 0.98] }}
             style={{order: order}}
           >
             {children}
@@ -223,7 +233,13 @@ export default function DesktopLayout() {
           WebkitTransition: "all .5s ease",
           MozTransition: "all .5s ease"
     }}
-    className='h-screen w-screen max-h-screen flex flex-col '
+    className='
+    lg:h-screen
+    w-screen
+    max-h-screen
+    flex
+    flex-col
+    '
     >
       <div
       style={{color: theme.main_color}}
@@ -234,10 +250,18 @@ export default function DesktopLayout() {
 
       <motion.div
       id="content_container"
-      className='max-w-[70%] max-h-screen self-center flex grow items-center justify-center mx-56 gap-20'>
+      className='
+      lg:max-w-[70%]
+      max-h-screen
+      self-center
+      flex
+      flex-col lg:flex-row
+      lg:grow
+      items-center justify-center
+      lg:mx-56
+      lg:gap-20'>
 
         <div
-        ref = {leftContainer}
         className='flex flex-1 flex-col gap-10'>
           <img
           style={{borderColor: theme.main_color}}
@@ -261,11 +285,7 @@ export default function DesktopLayout() {
         </div>
 
         <div
-        ref = {rightContainer}
-        className='flex flex-1 flex-col text-center h-full justify-center'>
-
-          <LayoutGroup>
-
+        className='flex flex-1 flex-col text-center h-fit justify-center'>
 
             <Accordion i = {0}
             expanded={expanded}
@@ -284,8 +304,6 @@ export default function DesktopLayout() {
               order = {0} >
                 <ProjectCards />
             </Accordion>
-
-          </LayoutGroup>
         </div>
 
       </motion.div>
