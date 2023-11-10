@@ -19,7 +19,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <MotionConfig reducedMotion="user">
 
             <MobileView>
-                <MobileLayout />
+              <MobileLayout />
             </MobileView>
 
             <BrowserView>

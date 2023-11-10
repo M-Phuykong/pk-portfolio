@@ -244,7 +244,6 @@ export default function DesktopLayout() {
       <div
       style={{color: theme.main_color}}
       className='basis-10 p-3'>
-        {/* {theme.name} */}
         <ThemeDropdown />
       </div>
 

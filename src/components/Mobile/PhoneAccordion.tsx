@@ -48,12 +48,8 @@ export const Accordion = ({ i, expanded, setExpanded, children, title } : Accord
                 leading-[4rem] text-xl font-bold
 
                 rounded-[10px] bg-[#ffffff8c] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[20px]
-                dark:bg-[#111928bd]
                 '>
-        <div className="
-                    flex justify-between items-center noselect
-                    dark:text-white
-                    " >
+        <div className="flex justify-between items-center noselect" >
             {title}
             <motion.span
             key = "button"
@@ -104,8 +100,7 @@ export const PhoneAccordion = () => {
             <Accordion title="About Me"
             i={1} expanded={expanded} setExpanded={setExpanded}>
                 <div className="pb-5 text-sm font-normal leading-snug">
-                    A sophomore at Temple University, PA pursuing a degree in Computer Science.
-                    I have a keen interest in Machine Language and Front-End Development.
+                    A junior at Temple University, PA pursuing a degree in Computer Science. I have a keen interest in Machine Language and Front-End Development.
                 </div>
             </Accordion>
 
