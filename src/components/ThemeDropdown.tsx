@@ -7,7 +7,7 @@ import { useTheme } from '../context/ThemeContext'
 
 const ThemePill = ({ value, label, color}:{ value: string, label: string, color: any})  => (
 
-    <div className="flex items-center my-2 min-w-full">
+    <div className="flex items-center my-2 min-w-full" style={{color: color.main_color}}>
         {value}
 
         <div className='flex outline outline-[0.25rem] ml-2 gap-1 bg-white rounded-full items-center'
@@ -48,9 +48,10 @@ export default function ThemeDropdown() {
     }
 
     return (
-    <div className="ml-3 flex items-center" >
+    <div className="ml-3 flex items-center py-2" >
         <ArrowShuffle strokeWidth={2} size={16}
         className='mr-2 cursor-pointer'
+        style={{color: theme.main_color}}
         onClick={randomizeColor}/>
 
         <div className='w-64'>
