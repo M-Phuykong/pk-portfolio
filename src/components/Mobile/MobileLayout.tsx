@@ -127,14 +127,14 @@ export default function MobileLayout({}: Props) {
 
               key = "links_container"
               id = "links_container">
-                <hr style={{background: theme.main_color}} />
+                <hr style={{background: theme.text_color}} />
 
                 <div className="
                 flex
                 p-5
                 justify-around
                 "
-                style={{color: theme.sub_color}}
+                style={{color: theme.main_color}}
                 id = "icon_container">
                   <a href="https://github.com/M-Phuykong" target="_blank">
                     <GithubFill size = {26}></GithubFill>
@@ -148,7 +148,8 @@ export default function MobileLayout({}: Props) {
                     <LinkedinBoxFill size={26}></LinkedinBoxFill>
                   </a>
                 </div>
-                <hr style={{background: theme.main_color}}/>
+
+                <hr style={{background: theme.text_color}}/>
               </motion.div>
 
               <motion.div

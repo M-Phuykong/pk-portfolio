@@ -3,6 +3,8 @@ import {motion, AnimatePresence, usePresence, color, LayoutGroup} from "framer-m
 
 import { GithubFill, LinkedinBoxFill, File, CircleChevronRightFill } from 'akar-icons'
 
+import { useTheme } from '../../context/ThemeContext'
+
 import "../../styles/mobileLayout.scss"
 
 interface AccordionProps {
@@ -15,6 +17,8 @@ interface AccordionProps {
 
 export const Accordion = ({ i, expanded, setExpanded, children, title } : AccordionProps) => {
     const isOpen = i === expanded;
+
+    const { theme, updateTheme } = useTheme();
 
     const accordionVariants = {
         collapsed: {
@@ -42,14 +46,18 @@ export const Accordion = ({ i, expanded, setExpanded, children, title } : Accord
 
         style={{
             marginBottom: 25,
+            backgroundColor: theme.main_color,
         }}
         onClick={() => setExpanded(isOpen ? false : i)}
         className='h-[4rem] mb-5 px-5 relative
                 leading-[4rem] text-xl font-bold
 
-                rounded-[10px] bg-[#ffffff8c] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[20px]
+                rounded-[10px] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[20px]
                 '>
-        <div className="flex justify-between items-center noselect" >
+        <div className="flex justify-between items-center noselect"
+        style={{
+            color: theme.sub_alt_color,
+        }}>
             {title}
             <motion.span
             key = "button"
@@ -75,9 +83,12 @@ export const Accordion = ({ i, expanded, setExpanded, children, title } : Accord
                 }}
                 transition={{ type: "tween", duration: 0.5 }}
                 className="overflow-hidden"
+                style={{
+                    color: theme.text_color,
+                }}
             >
                 <motion.hr
-                className="m-0 mb-3 w-full h-[2px]"></motion.hr>
+                className="m-0 mb-3 w-full h-[2px]" style={{background: theme.text_color}}></motion.hr>
                 {children}
             </motion.section>
             )}
@@ -92,6 +103,7 @@ export const PhoneAccordion = () => {
     const [expanded, setExpanded] = useState<false | number>(1);
     const [expanded1, setExpanded1] = useState<false | number>(false);
     const [expanded2, setExpanded2] = useState<false | number>(false);
+    const { theme, updateTheme } = useTheme();
 
     return (
 
@@ -108,8 +120,12 @@ export const PhoneAccordion = () => {
             i={2} expanded={expanded1} setExpanded={setExpanded1}>
                 <div className="pb-5">
                     <div className="leading-tight font-medium text-base text-gray-950">
-                        Software Developer @ NEDC <br/>
-                        <span className="text-gray-600 text-sm">
+                        <span style={{
+                            color: theme.main_color,
+                        }}>
+                            Software Developer @ NEDC <br/>
+                        </span>
+                        <span className="text-sm">
                             Aug 2021 - Present
                         </span>
                     </div>
@@ -117,34 +133,34 @@ export const PhoneAccordion = () => {
                     <ul className="list-disc p-5 pt-2 pb-0 text-sm leading-snug">
                         <li>
                             <span className="font-normal">
-                                Work with a variety of different languages such as
-                                Python, Javascript, PHP and C++.
+                                Developed a common data structure using Python that unifies several input data into one, which cuts down development time by half and improved code maintainability and reusability
                             </span>
                         </li>
                         <li>
                             <span className="font-normal">
-                                Led a software team of 3 other developers by doing
-                                code reviews on style formatting and weekly progress
-                                update. Collaborated with them to score and evaluate
-                                two machine learning systems that deals with EEG Seizure
-                                Detection and Digital Pathology.
+                                Supervised 3 team members with weekly standup and code reviews using emails and Zoom, speeding up progress and maintaining the group’s standard.
                             </span>
                         </li>
                         <li>
                             <span className="font-normal">
-                                Developed and maintain over 5 websites that display
-                                current projects, a conference website for IEEE, and
-                                a website that monitors our server's load. Learned
-                                PHP in a month to create submission form that streamline
-                                the signing up process for the IEEE conference.
+                                Evaluated, and refactored two machine learning systems for production to ensure results reproducibility on other machines.
+                            </span>
+                        </li>
+                        <li>
+                            <span className="font-normal">
+                                Redesigned, and built the main webpage using Figma, HTML, CSS, and Javascript,  which improved users flow and content organization.
                             </span>
                         </li>
                     </ul>
                 </div>
                 <div className="pb-5">
                     <div className="leading-tight font-medium text-base text-gray-950">
-                        SD Intern @ Strados Labs <br/>
-                        <span className="text-gray-600 text-sm">
+                        <span style={{
+                            color: theme.main_color,
+                        }}>
+                            SD Intern @ Strados Labs <br/>
+                        </span>
+                        <span className="text-sm">
                             June 2023 - August 2023
                         </span>
                     </div>
@@ -152,19 +168,12 @@ export const PhoneAccordion = () => {
                     <ul className="list-disc p-5 pt-2 pb-0 text-sm leading-snug">
                         <li>
                             <span className="font-normal">
-                                Built an interactive graph for quality checking purposes. The graph plots the x and y coordinates that were
-                                generated by a UMAP from the data's features. The graph allows the user to select a point and display the patient
-                                information and relabel the data point.
+                                Created a web application using HTML, SCSS, Javascript, D3.js that visualizes UMAP data mapping which cuts down QA time by 50%
                             </span>
                         </li>
                         <li>
                             <span className="font-normal">
-
-                            </span>
-                        </li>
-                        <li>
-                            <span className="font-normal">
-
+                                Integrated API calls to the backend server which connects to an Amazon S3 bucket that fetches and uploads files, adding a layer of security in protecting patients’ data
                             </span>
                         </li>
                     </ul>
@@ -176,9 +185,8 @@ export const PhoneAccordion = () => {
                 <div className="pb-5">
                     <div className="leading-tight font-medium text-base">
 
-                        <div className="flex text-gray-950">
+                        <div className="flex" style={{ color: theme.main_color }}>
                             E-Commerce Store <br />
-
                             <a className='w-fit' href="https://github.com/M-Phuykong/Aesthetique-Trend-Frontend" target="_blank" onClick={(e) => e.stopPropagation()}>
                                 <GithubFill strokeWidth={2} size={20} className="
                                 ml-2"/>
@@ -193,7 +201,8 @@ export const PhoneAccordion = () => {
 
                     <div className="leading-tight font-medium text-base pt-5">
 
-                        <div className="flex">
+                        <div className="flex"
+                        style={{color: theme.main_color}}>
                             Synthboard <br/>
 
                             <a className='w-fit' href="https://github.com/M-Phuykong/synthboard-react" target="_blank" onClick={(e) => e.stopPropagation()}>
@@ -212,7 +221,8 @@ export const PhoneAccordion = () => {
 
                     <div className="leading-tight font-medium text-base pt-5">
 
-                        <div className="flex">
+                        <div className="flex"
+                        style={{color: theme.main_color}}>
                             CUDA Signal Resampling <br/>
                         </div>
 
@@ -223,7 +233,7 @@ export const PhoneAccordion = () => {
 
                     <div className="leading-tight font-medium text-base pt-5 pb-3">
 
-                        <div className="flex">
+                        <div className="flex" style={{color: theme.main_color}}>
                             OwlHack 2023 Winner <br/>
 
                             <a className='w-fit' href="https://github.com/M-Phuykong/OwlHack2023" target="_blank" onClick={(e) => e.stopPropagation()}>

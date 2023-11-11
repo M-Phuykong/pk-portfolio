@@ -82,6 +82,11 @@ export function ThemeProvider({ children } : Props ) {
 
     const [theme, setTheme] = React.useState<Theme>(themeMap[initTheme]);
 
+    useEffect(() => {
+        setTheme(themeMap[initTheme]);
+    }, [])
+
+
     function updateTheme(theme: string) {
         return setTheme(themeMap[theme]);
     }
