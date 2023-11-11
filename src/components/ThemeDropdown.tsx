@@ -4,6 +4,7 @@ import { ArrowShuffle } from 'akar-icons'
 
 // Hook
 import { useTheme } from '../context/ThemeContext'
+import { withFilters } from '@pixi/react-pixi';
 
 const ThemePill = ({ value, label, color}:{ value: string, label: string, color: any})  => (
 
@@ -56,6 +57,7 @@ export default function ThemeDropdown() {
 
         <div className='w-64'>
             <Select
+           
             value={{value: theme.name, label: theme.name, color: theme}}
             formatOptionLabel={ThemePill}
             options={selections}
