@@ -1,10 +1,8 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Around } from "@theme-toggles/react"
 import { GithubFill, LinkedinBoxFill, File } from 'akar-icons'
 
 // Components
-import Background from '../Background'
 import { PhoneAccordion } from './PhoneAccordion'
 import ThemeDropdown from '../ThemeDropdown'
 
@@ -106,13 +104,14 @@ export default function MobileLayout({}: Props) {
               text-3xl
               font-semibold
               "
-              style={{color: theme.main_color}}
+              style={{color: theme.text_color}}
               variants={itemVariant}
               key = "name_text_container"
               id = "name_text_container">
-                <span style={{color: theme.text_color}}>I'm</span>
-                  <br/>Phuykong Meng
-                <span style={{color: theme.text_color}}>.</span>
+                Hello, <br/>
+                I'm
+                <span style={{color: theme.main_color}}> Phuykong Meng</span>
+                .
                 <span className='hover:animate-handwave origin-[70%_70%] inline-block'>👋</span>
               </motion.div>
 
@@ -165,3 +164,4 @@ export default function MobileLayout({}: Props) {
       </motion.main>
   )
 }
+
