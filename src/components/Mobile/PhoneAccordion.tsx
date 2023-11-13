@@ -46,7 +46,7 @@ export const Accordion = ({ i, expanded, setExpanded, children, title } : Accord
 
         style={{
             marginBottom: 25,
-            backgroundColor: theme.main_color,
+            backgroundColor: theme.background,
         }}
         onClick={() => setExpanded(isOpen ? false : i)}
         className='h-[4rem] mb-5 px-5 relative
@@ -56,7 +56,7 @@ export const Accordion = ({ i, expanded, setExpanded, children, title } : Accord
                 '>
         <div className="flex justify-between items-center noselect"
         style={{
-            color: theme.sub_alt_color,
+            color: theme.main_color,
         }}>
             {title}
             <motion.span
@@ -84,7 +84,7 @@ export const Accordion = ({ i, expanded, setExpanded, children, title } : Accord
                 transition={{ type: "tween", duration: 0.5 }}
                 className="overflow-hidden"
                 style={{
-                    color: theme.text_color,
+                    color: theme.sub_color,
                 }}
             >
                 <motion.hr
@@ -121,11 +121,11 @@ export const PhoneAccordion = () => {
                 <div className="pb-5">
                     <div className="leading-tight font-medium text-base text-gray-950">
                         <span style={{
-                            color: theme.main_color,
+                            color: theme.text_color,
                         }}>
                             Software Developer @ NEDC <br/>
                         </span>
-                        <span className="text-sm">
+                        <span className="text-sm" style={{color: theme.main_color}}>
                             Aug 2021 - Present
                         </span>
                     </div>
@@ -156,11 +156,11 @@ export const PhoneAccordion = () => {
                 <div className="pb-5">
                     <div className="leading-tight font-medium text-base text-gray-950">
                         <span style={{
-                            color: theme.main_color,
+                            color: theme.text_color,
                         }}>
                             SD Intern @ Strados Labs <br/>
                         </span>
-                        <span className="text-sm">
+                        <span className="text-sm" style={{color: theme.main_color}}>
                             June 2023 - August 2023
                         </span>
                     </div>
