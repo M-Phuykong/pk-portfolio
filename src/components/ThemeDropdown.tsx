@@ -57,7 +57,6 @@ export default function ThemeDropdown() {
 
         <div className='w-64'>
             <Select
-           
             value={{value: theme.name, label: theme.name, color: theme}}
             formatOptionLabel={ThemePill}
             options={selections}
@@ -65,6 +64,18 @@ export default function ThemeDropdown() {
             unstyled
             components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
             onChange={handleSelectChange}
+            // styles={{
+            //     menu: (baseStyles, state) => ({
+            //     ...baseStyles,
+            //     background: 'white',
+            //     borderRadius: '15px',
+            //     padding: '0.5rem',
+            //     }),
+            //     control: (baseStyles, state) => ({
+            //     ...baseStyles,
+            //     background: state.isFocused ? 'white' : 'transparent',
+            //     }),
+            // }}
             />
         </div>
 
