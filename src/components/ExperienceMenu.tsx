@@ -15,14 +15,14 @@ function VListTab(props : any) {
             <button
             className='
             h-10
-            border-l-2 border-solid
+            border-l-4 border-solid
             text-left
             py-0 px-3'
             onClick={handleClick}
             style={
             props.activeTabId === props.index
-                ? { color: theme.main_color }
-                : { color: theme.sub_color }
+                ? { color: theme.main_color, borderColor: theme.main_color }
+                : { color: theme.sub_color, borderColor: theme.sub_color }
         }>
                 {props.data.company}
             </button>
@@ -54,7 +54,7 @@ function VListContent(props : any) {
             </h5>
 
             {data.details.map((detail: string) => (
-                <p className='mb-5'
+                <p className='mb-5 text-xs'
                 style={{color: theme.sub_color}}
                 >
                     {detail}
@@ -77,7 +77,8 @@ export default function ExperienceMenu(props : any) {
 
     return (
         <div
-        className="container relative max-w-full min-h-[30rem] mt-5">
+        className="container relative max-w-full min-h-[30rem] mt-5
+        ">
             <div className='row'>
                 <div className='col sm:col-3'>
                     <div>

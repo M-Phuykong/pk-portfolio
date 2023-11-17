@@ -82,7 +82,10 @@ function ProfileDescription({ theme } : {theme : any}) {
 
   return(
       <div ref={container} style={{color: theme.sub_color}}
-          className='text-base lg:text-lg'>
+          className='
+          text-sm
+          lg:text-base
+          2xl:text-lg'>
           <span className='invisible'>
             A junior at Temple University, PA pursuing a degree in Computer Science.
             I have a keen interest in Machine Language and Front-End Development.
@@ -115,7 +118,8 @@ function ProfileLink({ theme } : {theme : any}) {
 
   return(
     <div ref={container} style={{color: theme.main_color}}
-    className='flex gap-10 text-sm'>
+    className='flex gap-10
+      text-sm 2xl:text-sm'>
       <a className='flex items-center'>
         Resume
         <Download strokeWidth={2} size={20} className='ml-2'/>
@@ -154,8 +158,12 @@ function  Accordion(
       <motion.header initial={false}
         animate={{ color: isOpen ? theme.main_color : theme.main_color }}
         onClick={() => setExpanded(isOpen ? false : i)}
-        className='flex items-center justify-between text-5xl font-bold '>
+        className='flex items-center justify-between
+        text-5xl 2xl:text-5xl
+        font-bold '>
+
             {title}
+
             <motion.span
             key = "button"
             animate = { {
@@ -234,9 +242,9 @@ export default function DesktopLayout() {
           MozTransition: "all .5s ease"
     }}
     className='
-    lg:h-screen
+    min-h-screen
+    h-full
     w-screen
-    max-h-screen
     flex
     flex-col
     '
@@ -250,15 +258,16 @@ export default function DesktopLayout() {
       <motion.div
       id="content_container"
       className='
-      lg:max-w-[70%]
-      max-h-screen
+      lg:max-w-[75%]
+      min-h-screen
+      h-full
       self-center
       flex
       flex-col lg:flex-row
       lg:grow
       items-center justify-center
-      lg:mx-56
-      lg:gap-20'>
+      2xl:mx-56
+      2xl:gap-20'>
 
         <div
         className='flex flex-1 flex-col gap-10'>
@@ -269,8 +278,10 @@ export default function DesktopLayout() {
           alt="Phuykong_Meng_photo"
           id="self_photo"
           className={`
-          h-56
-          w-56
+          2xl:h-56
+          2xl:w-56
+          w-2/5
+          h-2/5
           self-start
           border border-solid border-4
           rounded-full`} />
