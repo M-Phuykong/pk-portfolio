@@ -267,7 +267,7 @@ export default function DesktopLayout() {
       lg:grow
       items-center justify-center
       2xl:mx-56
-      2xl:gap-20'>
+      gap-10 2xl:gap-20'>
 
         <div
         className='flex flex-1 flex-col gap-10'>
