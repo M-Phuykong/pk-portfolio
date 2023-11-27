@@ -4,11 +4,11 @@ import { ArrowShuffle } from 'akar-icons'
 
 // Hook
 import { useTheme } from '../context/ThemeContext'
-import { withFilters } from '@pixi/react-pixi';
 
 const ThemePill = ({ value, label, color}:{ value: string, label: string, color: any})  => (
 
-    <div className="flex items-center my-2 min-w-full" style={{color: color.main_color}}>
+    <div className="flex items-center my-2 min-w-full"
+    style={{color: color.main}}>
         {value}
 
         <div className='flex outline outline-[0.25rem] ml-2 gap-1 bg-white rounded-full items-center'
@@ -64,18 +64,17 @@ export default function ThemeDropdown() {
             unstyled
             components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
             onChange={handleSelectChange}
-            // styles={{
-            //     menu: (baseStyles, state) => ({
-            //     ...baseStyles,
-            //     background: 'white',
-            //     borderRadius: '15px',
-            //     padding: '0.5rem',
-            //     }),
-            //     control: (baseStyles, state) => ({
-            //     ...baseStyles,
-            //     background: state.isFocused ? 'white' : 'transparent',
-            //     }),
-            // }}
+            styles={{
+                menu: (baseStyles, state) => ({
+                    ...baseStyles,
+                    background:  theme.background,
+                    borderColor: theme.sub_alt_color,
+                    borderWidth: '5px',
+                    borderStyle: 'solid',
+                    borderRadius: '15px',
+                    padding: '1rem',
+                }),
+            }}
             />
         </div>
 
