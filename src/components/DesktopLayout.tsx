@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import self_photo from '../images/self_photo.jpg'
 import gsap from 'gsap'
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup, color } from "framer-motion";
 import { Download, TriangleRightFill } from 'akar-icons';
 
 import "../styles/index.scss"
@@ -313,6 +313,17 @@ export default function DesktopLayout() {
               theme={theme}
               order = {0} >
                 <ProjectCards />
+            </Accordion>
+
+            <Accordion i = {2}
+              expanded={expanded}
+              setExpanded = {setExpanded}
+              title="PUBLICATIONS"
+              theme={theme}
+              order = {0} >
+                <div style={{color: theme.text_color}}>
+                  Thai, B., McNicholas, S., Shalamzari, S. S., Meng, P., & Picone, J. (2023). Towards a More Extensible Machine Learning Demonstration Tool. Proceedings of the IEEE Signal Processing in Medicine and Biology Symposium, 1–4. (Download).
+                </div>
             </Accordion>
         </div>
 
