@@ -4,6 +4,8 @@ import gsap from 'gsap'
 import { motion, AnimatePresence, LayoutGroup, color } from "framer-motion";
 import { Download, TriangleRightFill } from 'akar-icons';
 
+import type { Icon } from 'akar-icons';
+
 import "../styles/index.scss"
 import "../styles/desktopLayout.scss"
 
@@ -94,6 +96,16 @@ function ProfileDescription({ theme } : {theme : any}) {
     );
 }
 
+function ProfileLinkItem({ text, icon, link } : {text : string, icon: Icon, link: string}) {
+
+  return (
+    <a className='flex items-center' href={link} target='_blank'>
+      {text}
+      {icon}
+    </a>
+    )
+}
+
 function ProfileLink({ theme } : {theme : any}) {
 
   const container = useRef(null);
@@ -120,22 +132,24 @@ function ProfileLink({ theme } : {theme : any}) {
     <div ref={container} style={{color: theme.main_color}}
     className='flex gap-10
       text-sm 2xl:text-sm'>
-      <a className='flex items-center'>
-        Resume
-        <Download strokeWidth={2} size={20} className='ml-2'/>
-      </a>
-      <a className='flex items-center' href="https://www.linkedin.com/in/phuykong-meng/" target="_blank">
-        Linked In
-        <TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>
-      </a>
-      <a className='flex items-center' href="https://github.com/M-Phuykong" target="_blank">
-        Github
-        <TriangleRightFill strokeWidth={2} size={20} className='ml-1'/>
-      </a>
-      <a className='flex items-center'>
-        Email
-        <TriangleRightFill strokeWidth={2} size={20} className='ml-1'/>
-      </a>
+      <ProfileLinkItem
+      text='Resume'
+      icon={<Download strokeWidth={2} size={20} className='ml-2'/>}
+      />
+      <ProfileLinkItem
+      text='Linked In'
+      icon={<TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>}
+      link = "https://www.linkedin.com/in/phuykong-meng/"
+      />
+      <ProfileLinkItem
+      text='Github'
+      icon={<TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>}
+      link="https://github.com/M-Phuykong"
+      />
+      <ProfileLinkItem
+      text='Email'
+      icon={<TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>}
+      />
     </div>
     )
 }
@@ -175,7 +189,7 @@ function  Accordion(
             </motion.span>
       </motion.header>
 
-      <AnimatePresence mode='wait'>
+      <AnimatePresence initial={false} mode='wait'>
         {isOpen && (
           <motion.section
             key="content"
@@ -187,7 +201,7 @@ function  Accordion(
               open: { opacity: 1, height: "auto"},
               collapsed: { opacity: 0, height: 0}
             }}
-            transition={{ duration: 1.5, ease: [0.04, 0.62, 0.23, 0.98] }}
+            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
             style={{order: order}}
           >
             {children}
@@ -291,7 +305,6 @@ export default function DesktopLayout() {
           <ProfileDescription theme={theme} />
 
           <ProfileLink theme={theme} />
-
         </div>
 
         <div
@@ -321,8 +334,8 @@ export default function DesktopLayout() {
               title="PUBLICATIONS"
               theme={theme}
               order = {0} >
-                <div style={{color: theme.text_color}}>
-                  Thai, B., McNicholas, S., Shalamzari, S. S., Meng, P., & Picone, J. (2023). Towards a More Extensible Machine Learning Demonstration Tool. Proceedings of the IEEE Signal Processing in Medicine and Biology Symposium, 1–4. (Download).
+                <div className='text-left' style={{color: theme.text_color}}>
+                  Thai, B., McNicholas, S., Shalamzari, S. S., Meng, P., & Picone, J. (2023). Towards a More Extensible Machine Learning Demonstration Tool. Proceedings of the IEEE Signal Processing in Medicine and Biology Symposium, 1–4.
                 </div>
             </Accordion>
         </div>
