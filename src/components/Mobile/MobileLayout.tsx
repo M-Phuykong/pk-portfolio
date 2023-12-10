@@ -70,7 +70,7 @@ export default function MobileLayout({}: Props) {
             key = "main_container"
             className="relative">
 
-              <motion.div>
+              <motion.div style={{color: theme.main_color}}>
                 <ThemeDropdown />
               </motion.div>
 
