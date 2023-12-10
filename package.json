@@ -43,6 +43,7 @@
     "hsl-to-hex": "^1.0.0",
     "pixi.js": "^7.1.0",
     "react": "^18.2.0",
+    "react-animated-cursor": "^2.11.2",
     "react-dom": "^18.2.0",
     "react-dotenv": "^0.1.3",
     "react-responsive": "^9.0.2",

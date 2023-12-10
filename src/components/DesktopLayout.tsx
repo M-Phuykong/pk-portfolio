@@ -165,16 +165,25 @@ function  Accordion(
 
   const isOpen = i === expanded;
 
+
   // By using `AnimatePresence` to mount and unmount the contents, we can animate
   // them in and out while also only rendering the contents of open accordions
   return (
     <>
-      <motion.header initial={false}
-        animate={{ color: isOpen ? theme.main_color : theme.main_color }}
+      <motion.header
+        style={{color: theme.main_color}}
         onClick={() => setExpanded(isOpen ? false : i)}
+
+        variants={{
+          open: { scale: 1, top: i * 100 + 100},
+          collapsed: { scale: 0, top: -100 * i}
+        }}
+        initial="collapsed"
+        animate="open"
+
         className='flex items-center justify-between
         text-5xl 2xl:text-5xl
-        font-bold '>
+        font-bold'>
 
             {title}
 
@@ -189,10 +198,11 @@ function  Accordion(
             </motion.span>
       </motion.header>
 
-      <AnimatePresence initial={false} mode='wait'>
+      <AnimatePresence mode='wait'>
         {isOpen && (
           <motion.section
             key="content"
+
             initial="collapsed"
             animate="open"
             exit="collapsed"
@@ -203,6 +213,7 @@ function  Accordion(
             }}
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
             style={{order: order}}
+            className='overflow-y-scroll max-h-[20rem] 2xl:max-h-[30rem]'
           >
             {children}
           </motion.section>
@@ -307,8 +318,17 @@ export default function DesktopLayout() {
           <ProfileLink theme={theme} />
         </div>
 
-        <div
-        className='flex flex-1 flex-col text-center h-fit justify-center'>
+        <motion.div
+        variants= {{
+          open: {
+              transition: {
+                  staggerChildren: 200,
+                  delayChildren: 100,
+              }
+            }
+        }}
+        animate="open"
+        className='flex flex-1 flex-col text-center h-fit justify-center overflow-hidden'>
 
             <Accordion i = {0}
             expanded={expanded}
@@ -338,7 +358,7 @@ export default function DesktopLayout() {
                   Thai, B., McNicholas, S., Shalamzari, S. S., Meng, P., & Picone, J. (2023). Towards a More Extensible Machine Learning Demonstration Tool. Proceedings of the IEEE Signal Processing in Medicine and Biology Symposium, 1–4.
                 </div>
             </Accordion>
-        </div>
+        </motion.div>
 
       </motion.div>
 

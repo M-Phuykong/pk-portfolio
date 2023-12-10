@@ -165,7 +165,8 @@ const projectsItems = [
         html_url: "https://isip.piconepress.com/",
         description: "I created a website from scratch for the research lab \"ISIP Picone Press.\" The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
         language: "HTML / CSS / Javascript"
-    }
+    },
+
 
 ]
 
