@@ -5,7 +5,7 @@ interface Props {
     children ?: React.ReactNode;
 }
 
-interface Theme {
+export interface Theme {
         "name": string,
         "background": string,
         "main_color": string,

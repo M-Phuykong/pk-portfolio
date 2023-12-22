@@ -14,6 +14,7 @@ import ThemeDropdown from './ThemeDropdown'
 import Footer from './Footer'
 import ProjectCards from './ProjectCards'
 import ExperienceMenu from './ExperienceMenu'
+import AnimatedCursor from "react-animated-cursor"
 
 // Hook
 import { useTheme } from '../context/ThemeContext'
@@ -274,6 +275,20 @@ export default function DesktopLayout() {
     flex-col
     '
     >
+      <AnimatedCursor
+            innerSize={8}
+            outerSize={35}
+            innerScale={1}
+            outerScale={2}
+            outerAlpha={0}
+            hasBlendMode={true}
+            innerStyle={{
+              backgroundColor: theme.main_color,
+            }}
+            outerStyle={{
+              border: `3px solid ${theme.text_color}`
+            }}/>
+
       <div
       style={{color: theme.main_color}}
       className='basis-10 p-3'>

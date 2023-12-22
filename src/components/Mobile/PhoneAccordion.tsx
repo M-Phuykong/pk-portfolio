@@ -3,7 +3,9 @@ import {motion, AnimatePresence, usePresence, color, LayoutGroup} from "framer-m
 
 import { GithubFill, LinkedinBoxFill, File, CircleChevronRightFill } from 'akar-icons'
 
-import { useTheme } from '../../context/ThemeContext'
+import { useTheme, Theme } from '../../context/ThemeContext'
+
+import type { Icon } from 'akar-icons';
 
 import "../../styles/mobileLayout.scss"
 
@@ -98,11 +100,72 @@ export const Accordion = ({ i, expanded, setExpanded, children, title } : Accord
     );
 };
 
+const ProjectSingle = ({data, icon, theme} : {data : any, icon: any, theme: Theme}) => {
+
+    return (
+        <div className="leading-tight font-medium text-base my-5">
+            <div className="flex" style={{ color: theme.main_color }}>
+                {data.name} <br />
+                <a className='w-fit' href={data.html_url} target="_blank" onClick={(e) => e.stopPropagation()}>
+                    {icon}
+                </a>
+            </div>
+
+            <div className="pt-1 text-sm leading-snug font-normal">
+                {data.description}
+            </div>
+        </div>
+        )
+}
+
+
+const projectsItems = [
+    {
+        id: 0,
+        name: "pk-portfolio",
+        html_url: "https://github.com/M-Phuykong/pk-portfolio",
+        description: "Personal Portfolio",
+        language: "TypeScript"
+    },
+    {
+        id: 1,
+        name: "TokiniAndyBot",
+        html_url: "https://github.com/M-Phuykong/TokiniAndyBot",
+        description: "A discord bot that manages the server like setting up weekly time schedule for the TokiniAndy Discord Server which focuses on Japanese Learning.",
+        language: "Python"
+    },
+    {
+        id: 2,
+        name: "Synthboard",
+        html_url: "https://github.com/M-Phuykong/synthboard-react",
+        description: "Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and \
+                        artists that allow the user to customize their date range with a twist of physics rendering and 90s inspired \
+                        theme. I started this project as I wanted to be comfortable with REST API, React Framework and interactive \
+                        user experience.",
+        language: "TypeScript"
+    },
+    {
+        id: 3,
+        name: "Fit-tastic (OwlHacks 2023)",
+        html_url: "https://github.com/M-Phuykong/OwlHack2023",
+        description: "Developed a website that promotes healthy eating habits by providing them with various shopping list, meal suggestions and recipes based on their current ingredients. Winner for the Best Health and Wellness category.",
+        language: "Javascript"
+    },
+    {
+        id: 4,
+        name: "ISIP Picone Press Website",
+        html_url: "https://isip.piconepress.com/",
+        description: "Created a website from scratch for ISIP Picone Press Research Lab. The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
+        language: "HTML / CSS / Javascript"
+    },
+]
+
 export const PhoneAccordion = () => {
 
     const [expanded, setExpanded] = useState<false | number>(1);
     const [expanded1, setExpanded1] = useState<false | number>(false);
     const [expanded2, setExpanded2] = useState<false | number>(false);
+    const [expanded3, setExpanded3] = useState<false | number>(false);
     const { theme, updateTheme } = useTheme();
 
     return (
@@ -116,7 +179,7 @@ export const PhoneAccordion = () => {
                 </div>
             </Accordion>
 
-            <Accordion title="Experience"
+            <Accordion title="Experiences"
             i={2} expanded={expanded1} setExpanded={setExpanded1}>
                 <div className="pb-5">
                     <div className="leading-tight font-medium text-base text-gray-950">
@@ -183,8 +246,20 @@ export const PhoneAccordion = () => {
             <Accordion title="Projects"
             i={3} expanded={expanded2} setExpanded={setExpanded2}>
                 <div className="pb-5">
-                    <div className="leading-tight font-medium text-base">
 
+                    {
+                        projectsItems.map((project) => (
+
+                            <ProjectSingle
+                            data={project}
+                            icon= {
+                            <GithubFill strokeWidth={2} size={20} className="ml-2"/>
+                            }
+                            theme={theme}/>
+                        ))
+                    }
+{/*
+                    <div className="leading-tight font-medium text-base">
                         <div className="flex" style={{ color: theme.main_color }}>
                             E-Commerce Store <br />
                             <a className='w-fit' href="https://github.com/M-Phuykong/Aesthetique-Trend-Frontend" target="_blank" onClick={(e) => e.stopPropagation()}>
@@ -248,6 +323,15 @@ export const PhoneAccordion = () => {
                             based on their current ingredients. Winner for the Best Health and Wellness
                             category.
                         </div>
+                    </div> */}
+                </div>
+            </Accordion>
+
+            <Accordion title="Publications"
+            i={4} expanded={expanded3} setExpanded={setExpanded3}>
+                <div className="pb-5">
+                    <div className="pt-1 text-sm leading-snug font-normal">
+                        Thai, B., McNicholas, S., Shalamzari, S. S., Meng, P., & Picone, J. (2023). Towards a More Extensible Machine Learning Demonstration Tool. Proceedings of the IEEE Signal Processing in Medicine and Biology Symposium, 1–4.
                     </div>
                 </div>
             </Accordion>
