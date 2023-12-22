@@ -142,32 +142,33 @@ const projectsItems = [
         id: 1,
         name: "TokiniAndyBot",
         html_url: "https://github.com/M-Phuykong/TokiniAndyBot",
-        description: null,
+        description: "A discord bot that manages the server like setting up weekly time schedule for the TokiniAndy Discord Server which focuses on Japanese Learning.",
         language: "Python"
     },
     {
         id: 2,
         name: "Synthboard",
         html_url: "https://github.com/M-Phuykong/synthboard-react",
-        description: null,
+        description: "Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and \
+                        artists that allow the user to customize their date range with a twist of physics rendering and 90s inspired \
+                        theme. I started this project as I wanted to be comfortable with REST API, React Framework and interactive \
+                        user experience.",
         language: "TypeScript"
     },
     {
         id: 3,
         name: "Fit-tastic (OwlHacks 2023)",
         html_url: "https://github.com/M-Phuykong/OwlHack2023",
-        description: null,
+        description: "Developed a website that promotes healthy eating habits by providing them with various shopping list, meal suggestions and recipes based on their current ingredients. Winner for the Best Health and Wellness category.",
         language: "Javascript"
     },
     {
         id: 4,
         name: "ISIP Picone Press Website",
         html_url: "https://isip.piconepress.com/",
-        description: "I created a website from scratch for the research lab \"ISIP Picone Press.\" The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
+        description: "Created a website from scratch for ISIP Picone Press Research Lab. The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
         language: "HTML / CSS / Javascript"
     },
-
-
 ]
 
 export default function ProjectCards() {
