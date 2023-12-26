@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import self_photo from '../images/self_photo.jpg'
 import gsap from 'gsap'
-import { motion, AnimatePresence, LayoutGroup, color } from "framer-motion";
+import { motion, AnimatePresence} from "framer-motion";
 import { Download, TriangleRightFill } from 'akar-icons';
+import { StaticImage } from "gatsby-plugin-image"
 
 import type { Icon } from 'akar-icons';
 
@@ -72,7 +72,6 @@ function ProfileDescription({ theme } : {theme : any}) {
 
   useEffect(() => {
     const tl = gsap.timeline();
-
 
     tl.fromTo(q("span"),
       {autoAlpha: 0},
@@ -311,20 +310,28 @@ export default function DesktopLayout() {
 
         <div
         className='flex flex-1 flex-col gap-10'>
-          <img
-          style={{borderColor: theme.main_color}}
-          src={self_photo}
-          draggable={false}
-          alt="Phuykong_Meng_photo"
-          id="self_photo"
-          className={`
-          2xl:h-56
-          2xl:w-56
-          w-2/5
-          h-2/5
-          self-start
-          border border-solid border-4
-          rounded-full`} />
+
+          <div
+          className='
+          h-56
+          w-56
+          '>
+            <StaticImage
+              src='../images/self_photo.jpg'
+              alt='Phuykong Meng photo'
+              placeholder="blurred"
+              layout='constrained'
+              style={{borderColor: theme.main_color}}
+              className='
+              h-full
+              w-full
+              self-start
+              object-cover
+              border border-solid border-4
+              rounded-full'
+            />
+          </div>
+
 
           <ProfileTitleHeader theme={theme} />
 
