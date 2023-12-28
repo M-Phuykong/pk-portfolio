@@ -250,13 +250,20 @@ const resumeData = [
 export default function DesktopLayout() {
 
   const { theme, updateTheme } = useTheme();
+  const [projectItems, setProjectItems] = useState([])
+
   const [expanded, setExpanded] = useState<false | number>(0);
+
 
   const leftContainer = useRef<React.RefObject<HTMLDivElement>>();
   const rightContainer = useRef<React.RefObject<HTMLDivElement>>();
 
   useEffect(() => {
-
+    fetch('data/projects.json')
+        .then(res => res.json())
+        .then(json => {
+            setProjectItems(json)
+        })
   }, [])
 
   return (
@@ -332,7 +339,6 @@ export default function DesktopLayout() {
             />
           </div>
 
-
           <ProfileTitleHeader theme={theme} />
 
           <ProfileDescription theme={theme} />
@@ -367,7 +373,7 @@ export default function DesktopLayout() {
               title="PROJECTS"
               theme={theme}
               order = {0} >
-                <ProjectCards />
+                <ProjectCards data = {projectItems}/>
             </Accordion>
 
             <Accordion i = {2}

@@ -82,98 +82,18 @@ function GithubCard({ind, data} : {ind : number, data : any}) {
 }
 
 
-const baseURL = (repo : string) => {
-    return `https://api.github.com/repos/M-Phuykong/${repo}`
+interface ProjectInterface extends Object {
+    id: number;
+    name: string;
+    description: string;
+    language: string;
+    html_url: string;
 }
 
-function ProjectList() {
-    const [repoData, setRepoData] = useState<any>([]);
+export default function ProjectCards({data} : {data : [ProjectInterface]}) {
 
-    //TODO: remove token and add to env file
-    const repos = [
-        baseURL("pk-portfolio"),
-        baseURL("TokiniAndyBot"),
-        baseURL("synthboard-react"),
-        baseURL("OwlHack2023"),
-        baseURL("Hamming_Code_Correction_Detection"),
-    ]
+    const [items, setItems] = useState<ProjectInterface[]>(data)
 
-        function fetchRepo(repo: string) {
-        fetch(repo, {
-            headers: {
-                'Authorization': `token ${process.env.GITHUB_ACCESS_TOKEN}`
-            }
-        })
-        .then(res => res.json())
-        .then(json =>
-            setRepoData((prevData : any) => [...prevData, json])
-        )
-
-        .catch(error => {
-            console.log(error);
-        });
-
-    }
-
-    useEffect(() => {
-        repos.forEach((repo) => fetchRepo(repo))
-    }, [])
-
-    return (
-        <>
-            {
-                repoData.map((data: any, ind : number) => {
-                    return <GithubCard key={ind} ind={ind} data={data} />
-                })
-            }
-        </>
-        )
-}
-
-const projectsItems = [
-    {
-        id: 0,
-        name: "pk-portfolio",
-        html_url: "https://github.com/M-Phuykong/pk-portfolio",
-        description: "Personal Portfolio",
-        language: "TypeScript"
-    },
-    {
-        id: 1,
-        name: "TokiniAndyBot",
-        html_url: "https://github.com/M-Phuykong/TokiniAndyBot",
-        description: "A discord bot that manages the server like setting up weekly time schedule for the TokiniAndy Discord Server which focuses on Japanese Learning.",
-        language: "Python"
-    },
-    {
-        id: 2,
-        name: "Synthboard",
-        html_url: "https://github.com/M-Phuykong/synthboard-react",
-        description: "Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and \
-                        artists that allow the user to customize their date range with a twist of physics rendering and 90s inspired \
-                        theme. I started this project as I wanted to be comfortable with REST API, React Framework and interactive \
-                        user experience.",
-        language: "TypeScript"
-    },
-    {
-        id: 3,
-        name: "Fit-tastic (OwlHacks 2023)",
-        html_url: "https://github.com/M-Phuykong/OwlHack2023",
-        description: "Developed a website that promotes healthy eating habits by providing them with various shopping list, meal suggestions and recipes based on their current ingredients. Winner for the Best Health and Wellness category.",
-        language: "Javascript"
-    },
-    {
-        id: 4,
-        name: "ISIP Picone Press Website",
-        html_url: "https://isip.piconepress.com/",
-        description: "Created a website from scratch for ISIP Picone Press Research Lab. The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
-        language: "HTML / CSS / Javascript"
-    },
-]
-
-export default function ProjectCards() {
-
-    const [items, setItems] = useState(projectsItems)
     return (
         <Reorder.Group
         axis='y'

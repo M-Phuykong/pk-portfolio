@@ -1,16 +1,16 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { GithubFill, LinkedinBoxFill, File } from 'akar-icons'
+import { StaticImage } from "gatsby-plugin-image"
 
 // Components
 import { PhoneAccordion } from './PhoneAccordion'
 import ThemeDropdown from '../ThemeDropdown'
 
-// Hook
+// Context
 import { useTheme } from '../../context/ThemeContext'
 
 // Resources
-import self_photo from "../../images/self_photo.jpg"
 import resume from "../../download/Phuykong_Meng_Resume.pdf"
 
 // Styles
@@ -19,6 +19,7 @@ import "../../styles/mobileLayout.scss"
 export default function MobileLayout({}: Props) {
 
   const { theme, updateTheme } = useTheme();
+
 
   const variant = {
     hidden: {
@@ -85,14 +86,21 @@ export default function MobileLayout({}: Props) {
 
               key = "photo_container"
               id='photo_container'>
-                <img src={self_photo}
-                          alt="Phuykong_Meng_photo"
-                          className="
-                          h-32
-                          w-auto
-                          border border-solid border-black dark:border-white border-4
-                          shadow-xl
-                          rounded-full" />
+
+                <StaticImage
+                      src='../../images/self_photo.jpg'
+                      alt='Phuykong Meng photo'
+                      placeholder="blurred"
+                      layout='constrained'
+                      style={{borderColor: theme.main_color}}
+                      className='
+                      h-32
+                      w-32
+                      self-start
+                      object-cover
+                      border border-solid border-4
+                      rounded-full'
+                    />
 
               </motion.div>
 
