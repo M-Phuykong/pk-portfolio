@@ -259,7 +259,7 @@ export default function DesktopLayout() {
   const rightContainer = useRef<React.RefObject<HTMLDivElement>>();
 
   useEffect(() => {
-    fetch('data/projects.json')
+    fetch(window.location.origin.toString() + '/data/projects.json')
         .then(res => res.json())
         .then(json => {
             setProjectItems(json)
