@@ -49,12 +49,13 @@ export const Accordion = ({ i, expanded, setExpanded, children, title } : Accord
         style={{
             marginBottom: 25,
             backgroundColor: theme.background,
+            borderColor: theme.text_color,
         }}
         onClick={() => setExpanded(isOpen ? false : i)}
         className='h-[4rem] mb-5 px-5 relative
                 leading-[4rem] text-xl font-bold
-
-                rounded-[10px] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[20px]
+                rounded-[10px]
+                border border-solid
                 '>
         <div className="flex justify-between items-center noselect"
         style={{
@@ -118,48 +119,6 @@ const ProjectSingle = ({data, icon, theme} : {data : any, icon: any, theme: Them
         )
 }
 
-
-const projectsItems = [
-    {
-        id: 0,
-        name: "pk-portfolio",
-        html_url: "https://github.com/M-Phuykong/pk-portfolio",
-        description: "Personal Portfolio",
-        language: "TypeScript"
-    },
-    {
-        id: 1,
-        name: "TokiniAndyBot",
-        html_url: "https://github.com/M-Phuykong/TokiniAndyBot",
-        description: "A discord bot that manages the server like setting up weekly time schedule for the TokiniAndy Discord Server which focuses on Japanese Learning.",
-        language: "Python"
-    },
-    {
-        id: 2,
-        name: "Synthboard",
-        html_url: "https://github.com/M-Phuykong/synthboard-react",
-        description: "Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and \
-                        artists that allow the user to customize their date range with a twist of physics rendering and 90s inspired \
-                        theme. I started this project as I wanted to be comfortable with REST API, React Framework and interactive \
-                        user experience.",
-        language: "TypeScript"
-    },
-    {
-        id: 3,
-        name: "Fit-tastic (OwlHacks 2023)",
-        html_url: "https://github.com/M-Phuykong/OwlHack2023",
-        description: "Developed a website that promotes healthy eating habits by providing them with various shopping list, meal suggestions and recipes based on their current ingredients. Winner for the Best Health and Wellness category.",
-        language: "Javascript"
-    },
-    {
-        id: 4,
-        name: "ISIP Picone Press Website",
-        html_url: "https://isip.piconepress.com/",
-        description: "Created a website from scratch for ISIP Picone Press Research Lab. The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
-        language: "HTML / CSS / Javascript"
-    },
-]
-
 export const PhoneAccordion = () => {
 
     const [expanded, setExpanded] = useState<false | number>(1);
@@ -167,7 +126,17 @@ export const PhoneAccordion = () => {
     const [expanded2, setExpanded2] = useState<false | number>(false);
     const [expanded3, setExpanded3] = useState<false | number>(false);
     const { theme, updateTheme } = useTheme();
+    const [projectItems, setProjectItems] = useState([])
 
+    useEffect(() => {
+        fetch('data/projects.json')
+            .then(res => res.json())
+            .then(json => {
+                setProjectItems(json)
+            })
+
+
+    }, [])
     return (
 
         <div className={'p-5 pt-0 ' + (expanded2 ? "pb-3" : "")}>
@@ -248,7 +217,7 @@ export const PhoneAccordion = () => {
                 <div className="pb-5">
 
                     {
-                        projectsItems.map((project) => (
+                        projectItems.map((project) => (
 
                             <ProjectSingle
                             data={project}
@@ -258,72 +227,6 @@ export const PhoneAccordion = () => {
                             theme={theme}/>
                         ))
                     }
-{/*
-                    <div className="leading-tight font-medium text-base">
-                        <div className="flex" style={{ color: theme.main_color }}>
-                            E-Commerce Store <br />
-                            <a className='w-fit' href="https://github.com/M-Phuykong/Aesthetique-Trend-Frontend" target="_blank" onClick={(e) => e.stopPropagation()}>
-                                <GithubFill strokeWidth={2} size={20} className="
-                                ml-2"/>
-                            </a>
-                        </div>
-
-                        <div className="pt-1 text-sm leading-snug font-normal">
-                            A full-stack online store using Vue JS Framework utilizing MongoDB as the database. Created a REST
-                            API with Express JS that simplified data retrieval and update from and to the database.
-                        </div>
-                    </div>
-
-                    <div className="leading-tight font-medium text-base pt-5">
-
-                        <div className="flex"
-                        style={{color: theme.main_color}}>
-                            Synthboard <br/>
-
-                            <a className='w-fit' href="https://github.com/M-Phuykong/synthboard-react" target="_blank" onClick={(e) => e.stopPropagation()}>
-                                <GithubFill strokeWidth={2} size={20} className="
-                                ml-2"/>
-                            </a>
-                        </div>
-
-                        <div className="pt-1 text-sm leading-snug font-normal">
-                            Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and
-                            artists that allow the user to customize their date range with a twist of physics rendering and 90s inspired
-                            theme. I started this project as I wanted to be comfortable with REST API, React Framework and interactive
-                            user experience.
-                        </div>
-                    </div>
-
-                    <div className="leading-tight font-medium text-base pt-5">
-
-                        <div className="flex"
-                        style={{color: theme.main_color}}>
-                            CUDA Signal Resampling <br/>
-                        </div>
-
-                        <div className="pt-1 text-sm leading-snug font-normal">
-                            Built a signal resampling tool in C++ with the CUDA API to utilize the GPU computation powers.
-                        </div>
-                    </div>
-
-                    <div className="leading-tight font-medium text-base pt-5 pb-3">
-
-                        <div className="flex" style={{color: theme.main_color}}>
-                            OwlHack 2023 Winner <br/>
-
-                            <a className='w-fit' href="https://github.com/M-Phuykong/OwlHack2023" target="_blank" onClick={(e) => e.stopPropagation()}>
-                                <GithubFill strokeWidth={2} size={20} className="
-                                ml-2"/>
-                            </a>
-                        </div>
-
-                        <div className="pt-1 text-sm leading-snug font-normal">
-                            Developed a website that promotes healthy eating habits
-                            by providing them with various shopping list, meal suggestions and recipes
-                            based on their current ingredients. Winner for the Best Health and Wellness
-                            category.
-                        </div>
-                    </div> */}
                 </div>
             </Accordion>
 
