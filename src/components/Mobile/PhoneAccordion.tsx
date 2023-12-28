@@ -7,6 +7,7 @@ import { useTheme, Theme } from '../../context/ThemeContext'
 
 import type { Icon } from 'akar-icons';
 
+
 import "../../styles/mobileLayout.scss"
 
 interface AccordionProps {
@@ -129,7 +130,8 @@ export const PhoneAccordion = () => {
     const [projectItems, setProjectItems] = useState([])
 
     useEffect(() => {
-        fetch('data/projects.json')
+
+        fetch(window.location.origin.toString() + '/data/projects.json')
             .then(res => res.json())
             .then(json => {
                 setProjectItems(json)
@@ -137,6 +139,7 @@ export const PhoneAccordion = () => {
 
 
     }, [])
+
     return (
 
         <div className={'p-5 pt-0 ' + (expanded2 ? "pb-3" : "")}>
@@ -215,7 +218,6 @@ export const PhoneAccordion = () => {
             <Accordion title="Projects"
             i={3} expanded={expanded2} setExpanded={setExpanded2}>
                 <div className="pb-5">
-
                     {
                         projectItems.map((project) => (
 
