@@ -15,21 +15,13 @@ export interface Theme {
 };
 
 const themeMap: { [key: string] : Theme} = {
-    "bento": {
-        "name": "bento",
-        "background": "#2d394d",
-        "main_color": "#ff7a90",
-        "sub_color": "#4a768d",
-        "sub_alt_color": "#263041",
-        "text_color": "#fffaf8"
-    },
-    "darling": {
-        "name": "darling",
-        "background": "#fec8cd",
-        "main_color": "#a30000",
-        "sub_color": "#ffffff",
-        "sub_alt_color": "#f2babd",
-        "text_color": "#ffffff"
+    "8008": {
+        "name": "8008",
+        "background": "#333a45",
+        "main_color": "#f44c7f",
+        "sub_color": "#939eae",
+        "sub_alt_color": "#000000",
+        "text_color": "#e9ecf0"
     },
     "aether": {
         "name": "aether",
@@ -39,6 +31,22 @@ const themeMap: { [key: string] : Theme} = {
         "sub_alt_color": "#292136",
         "text_color": "#eedaea"
     },
+    "bento": {
+        "name": "bento",
+        "background": "#2d394d",
+        "main_color": "#ff7a90",
+        "sub_color": "#4a768d",
+        "sub_alt_color": "#263041",
+        "text_color": "#fffaf8"
+    },
+    "cyberspace": {
+        "name": "cyberspace",
+        "background": "#181c18",
+        "main_color": "#00ce7c",
+        "sub_color": "#9578d3",
+        "sub_alt_color": "#131613",
+        "text_color": "#c2fbe1"
+    },
     "dark magic girl": {
         "name": "dark magic girl",
         "background": "#091f2c",
@@ -47,6 +55,22 @@ const themeMap: { [key: string] : Theme} = {
         "sub_alt_color": "#071823",
         "text_color": "#a299d9"
     },
+    "darling": {
+        "name": "darling",
+        "background": "#fec8cd",
+        "main_color": "#a30000",
+        "sub_color": "#ffffff",
+        "sub_alt_color": "#f2babd",
+        "text_color": "#ffffff"
+    },
+    "milkshake": {
+        "name": "milkshake",
+        "background": "#ffffff",
+        "main_color": "#212b43",
+        "sub_color": "#62cfe6",
+        "sub_alt_color": "#ddeff3",
+        "text_color": "#212b43"
+    },
     "thai tea": {
         "name": "thai tea",
         "background": "#fce0c0",
@@ -54,6 +78,14 @@ const themeMap: { [key: string] : Theme} = {
         "sub_color": "#412533",
         "sub_alt_color": "#3f2432",
         "text_color": "#412533"
+    },
+    "vscode": {
+        "name": "vscode",
+        "background": "#1e1e1e",
+        "main_color": "#007acc",
+        "sub_color": "#4d4d4d",
+        "sub_alt_color": "#191919",
+        "text_color": "#d4d4d4"
     }
 }
 
