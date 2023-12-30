@@ -3,7 +3,6 @@ import gsap from 'gsap'
 import { motion, AnimatePresence} from "framer-motion";
 import { Download, TriangleRightFill } from 'akar-icons';
 import { StaticImage } from "gatsby-plugin-image"
-
 import type { Icon } from 'akar-icons';
 
 import "../styles/index.scss"
@@ -16,9 +15,12 @@ import ProjectCards from './ProjectCards'
 import ExperienceMenu from './ExperienceMenu'
 import AnimatedCursor from "react-animated-cursor"
 
-// Hook
+// hook
 import { useTheme } from '../context/ThemeContext'
 
+// data
+import projectsData from '../data/projects.json'
+import resume from "../download/Phuykong_Meng_Resume.pdf"
 
 function ProfileTitleHeader({ theme } : {theme : any}) {
 
@@ -132,10 +134,11 @@ function ProfileLink({ theme } : {theme : any}) {
     <div ref={container} style={{color: theme.main_color}}
     className='flex gap-10
       text-sm 2xl:text-sm'>
-      <ProfileLinkItem
-      text='Resume'
-      icon={<Download strokeWidth={2} size={20} className='ml-2'/>}
-      />
+
+      <a className='flex items-center' download="Phuykong Meng Resume" href={resume}  target='_blank'>
+        Resume <Download strokeWidth={2} size={20} className='ml-2'/>
+      </a>
+
       <ProfileLinkItem
       text='Linked In'
       icon={<TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>}
@@ -146,10 +149,11 @@ function ProfileLink({ theme } : {theme : any}) {
       icon={<TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>}
       link="https://github.com/M-Phuykong"
       />
-      <ProfileLinkItem
-      text='Email'
-      icon={<TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>}
-      />
+
+      <a className='flex items-center' href='mailto: m.phuykong@gmail.com' target='_blank'>
+        Email <TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>
+      </a>
+
     </div>
     )
 }
@@ -258,13 +262,6 @@ export default function DesktopLayout() {
   const leftContainer = useRef<React.RefObject<HTMLDivElement>>();
   const rightContainer = useRef<React.RefObject<HTMLDivElement>>();
 
-  useEffect(() => {
-    fetch(window.location.origin.toString() + '/data/projects.json')
-        .then(res => res.json())
-        .then(json => {
-            setProjectItems(json)
-        })
-  }, [])
 
   return (
     <div
@@ -373,7 +370,7 @@ export default function DesktopLayout() {
               title="PROJECTS"
               theme={theme}
               order = {0} >
-                <ProjectCards data = {projectItems}/>
+                <ProjectCards data = {projectsData}/>
             </Accordion>
 
             <Accordion i = {2}
