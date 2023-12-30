@@ -5,8 +5,8 @@ import { GithubFill, LinkedinBoxFill, File, CircleChevronRightFill } from 'akar-
 
 import { useTheme, Theme } from '../../context/ThemeContext'
 
-import type { Icon } from 'akar-icons';
-
+// Data
+import projectsData from '../../data/projects.json'
 
 import "../../styles/mobileLayout.scss"
 
@@ -127,18 +127,6 @@ export const PhoneAccordion = () => {
     const [expanded2, setExpanded2] = useState<false | number>(false);
     const [expanded3, setExpanded3] = useState<false | number>(false);
     const { theme, updateTheme } = useTheme();
-    const [projectItems, setProjectItems] = useState([])
-
-    useEffect(() => {
-
-        fetch(window.location.origin.toString() + '/data/projects.json')
-            .then(res => res.json())
-            .then(json => {
-                setProjectItems(json)
-            })
-
-
-    }, [])
 
     return (
 
@@ -219,7 +207,7 @@ export const PhoneAccordion = () => {
             i={3} expanded={expanded2} setExpanded={setExpanded2}>
                 <div className="pb-5">
                     {
-                        projectItems.map((project) => (
+                        projectsData.map((project) => (
 
                             <ProjectSingle
                             data={project}
