@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
-import {motion, AnimatePresence, usePresence, color, LayoutGroup} from "framer-motion"
+import {motion, AnimatePresence} from "framer-motion"
 
-import { GithubFill, LinkedinBoxFill, File, CircleChevronRightFill } from 'akar-icons'
+import { GithubFill, LinkedinBoxFill, CircleChevronRightFill } from 'akar-icons'
 
 import { useTheme, Theme } from '../../context/ThemeContext'
 
-// Data
+// data
 import projectsData from '../../data/projects.json'
+import experiencesData from '../../data/experiences.json'
 
+// style
 import "../../styles/mobileLayout.scss"
 
 interface AccordionProps {
@@ -16,6 +18,21 @@ interface AccordionProps {
     setExpanded: React.Dispatch<React.SetStateAction<number | false>>,
     children: React.ReactNode,
     title: string,
+}
+
+interface ProjectDataInterface {
+    id: number,
+    name: string,
+    html_url: string,
+    description: string,
+    language: string
+}
+
+interface ExperienceDataInterface {
+    company: string,
+    position: string,
+    period: string,
+    details: string[]
 }
 
 export const Accordion = ({ i, expanded, setExpanded, children, title } : AccordionProps) => {
@@ -102,7 +119,7 @@ export const Accordion = ({ i, expanded, setExpanded, children, title } : Accord
     );
 };
 
-const ProjectSingle = ({data, icon, theme} : {data : any, icon: any, theme: Theme}) => {
+const ProjectSingle = ({data, icon, theme} : {data : ProjectDataInterface, icon: any, theme: Theme}) => {
 
     return (
         <div className="leading-tight font-medium text-base my-5">
@@ -118,6 +135,36 @@ const ProjectSingle = ({data, icon, theme} : {data : any, icon: any, theme: Them
             </div>
         </div>
         )
+}
+
+const ExperienceSingle = ({data, theme} : {data : ExperienceDataInterface, theme: Theme}) => {
+
+        return (
+                <div className="pb-5">
+                    <div className="leading-tight font-medium text-base text-gray-950">
+                        <span style={{
+                            color: theme.text_color,
+                        }}>
+                            {data.position} @ {data.company} <br/>
+                        </span>
+                        <span className="text-sm" style={{color: theme.main_color}}>
+                            {data.period}
+                        </span>
+                    </div>
+
+                    <ul className="list-disc p-5 pt-2 pb-0 text-sm leading-snug">
+
+                        {data.details.map((detail: string) => (
+                            <li>
+                                <span className="font-normal">
+                                    {detail}
+                                </span>
+                            </li>
+                        ))}
+
+                    </ul>
+                </div>
+            )
 }
 
 export const PhoneAccordion = () => {
@@ -141,66 +188,14 @@ export const PhoneAccordion = () => {
 
             <Accordion title="Experiences"
             i={2} expanded={expanded1} setExpanded={setExpanded1}>
-                <div className="pb-5">
-                    <div className="leading-tight font-medium text-base text-gray-950">
-                        <span style={{
-                            color: theme.text_color,
-                        }}>
-                            Software Developer @ NEDC <br/>
-                        </span>
-                        <span className="text-sm" style={{color: theme.main_color}}>
-                            Aug 2021 - Present
-                        </span>
-                    </div>
 
-                    <ul className="list-disc p-5 pt-2 pb-0 text-sm leading-snug">
-                        <li>
-                            <span className="font-normal">
-                                Developed a common data structure using Python that unifies several input data into one, which cuts down development time by half and improved code maintainability and reusability
-                            </span>
-                        </li>
-                        <li>
-                            <span className="font-normal">
-                                Supervised 3 team members with weekly standup and code reviews using emails and Zoom, speeding up progress and maintaining the group’s standard.
-                            </span>
-                        </li>
-                        <li>
-                            <span className="font-normal">
-                                Evaluated, and refactored two machine learning systems for production to ensure results reproducibility on other machines.
-                            </span>
-                        </li>
-                        <li>
-                            <span className="font-normal">
-                                Redesigned, and built the main webpage using Figma, HTML, CSS, and Javascript,  which improved users flow and content organization.
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-                <div className="pb-5">
-                    <div className="leading-tight font-medium text-base text-gray-950">
-                        <span style={{
-                            color: theme.text_color,
-                        }}>
-                            SD Intern @ Strados Labs <br/>
-                        </span>
-                        <span className="text-sm" style={{color: theme.main_color}}>
-                            June 2023 - August 2023
-                        </span>
-                    </div>
-
-                    <ul className="list-disc p-5 pt-2 pb-0 text-sm leading-snug">
-                        <li>
-                            <span className="font-normal">
-                                Created a web application using HTML, SCSS, Javascript, D3.js that visualizes UMAP data mapping which cuts down QA time by 50%
-                            </span>
-                        </li>
-                        <li>
-                            <span className="font-normal">
-                                Integrated API calls to the backend server which connects to an Amazon S3 bucket that fetches and uploads files, adding a layer of security in protecting patients’ data
-                            </span>
-                        </li>
-                    </ul>
-                </div>
+                {
+                    experiencesData.map((experience) => (
+                        <ExperienceSingle
+                        data={experience}
+                        theme={theme}/>
+                    ))
+                }
             </Accordion>
 
             <Accordion title="Projects"

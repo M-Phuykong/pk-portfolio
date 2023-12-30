@@ -1,0 +1,22 @@
+[
+    {
+        "company" : "NEDC",
+        "position" : "Software Developer",
+        "period" : "Aug 2021 - Present",
+        "details": [
+        "Developed a common data structure using Python that unifies several input data into one, which cuts down development time by half and improved code maintainability and reusability",
+        "Supervised 3 team members with weekly standup and code reviews using emails and Zoom, speeding up progress and maintaining the group’s standard",
+        "Evaluated, and refactored two machine learning systems for production to ensure results reproducibility on other machines",
+        "Redesigned, and built the main webpage using Figma, HTML, CSS, and Javascript,  which improved users flow and content organization"
+        ]
+    },
+        {
+        "company" : "Strados Labs",
+        "position" : "Software Developer Intern",
+        "period" : "June 2023 - August 2023",
+        "details": [
+        "Created a web application using HTML, SCSS, Javascript, D3.js that visualizes UMAP data mapping which cuts down QA time by 50%",
+        "Integrated API calls to the backend server which connects to an Amazon S3 bucket that fetches and uploads files, adding a layer of security in protecting patients’ data"]
+    }
+
+]
