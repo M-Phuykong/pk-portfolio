@@ -145,7 +145,7 @@ function ProfileLink({ theme } : {theme : any}) {
       icon={<TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>}
       link = "https://www.linkedin.com/in/phuykong-meng/"
       />
-      
+
       <ProfileLinkItem
       text='Github'
       icon={<TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>}
@@ -160,7 +160,7 @@ function ProfileLink({ theme } : {theme : any}) {
     )
 }
 
-function  Accordion(
+function Accordion(
   { i,
     expanded,
     setExpanded,
@@ -228,6 +228,7 @@ function  Accordion(
     </>
   );
 };
+
 
 export default function DesktopLayout() {
 
@@ -358,7 +359,11 @@ export default function DesktopLayout() {
               theme={theme}
               order = {0} >
                 <div className='text-left' style={{color: theme.text_color}}>
-                  Thai, B., McNicholas, S., Shalamzari, S. S., Meng, P., & Picone, J. (2023). Towards a More Extensible Machine Learning Demonstration Tool. Proceedings of the IEEE Signal Processing in Medicine and Biology Symposium, 1–4.
+                  <a
+                  href='https://ieeexplore.ieee.org/abstract/document/10372731'
+                  target='_blank' >
+                    Thai, B., McNicholas, S., Shalamzari, S. S., Meng, P., & Picone, J. (2023). Towards a More Extensible Machine Learning Demonstration Tool. Proceedings of the IEEE Signal Processing in Medicine and Biology Symposium, 1–4.
+                  </a>
                 </div>
             </Accordion>
         </motion.div>
