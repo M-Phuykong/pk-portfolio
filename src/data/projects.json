@@ -4,34 +4,34 @@
         "name": "pk-portfolio",
         "html_url": "https://github.com/M-Phuykong/pk-portfolio",
         "description": "Personal Portfolio",
-        "language": "ReactJS / Gatsby /TypeScript"
+        "language": "ReactJS / Gatsby / TypeScript"
     },
     {
         "id": 1,
+        "name": "ISIP Picone Press Website",
+        "html_url": "https://isip.piconepress.com/",
+        "description": "Created a website from scratch for ISIP Picone Press Research Lab. The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
+        "language": "HTML / CSS / JavaScript"
+    },
+    {
+        "id": 2,
         "name": "TokiniAndyBot",
         "html_url": "https://github.com/M-Phuykong/TokiniAndyBot",
         "description": "A Discord bot overseeing the TokiniAndy server (A Japanese learning server) by organizing weekly schedules, greeting new users, etc...",
         "language": "Discord API / Python"
     },
     {
-        "id": 2,
+        "id": 3,
         "name": "Synthboard",
         "html_url": "https://github.com/M-Phuykong/synthboard-react",
         "description": "Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and artists that allow the user to customize their date range with a twist of physics rendering and 90s inspired theme. I started this project as I wanted to be comfortable with REST API, React Framework and interactive user experience.",
         "language": "ReactJS / TypeScript"
     },
     {
-        "id": 3,
+        "id": 4,
         "name": "Fit-tastic (OwlHacks 2023)",
         "html_url": "https://github.com/M-Phuykong/OwlHack2023",
         "description": "Developed a website that promotes healthy eating habits by providing users with various shopping list, meal suggestions and recipes based on their current ingredients. Winner for the Best Health and Wellness category.",
         "language": "ReactJS / JavaScript"
-    },
-    {
-        "id": 4,
-        "name": "ISIP Picone Press Website",
-        "html_url": "https://isip.piconepress.com/",
-        "description": "Created a website from scratch for ISIP Picone Press Research Lab. The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
-        "language": "HTML / CSS / JavaScript"
     }
 ]
