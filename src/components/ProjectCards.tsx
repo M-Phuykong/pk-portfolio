@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import { motion, AnimatePresence, delay, Reorder } from "framer-motion";
+import React, {useState, useEffect, useRef} from 'react'
+import { motion, AnimatePresence, Reorder } from "framer-motion";
+import { GatsbyImage } from "gatsby-plugin-image"
+import gsap from 'gsap';
 
 import { useTheme } from '../context/ThemeContext'
 
@@ -36,7 +38,103 @@ export const dropUpVariants = {
     }
 };
 
-function GithubCard({ind, data} : {ind : number, data : any}) {
+const scaleAnimation = {
+
+    initial: {scale: 0, x:"-50%", y:"-50%"},
+
+    enter: {scale: 1, x:"-50%", y:"-50%", transition: {duration: 0.4, ease: [0.76, 0, 0.24, 1]}},
+
+    closed: {scale: 0, x:"-50%", y:"-50%", transition: {duration: 0.4, ease: [0.32, 0, 0.67, 0]}}
+}
+
+function Modal({modal, projects } : {modal: any, projects: any}) {
+
+    const { active, ind } = modal;
+    const { theme, updateTheme } = useTheme()
+
+    const modalContainer = useRef(null);
+    const cursor = useRef(null);
+    const cursorLabel = useRef(null);
+
+    useEffect( () => {
+        //Move Container
+        let xMoveContainer = gsap.quickTo(modalContainer.current, "left", {duration: 0.8, ease: "power3"})
+        let yMoveContainer = gsap.quickTo(modalContainer.current, "top", {duration: 0.8, ease: "power3"})
+        //Move cursor
+        let xMoveCursor = gsap.quickTo(cursor.current, "left", {duration: 0.5, ease: "power3"})
+        let yMoveCursor = gsap.quickTo(cursor.current, "top", {duration: 0.5, ease: "power3"})
+        //Move cursor label
+        let xMoveCursorLabel = gsap.quickTo(cursorLabel.current, "left", {duration: 0.45, ease: "power3"})
+        let yMoveCursorLabel = gsap.quickTo(cursorLabel.current, "top", {duration: 0.45, ease: "power3"})
+
+        window.addEventListener('mousemove', (e) => {
+        const { pageX, pageY } = e;
+            xMoveContainer(pageX)
+            yMoveContainer(pageY)
+            xMoveCursor(pageX)
+            yMoveCursor(pageY)
+            xMoveCursorLabel(pageX)
+            yMoveCursorLabel(pageY)
+        })
+    }, [])
+
+    return (
+        <>
+            <motion.div
+            ref={modalContainer}
+            className="absolute flex bg-white items-center justify-center
+            pointer-events-none overflow-hidden h-[250px] w-[400px]"
+            variants={scaleAnimation}
+            initial="initial"
+            animate={active ? "enter" : "closed"}>
+
+                <div style={{top: ind * -100 + "%"}}
+                className="absolute transition-[top] duration-[0.5s] ease-[cubic-bezier(0.76,0,0.24,1)];">
+                {
+                    projects.map( (project: any, index: number) => {
+                    console.log(project.img_name)
+                    return <div
+                    className="flex items-center justify-center h-full w-full"
+                    key={`modal_${index}`}>
+
+                        <img
+                        src={`/projects/${project.img_name}`}
+                        alt='project photo'
+                        // placeholder="blurred"
+                        // layout='constrained'
+                        className='h-[250px] w-[400px]'/>
+
+                    </div>
+                    })
+                }
+                </div>
+            </motion.div>
+            <motion.div ref={cursor}
+            style={{
+                color: theme.text_color,
+                background: theme.main_color
+            }}
+            className='w-[80px] h-[80px] rounded-full absolute flex items-center
+            justify-center pointer-events-none z-10 font-bold text-lg'
+            variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}
+            ></motion.div>
+
+            <motion.div ref={cursorLabel}
+            style={{
+                color: theme.text_color,
+                background: theme.main_color
+            }}
+            className='w-[80px] h-[80px] rounded-full absolute flex items-center
+            justify-center pointer-events-none z-10 font-bold text-lg bg-transparent'
+            variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}
+            >
+                    View
+            </motion.div>
+        </>
+    );
+}
+
+function GithubCard({ind, data, setModal} : {ind : number, data : any, setModal: any}) {
 
     const { theme, updateTheme } = useTheme()
 
@@ -53,8 +151,11 @@ function GithubCard({ind, data} : {ind : number, data : any}) {
         min-w-96 p-3 my-2
         border border-solid
         rounded-lg text-start "
-    >
 
+        onMouseEnter={() => setModal({active: true, ind})}
+        onMouseLeave={() => setModal({active: false, ind})}
+
+    >
         <div className='text-base'>
             <svg className='inline-block h-5 w-5 mr-2' viewBox='0 0 16 16'>
                 <path style={{fill: theme.main_color}}
@@ -92,23 +193,29 @@ interface ProjectInterface extends Object {
 
 export default function ProjectCards({data} : {data : [ProjectInterface]}) {
 
-    const [items, setItems] = useState<ProjectInterface[]>(data)
+    const [projects, setProjects] = useState<ProjectInterface[]>(data)
+    const [modal, setModal] = useState({active: false, ind: 0})
 
     return (
-        <Reorder.Group
-        axis='y'
-        values={items}
-        onReorder={setItems}
-        style={{  }}
-        >
-            {items.map((item) => (
-                <GithubCard
-                    key = {item.id}
-                    ind= {item.id}
-                    data={item}
-                />
-            ))}
-        </Reorder.Group>
+        <>
+            <Reorder.Group
+            axis='y'
+            values={projects}
+            onReorder={setProjects}
+            style={{  }}
+            >
+                {projects.map((project) => (
+                    <GithubCard
+                        key = {project.id}
+                        ind= {project.id}
+                        data={project}
+                        setModal={setModal}
+                    />
+                ))}
+            </Reorder.Group>
+
+            <Modal modal={modal} projects={projects}/>
+        </>
 
     );
 }

@@ -91,7 +91,6 @@ const themeMap: { [key: string] : Theme} = {
 
 const initTheme = Object.keys(themeMap)[Math.floor(Math.random() * Object.keys(themeMap).length)];
 
-
 // Type for the context
 // This is basically the type for all the value we're passing down
 // to all the props that are using it
