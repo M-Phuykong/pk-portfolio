@@ -92,18 +92,15 @@ function Modal({modal, projects } : {modal: any, projects: any}) {
                 className="absolute transition-[top] duration-[0.5s] ease-[cubic-bezier(0.76,0,0.24,1)];">
                 {
                     projects.map( (project: any, index: number) => {
-                    console.log(project.img_name)
                     return <div
                     className="flex items-center justify-center h-full w-full"
                     key={`modal_${index}`}>
-
                         <img
                         src={`/projects/${project.img_name}`}
                         alt='project photo'
                         // placeholder="blurred"
                         // layout='constrained'
                         className='h-[250px] w-[400px]'/>
-
                     </div>
                     })
                 }
@@ -128,7 +125,7 @@ function Modal({modal, projects } : {modal: any, projects: any}) {
             justify-center pointer-events-none z-10 font-bold text-lg bg-transparent'
             variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}
             >
-                    View
+                View
             </motion.div>
         </>
     );
@@ -141,7 +138,7 @@ function GithubCard({ind, data, setModal} : {ind : number, data : any, setModal:
     return (
     <Reorder.Item
         value={data}
-        key={data}
+        key={data.id}
 
         style={{
             borderColor: theme.main_color,

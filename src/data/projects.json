@@ -9,6 +9,22 @@
     },
     {
         "id": 1,
+        "name": "X-Fire (Philly Codefest 2024)",
+        "html_url": "https://github.com/timo1k/renren",
+        "description": "Implemented a React Native application using AWS serverless architecture and Twilio integration, featuring live fire detection and push notification alerts for users, with seamless communication to authorities through the app",
+        "language": "React Native / AWS / Twilio",
+        "img_name": "xfire.png"
+    },
+        {
+        "id": 2,
+        "name": "Fit-tastic (OwlHacks 2023)",
+        "html_url": "https://devpost.com/software/fit-tastic",
+        "description": "Developed a website that promotes healthy eating habits by providing users with various shopping list, meal suggestions and recipes based on their current ingredients. Winner for the Best Health and Wellness category.",
+        "language": "ReactJS / JavaScript",
+        "img_name": "fitastic.png"
+    },
+    {
+        "id": 3,
         "name": "ISIP Picone Press Website",
         "html_url": "https://isip.piconepress.com/",
         "description": "Created a website from scratch for ISIP Picone Press Research Lab. The site features valuable research findings and updates. It's a user-friendly platform for sharing their work with the world.",
@@ -16,7 +32,7 @@
         "img_name": "ISIP.png"
     },
     {
-        "id": 2,
+        "id": 4,
         "name": "TokiniAndyBot",
         "html_url": "https://github.com/M-Phuykong/TokiniAndyBot",
         "description": "A Discord bot overseeing the TokiniAndy server (A Japanese learning server) by organizing weekly schedules, greeting new users, etc...",
@@ -24,19 +40,12 @@
         "img_name": "tokiniandy.png"
     },
     {
-        "id": 3,
+        "id": 5,
         "name": "Synthboard",
         "html_url": "https://github.com/M-Phuykong/synthboard-react",
         "description": "Developed a website that utilizes Spotify REST API and React Framework to display the user’s top tracks and artists that allow the user to customize their date range with a twist of physics rendering and 90s inspired theme. I started this project as I wanted to be comfortable with REST API, React Framework and interactive user experience.",
         "language": "ReactJS / TypeScript",
         "img_name": "synthboard.png"
-    },
-    {
-        "id": 4,
-        "name": "Fit-tastic (OwlHacks 2023)",
-        "html_url": "https://devpost.com/software/fit-tastic",
-        "description": "Developed a website that promotes healthy eating habits by providing users with various shopping list, meal suggestions and recipes based on their current ingredients. Winner for the Best Health and Wellness category.",
-        "language": "ReactJS / JavaScript",
-        "img_name": "fitastic.png"
     }
+
 ]

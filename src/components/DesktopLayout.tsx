@@ -91,7 +91,7 @@ function ProfileDescription({ theme } : {theme : any}) {
           lg:text-base
           2xl:text-lg'>
           <span className='invisible'>
-            A junior at Temple University, PA pursuing a degree in Computer Science.
+            A senior at Temple University, PA pursuing a degree in Computer Science.
             I have a keen interest in Machine Language and Front-End Development.
           </span>
       </div>

@@ -152,7 +152,7 @@ export const CardGroup = ({mainParent} : CardGroupInterface) => {
                         id="sub_intro_text_box">
                         <p className="
                         ">
-                            A sophomore at Temple University, PA pursuing a degree Computer Science. <br />
+                            A senior at Temple University, PA pursuing a degree Computer Science. <br />
                             I work as a software developer at the Neural Engineer Data Consortium Research Lab (NEDC).
                         </p>
                     </div>

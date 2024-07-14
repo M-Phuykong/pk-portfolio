@@ -16,7 +16,7 @@ const ThemePill = ({ value, label, color}:{ value: string, label: string, color:
             outlineColor: color.sub_alt_color,
             background  : color.sub_alt_color,
         }}>
-            <div className="w-3 h-3 rounded-full" style={{background: color.background }}></div>
+            <div className="w-3 h-3 rounded-full" style={{background: color.text_color }}></div>
             <div className="w-3 h-3 rounded-full" style={{background: color.main_color }}></div>
             <div className="w-3 h-3 rounded-full" style={{background: color.sub_color }}></div>
         </div>
@@ -67,7 +67,7 @@ export default function ThemeDropdown() {
             styles={{
                 menu: (baseStyles, state) => ({
                     ...baseStyles,
-                    background:  theme.background,
+                    background: theme.background,
                     borderColor: theme.sub_alt_color,
                     borderWidth: '5px',
                     borderStyle: 'solid',

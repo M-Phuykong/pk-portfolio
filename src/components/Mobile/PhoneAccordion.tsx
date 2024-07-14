@@ -182,7 +182,7 @@ export const PhoneAccordion = () => {
             <Accordion title="About Me"
             i={1} expanded={expanded} setExpanded={setExpanded}>
                 <div className="pb-5 text-sm font-normal leading-snug">
-                    A junior at Temple University, PA pursuing a degree in Computer Science. I have a keen interest in Machine Language and Front-End Development.
+                    A senior at Temple University, PA pursuing a degree in Computer Science. I have a keen interest in Machine Language and Front-End Development.
                 </div>
             </Accordion>
 
