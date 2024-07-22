@@ -1,8 +1,15 @@
 [
     {
+        "company" : "Strados Labs",
+        "position" : "Software Developer Intern",
+        "period" : "June 2024 - Present",
+        "details": [
+        "Spearheaded EDA to assess voice detection model performance on speech datasets for speech scrambling. Identified key factors influencing model performance and gained valuable insights into ML model exploration."]
+    },
+    {
         "company" : "NEDC",
         "position" : "Software Developer",
-        "period" : "Aug 2021 - Present",
+        "period" : "Aug 2021 - June 2024",
         "details": [
         "Developed a common data structure using Python that unifies several input data into one, which cuts down development time by half and improved code maintainability and reusability",
         "Supervised 3 team members with weekly standup and code reviews using emails and Zoom, speeding up progress and maintaining the group’s standard",
@@ -10,7 +17,7 @@
         "Redesigned, and built the main webpage using Figma, HTML, CSS, and Javascript,  which improved users flow and content organization"
         ]
     },
-        {
+    {
         "company" : "Strados Labs",
         "position" : "Software Developer Intern",
         "period" : "June 2023 - August 2023",
