@@ -72,12 +72,12 @@ function Divider({ theme } : {theme : any}) {
             className="
             h-[40px] w-full flex relative -top-[20px]
             hover:h-[150px] hover:-top-[75px] z-10
-        "
+            "
             onMouseEnter={() => {manageMouseEnter()}}
             onMouseMove={(e) => {manageMouseMove(e)}}
             onMouseLeave={() => {manageMouseLeave()}}
             ></span>
-            <svg className='absolute w-full -top-[50px] ' >
+            <svg className='absolute w-full -top-[50px]' >
                 <path
                 fill='none'
                 stroke={theme.text_color}

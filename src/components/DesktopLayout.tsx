@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, forwardRef, MouseEventHandler } from 'react'
 import gsap from 'gsap'
 import { motion, AnimatePresence} from "framer-motion";
 import { Download, TriangleRightFill } from 'akar-icons';
@@ -99,17 +99,58 @@ function ProfileDescription({ theme } : {theme : any}) {
     );
 }
 
-function ProfileLinkItem({ text, icon, link } : {text : string, icon: Icon, link: string}) {
+function MagneticButton({children} : {children: any}) {
 
-  return (
-    <a className='flex items-center' href={link} target='_blank'>
-      {text}
-      {icon}
-    </a>
+    const ref = useRef<any>(null);
+    const [position, setPosition] = useState({x:0,y:0});
+
+    const handleMouse = (e: React.MouseEvent) => {
+        const { clientX, clientY } = e;
+        const {height, width, left, top} = ref.current?.getBoundingClientRect();
+        const middleX = clientX - (left + width/2)
+        const middleY = clientY - (top + height/2)
+        setPosition({x: middleX, y: middleY})
+
+    }
+
+    const reset = () => {
+        setPosition({x:0, y:0})
+    }
+
+    const { x, y } = position;
+
+    return (
+        <motion.div
+            className='flex items-center relative w-full'
+            ref={ref}
+            onMouseMove={handleMouse}
+            onMouseLeave={reset}
+            animate={{x, y}}
+            transition={{type: "spring", stiffness: 150, damping: 15, mass: 0.1}}
+        >
+            {children}
+        </motion.div>
     )
 }
 
-function ProfileLink({ theme } : {theme : any}) {
+const ProfileLinkItem = function (props : any) {
+
+    const { text, link, icon} = props;
+
+    return (
+      <div className='flex cursor-pointer'>
+        <a href={link} target='_blank'>
+          <MagneticButton>
+            {text}
+            {icon}
+          </MagneticButton>
+        </a>
+      </div>
+  );
+};
+
+
+function ProfileLink({ theme } : {theme : any}, ref : any) {
 
   const container = useRef(null);
   const q = gsap.utils.selector(container)
@@ -142,8 +183,8 @@ function ProfileLink({ theme } : {theme : any}) {
 
       <ProfileLinkItem
       text='Linked In'
-      icon={<TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>}
       link = "https://www.linkedin.com/in/phuykong-meng/"
+      icon={<TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>}
       />
 
       <ProfileLinkItem
@@ -241,7 +282,7 @@ export default function DesktopLayout() {
   const leftContainer = useRef<React.RefObject<HTMLDivElement>>();
   const rightContainer = useRef<React.RefObject<HTMLDivElement>>();
 
-  console.log("afe", theme)
+
   return (
     <div
     style={{background: theme.background,
@@ -308,7 +349,7 @@ export default function DesktopLayout() {
 
           <ProfileDescription theme={theme} />
 
-          <ProfileLink theme={theme} />
+          <ProfileLink theme={theme}/>
         </div>
 
         <motion.div

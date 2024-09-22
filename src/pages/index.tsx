@@ -24,7 +24,6 @@ const IndexPage: React.FC<PageProps> = () => {
       <ThemeProvider>
 
         <MotionConfig reducedMotion="user">
-
             {isDesktopOrLaptop && <DesktopLayout/>}
             {isTabletOrMobile && <MobileLayout/>}
 
