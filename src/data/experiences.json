@@ -4,7 +4,9 @@
         "position" : "Software Developer Intern",
         "period" : "June 2024 - Present",
         "details": [
-        "Spearheaded EDA to assess voice detection model performance on speech datasets for speech scrambling. Identified key factors influencing model performance and gained valuable insights into ML model exploration."]
+        "Spearheaded EDA to assess voice detection model performance on speech datasets for speech scrambling. Identified key factors influencing model performance and gained valuable insights into ML model exploration.",
+        "Incorporated a Transformer-based model (ViTDet) for cough detection using PyTorch, and evaluated the model’s performance on an internal dataset, achieving a 80% accuracy rate"
+        ]
     },
     {
         "company" : "NEDC",

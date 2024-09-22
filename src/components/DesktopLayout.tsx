@@ -13,6 +13,7 @@ import ThemeDropdown from './ThemeDropdown'
 import Footer from './Footer'
 import ProjectCards from './ProjectCards'
 import ExperienceMenu from './ExperienceMenu'
+import Divider from './Divider';
 
 // hook
 import { useTheme } from '../context/ThemeContext'
@@ -240,7 +241,7 @@ export default function DesktopLayout() {
   const leftContainer = useRef<React.RefObject<HTMLDivElement>>();
   const rightContainer = useRef<React.RefObject<HTMLDivElement>>();
 
-
+  console.log("afe", theme)
   return (
     <div
     style={{background: theme.background,
@@ -302,6 +303,8 @@ export default function DesktopLayout() {
           </div>
 
           <ProfileTitleHeader theme={theme} />
+
+          <Divider theme={theme} />
 
           <ProfileDescription theme={theme} />
 
