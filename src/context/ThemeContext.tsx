@@ -13,6 +13,8 @@ export interface Theme {
         "text_color": string
 };
 
+
+
 const themeMap: { [key: string] : Theme} = {
     "8008": {
         "name": "8008",

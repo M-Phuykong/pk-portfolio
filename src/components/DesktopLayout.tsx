@@ -404,6 +404,7 @@ export default function DesktopLayout() {
       style={{color: theme.main_color}}
       className='basis-10 p-3'>
         <Footer />
+
       </div>
 
     </div>
