@@ -8,8 +8,6 @@ import MobileLayout from "../components/Mobile/MobileLayout";
 
 import { ThemeProvider, useTheme } from "../context/ThemeContext";
 
-
-
 const IndexPage: React.FC<PageProps> = () => {
 
   const isDesktopOrLaptop = useMediaQuery({

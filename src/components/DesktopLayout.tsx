@@ -14,6 +14,7 @@ import Footer from './Footer'
 import ProjectCards from './ProjectCards'
 import ExperienceMenu from './ExperienceMenu'
 import Divider from './Divider';
+import ChessPlayer from './ChessPlayer';
 
 // hook
 import { useTheme } from '../context/ThemeContext'
@@ -139,7 +140,7 @@ const ProfileLinkItem = function (props : any) {
 
     return (
       <div className='flex cursor-pointer'>
-        <a href={link} target='_blank'>
+        <a href={link} aria-label={props.text} target='_blank'>
           <MagneticButton>
             {text}
             {icon}
@@ -177,7 +178,7 @@ function ProfileLink({ theme } : {theme : any}, ref : any) {
     className='flex gap-10
       text-sm 2xl:text-sm'>
 
-      <a className='flex items-center' download="Phuykong Meng Resume" href={resume}  target='_blank'>
+      <a className='flex items-center' download="Phuykong Meng Resume" href={resume} aria-label='resume' target='_blank'>
         Resume <Download strokeWidth={2} size={20} className='ml-2'/>
       </a>
 
@@ -193,7 +194,7 @@ function ProfileLink({ theme } : {theme : any}, ref : any) {
       link="https://github.com/M-Phuykong"
       />
 
-      <a className='flex items-center' href='mailto: m.phuykong@gmail.com' target='_blank'>
+      <a className='flex items-center' aria-label='email' href='mailto: m.phuykong@gmail.com' target='_blank'>
         Email <TriangleRightFill strokeWidth={2} size={20}  className='ml-1'/>
       </a>
 
@@ -270,7 +271,6 @@ function Accordion(
   );
 };
 
-
 export default function DesktopLayout() {
 
   const { theme, updateTheme } = useTheme();
@@ -303,6 +303,7 @@ export default function DesktopLayout() {
       style={{color: theme.main_color}}
       className='basis-10 p-3'>
         <ThemeDropdown />
+        <ChessPlayer theme={theme}/>
       </div>
 
       <motion.div
@@ -396,6 +397,7 @@ export default function DesktopLayout() {
                   </a>
                 </div>
             </Accordion>
+
         </motion.div>
 
       </motion.div>
@@ -404,7 +406,6 @@ export default function DesktopLayout() {
       style={{color: theme.main_color}}
       className='basis-10 p-3'>
         <Footer />
-
       </div>
 
     </div>
