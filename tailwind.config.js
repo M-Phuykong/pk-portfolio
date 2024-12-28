@@ -43,6 +43,7 @@ module.exports = {
     },
   },
   plugins: [
+    require("@xpd/tailwind-3dtransforms"),
     require('tailwind-bootstrap-grid')({
         containerMaxWidths: { sm: '540px', md: '720px', lg: '960px', xl: '1140px' },
       }),

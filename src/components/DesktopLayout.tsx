@@ -301,7 +301,7 @@ export default function DesktopLayout() {
 
       <div
       style={{color: theme.main_color}}
-      className='basis-10 p-3'>
+      className='flex basis-10 p-3'>
         <ThemeDropdown />
         <ChessPlayer theme={theme}/>
       </div>
