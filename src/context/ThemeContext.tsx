@@ -70,7 +70,7 @@ const themeMap: { [key: string] : Theme} = {
         "main_color": "#212b43",
         "sub_color": "#62cfe6",
         "sub_alt_color": "#ddeff3",
-        "text_color": "#212b43"
+        "text_color": "#62cfe6"
     },
     "thai tea": {
         "name": "thai tea",

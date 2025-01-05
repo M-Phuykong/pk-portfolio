@@ -1,15 +1,15 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence, color} from "framer-motion";
-// import { Chess } from 'akar-icons';
 import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
+import Engine from '../util/engine';
 
 import type { Square } from "chess.js";
 
 const menu = {
     open: {
         width: "500px",
-        height: "800px",
+        height: "600px",
         top: "-10px",
         right: "-200px",
         transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1]}
@@ -80,9 +80,12 @@ function PerspectiveText({label} : {label: string}) {
     )
 }
 
-function Board() {
+function Board({ theme }: any) {
 
     const [game, setGame] = useState(new Chess());
+    const engine = useMemo(() => new Engine(), []);
+    const [stockfishLevel, setStockfishLevel] = useState(5);
+
     const [gamePosition, setGamePosition] = useState(game.fen());
     const [moveFrom, setMoveFrom] = useState("");
     const [moveTo, setMoveTo] = useState<Square | null>(null);
@@ -90,6 +93,40 @@ function Board() {
     const [rightClickedSquares, setRightClickedSquares] = useState({});
     const [moveSquares, setMoveSquares] = useState({});
     const [optionSquares, setOptionSquares] = useState({});
+
+
+    function findBestMove() {
+        engine.evaluatePosition(game.fen(), stockfishLevel);
+        engine.onMessage(({
+            bestMove
+            }) => {
+                if (bestMove) {
+                    game.move({
+                        from: bestMove.substring(0, 2),
+                        to: bestMove.substring(2, 4),
+                        promotion: bestMove.substring(4, 5)
+                    });
+                    setGamePosition(game.fen());
+                }
+        });
+    }
+
+    function onDrop(sourceSquare, targetSquare, piece) {
+        const move = game.move({
+        from: sourceSquare,
+        to: targetSquare,
+        promotion: piece[1].toLowerCase() ?? "q"
+        });
+        setGamePosition(game.fen());
+
+        // illegal move
+        if (move === null) return false;
+
+        // exit if the game is over
+        if (game.game_over() || game.in_draw()) return false;
+        findBestMove();
+        return true;
+    }
 
     function safeGameMutate(modify: any) {
         setGame(g => {
@@ -124,17 +161,6 @@ function Board() {
         };
         setOptionSquares(newSquares);
         return true;
-    }
-
-    function makeRandomMove() {
-        const possibleMoves = game.moves();
-
-        // exit if the game is over
-        if (game.game_over() || game.in_draw() || possibleMoves.length === 0) return;
-        const randomIndex = Math.floor(Math.random() * possibleMoves.length);
-        safeGameMutate(game => {
-            game.move(possibleMoves[randomIndex]);
-        });
     }
 
     function onSquareClick(square) {
@@ -190,12 +216,11 @@ function Board() {
                 return;
             }
             setGame(gameCopy);
-            setTimeout(makeRandomMove, 300);
+            setTimeout(findBestMove, 300);
             setMoveFrom("");
             setMoveTo(null);
             setOptionSquares({});
             return;
-
         }
     }
 
@@ -211,7 +236,7 @@ function Board() {
             promotion: piece[1].toLowerCase() ?? "q"
         });
         setGame(gameCopy);
-        setTimeout(makeRandomMove, 300);
+        setTimeout(findBestMove, 300);
         }
         setMoveFrom("");
         setMoveTo(null);
@@ -229,16 +254,18 @@ function Board() {
         }
         });
     }
+
     return (
         <div className='flex flex-col pt-20 p-10 h-full box-border'>
-            <div className='flex flex-col text-white'>
+            <div className='flex flex-col text-white gap-5 mt-0'>
                 <Chessboard animationDuration={200}
                 position={gamePosition}
                 arePremovesAllowed={true}
-                // isDraggablePiece={({ piece }) => piece[0] === "w"}
+                arePiecesDraggable={false}
                 onSquareClick={onSquareClick}
                 onSquareRightClick={onSquareRightClick}
                 onPromotionPieceSelect={onPromotionPieceSelect}
+         
                 customBoardStyle={{
                     borderRadius: "4px",
                     boxShadow: "0 2px 10px rgba(0, 0, 0, 0.5)"
@@ -248,10 +275,19 @@ function Board() {
                     ...rightClickedSquares
                     }}
                 promotionToSquare={moveTo}
+                onPieceDrop={onDrop}
                 showPromotionDialog={showPromotionDialog} />
 
-                <button onClick={() => {
-                    console.log("reset");
+                <button
+                className='
+                focus:ring-4
+                font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2
+                focus:outline-none'
+                style={{
+                    backgroundColor: theme.text_color,
+                    color: theme.main_color
+                }}
+                onClick={() => {
                     game.reset();
                     setGamePosition(game.fen());
                     }}>
@@ -277,7 +313,7 @@ function ChessPlayer({theme}: {theme: any}) {
                 initial="closed"
             >
                 <AnimatePresence>
-                    {isActive && <Board />}
+                    {isActive && <Board theme={theme} />}
                 </AnimatePresence>
             </motion.div>
             <ChessButton
