@@ -8,7 +8,8 @@
 * Description of the universal chess interface (UCI)  https://gist.github.com/aliostad/f4470274f39d29b788c1b09519e67372/
 */
 
-const stockfish = new Worker("/stockfish.js");
+const base_url = process.env.BASE_URL;
+const stockfish = new Worker(new URL("/stockfish.js", base_url));
 
 type EngineMessage = {
     /** stockfish engine message in UCI format*/

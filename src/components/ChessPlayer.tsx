@@ -265,7 +265,6 @@ function Board({ theme }: any) {
                 onSquareClick={onSquareClick}
                 onSquareRightClick={onSquareRightClick}
                 onPromotionPieceSelect={onPromotionPieceSelect}
-         
                 customBoardStyle={{
                     borderRadius: "4px",
                     boxShadow: "0 2px 10px rgba(0, 0, 0, 0.5)"

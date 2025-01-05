@@ -61,8 +61,6 @@ function Divider({ theme } : {theme : any}) {
         progress = 0;
     }
 
-    console.log(theme)
-
     return (
 
         <div className="
