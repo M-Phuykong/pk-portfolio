@@ -8,7 +8,6 @@
 * Description of the universal chess interface (UCI)  https://gist.github.com/aliostad/f4470274f39d29b788c1b09519e67372/
 */
 
-const base_url = process.env.BASE_URL;
 
 type EngineMessage = {
     /** stockfish engine message in UCI format*/
@@ -33,6 +32,8 @@ export default class Engine {
     isReady: boolean;
 
     constructor() {
+        const base_url = process.env.BASE_URL;
+        console.log(base_url);
         this.stockfish = new Worker(new URL("/stockfish.js", base_url));
         this.isReady = false;
         this.onMessage = (callback) => {
