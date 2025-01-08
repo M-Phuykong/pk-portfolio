@@ -9,7 +9,6 @@
 */
 
 const base_url = process.env.BASE_URL;
-const stockfish = new Worker(new URL("/stockfish.js", base_url));
 
 type EngineMessage = {
     /** stockfish engine message in UCI format*/
@@ -34,7 +33,7 @@ export default class Engine {
     isReady: boolean;
 
     constructor() {
-        this.stockfish = stockfish;
+        this.stockfish = new Worker(new URL("/stockfish.js", base_url));
         this.isReady = false;
         this.onMessage = (callback) => {
             this.stockfish.addEventListener("message", (e) => {
