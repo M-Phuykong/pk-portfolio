@@ -32,7 +32,7 @@ export default class Engine {
     isReady: boolean;
 
     constructor() {
-        const base_url = process.env.BASE_URL;
+        const base_url = process.env.GATSBY_BASE_URL;
         console.log(base_url);
         this.stockfish = new Worker(new URL("/stockfish.js", base_url));
         this.isReady = false;
