@@ -9,14 +9,13 @@ function Divider({ theme } : {theme : any}) {
     let time = Math.PI / 2;
     let reqId:  null | number = null;
 
-
     useEffect(() => {
         setPath(progress);
     }, [])
 
     const setPath = (progress: number) => {
-        const width = window.innerWidth * 0.7;
-        path.current?.setAttributeNS(null, "d", `M 0 50 Q${width * x} ${50 + progress}, ${width} 50`)
+        const width = window.innerWidth * 0.25;
+        path.current?.setAttributeNS(null, "d", `M 0,50 Q${width * x} ${50 + progress}, ${width} 50`)
     }
     const lerp = (x: number, y: number, a: number) => x * (1 - a) + y * a
 
@@ -34,7 +33,7 @@ function Divider({ theme } : {theme : any}) {
         if (!pathBound) return;
 
         x = (clientX - pathBound.left) / pathBound.width;
-        progress+= movementY
+        progress += movementY
         setPath(progress);
     }
 

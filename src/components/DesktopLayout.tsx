@@ -309,7 +309,7 @@ export default function DesktopLayout() {
       <motion.div
       id="content_container"
       className='
-      lg:max-w-[75%]
+      lg:max-w-[50%]
       min-h-screen
       h-full
       self-center
