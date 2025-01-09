@@ -3,10 +3,8 @@ import gsap from 'gsap'
 import { motion, AnimatePresence} from "framer-motion";
 import { Download, TriangleRightFill } from 'akar-icons';
 import { StaticImage } from "gatsby-plugin-image"
-import type { Icon } from 'akar-icons';
 
 import "../styles/index.scss"
-import "../styles/desktopLayout.scss"
 
 // components
 import ThemeDropdown from './ThemeDropdown'
@@ -274,10 +272,8 @@ function Accordion(
 export default function DesktopLayout() {
 
   const { theme, updateTheme } = useTheme();
-  const [projectItems, setProjectItems] = useState([])
 
   const [expanded, setExpanded] = useState<false | number>(0);
-
 
   const leftContainer = useRef<React.RefObject<HTMLDivElement>>();
   const rightContainer = useRef<React.RefObject<HTMLDivElement>>();

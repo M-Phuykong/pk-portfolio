@@ -57,9 +57,7 @@ export default function MobileLayout({}: Props) {
       className={"min-h-screen min-w-screen "}
       style={{backgroundColor: theme.background}}
       >
-        {/* <Background> */}
           <AnimatePresence>
-
             <motion.div
             layout
             variants={variant}
@@ -168,7 +166,6 @@ export default function MobileLayout({}: Props) {
 
             </motion.div>
           </AnimatePresence>
-        {/* </Background> */}
       </motion.main>
   )
 }
