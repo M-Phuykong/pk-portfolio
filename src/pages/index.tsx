@@ -34,7 +34,11 @@ const IndexPage: React.FC<PageProps> = () => {
 export default IndexPage
 
 export const Head: HeadFC = () => (
- <title>Phuykong Meng</title>
+  <>
+    <html lang="en" />
+    <meta name="description" content="Phuykong Meng's Portfolio / Software Engineer Portfolio" />
+    <title>Phuykong Meng</title>
+  </>
 )
 
 

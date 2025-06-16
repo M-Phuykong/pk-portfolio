@@ -334,7 +334,7 @@ export default function DesktopLayout() {
               w-full
               self-start
               object-cover
-              border border-solid border-4
+              border-solid border-4
               rounded-full'
             />
           </div>
