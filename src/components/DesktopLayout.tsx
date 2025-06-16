@@ -91,8 +91,7 @@ function ProfileDescription({ theme } : {theme : any}) {
           lg:text-base
           2xl:text-lg'>
           <span className='invisible'>
-            A senior at Temple University, PA pursuing a degree in Computer Science.
-            I have a keen interest in Machine Language and Front-End Development.
+          A Computer Science graduate from Temple University with a strong interest in Machine Learning and Front-End Development.
           </span>
       </div>
     );

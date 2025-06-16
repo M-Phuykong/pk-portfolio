@@ -80,10 +80,11 @@ export default function ExperienceMenu(props : any) {
         className="container relative max-w-full min-h-[30rem] mt-5
         ">
             <div className='row'>
-                <div className='col sm:col-3'>
+                <div className='col sm:col-4'>
                     <div>
-                        <ul className='p-0'>
+                        <ul className='p-0 truncate text-ellipsis'>
                             {props.data.map((job : any, index: number) => (
+                                            
                                             <VListTab
                                             key={index}
                                             onClick={onClick}
@@ -95,7 +96,7 @@ export default function ExperienceMenu(props : any) {
                         </ul>
                     </div>
                 </div>
-                <div className='col sm:col-9'>
+                <div className='col sm:col-8'>
                     {props.data.map((job: any, index: number) => (
                                 <VListContent
                                 data={job}
