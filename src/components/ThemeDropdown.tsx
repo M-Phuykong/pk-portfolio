@@ -3,7 +3,7 @@ import Select from 'react-select'
 import { ArrowShuffle } from 'akar-icons'
 
 // Hook
-import { useTheme } from '../context/ThemeContext'
+import { Theme, useTheme } from '../context/ThemeContext'
 
 const ThemePill = ({ value, label, color}:{ value: string, label: string, color: any})  => (
 
@@ -26,7 +26,7 @@ const ThemePill = ({ value, label, color}:{ value: string, label: string, color:
 export default function ThemeDropdown() {
 
     const { theme, updateTheme, themeMap } = useTheme();
-    const [selections, setSelections] = useState<{value: string, label: string}[]>([]);
+    const [selections, setSelections] = useState<{value: string, label: string, color: Theme}[]>([]);
 
     useEffect(() => {
         // console.log(themeMap, typeof(themeMap))

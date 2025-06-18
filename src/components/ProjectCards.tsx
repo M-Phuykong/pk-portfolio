@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
 import { motion, AnimatePresence, Reorder } from "framer-motion";
-import { GatsbyImage } from "gatsby-plugin-image"
 import gsap from 'gsap';
 
 import { useTheme } from '../context/ThemeContext'

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, forwardRef, MouseEventHandler } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { motion, AnimatePresence} from "framer-motion";
 import { Download, TriangleRightFill } from 'akar-icons';
