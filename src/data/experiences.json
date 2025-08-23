@@ -1,5 +1,13 @@
 [
     {
+        "company" : "Amazon",
+        "position" : "Software Developer",
+        "period" : "Aug 2025 - Present",
+        "details": [
+        ""
+        ]
+    },
+    {
         "company" : "NEDC",
         "position" : "Software Developer",
         "period" : "Aug 2021 - May 2025",
